@@ -1,0 +1,77 @@
+{
+  "name": "formtron",
+  "version": "0.0.0",
+  "description": "JSON form builder for React",
+  "keywords": [],
+  "sideEffects": false,
+  "homepage": "https://github.com/stoplightio/formtron",
+  "bugs": "https://github.com/stoplightio/formtron/issues",
+  "author": "Stoplight <support@stoplight.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoplightio/formtron"
+  },
+  "license": "Apache-2.0",
+  "main": "src/index.ts",
+  "files": [
+    "**/*",
+    "!__tests__"
+  ],
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "scripts": {
+    "build": "sl-scripts build",
+    "build.docs": "build-storybook -c .storybook -o docs-auto",
+    "commit": "git-cz",
+    "lint": "sl-scripts lint",
+    "lint.fix": "yarn lint --fix",
+    "release": "sl-scripts release",
+    "release.docs": "sl-scripts release:docs",
+    "release.dryRun": "sl-scripts release --dry-run --debug",
+    "storybook": "start-storybook -p 9001",
+    "test": "sl-scripts test",
+    "test.prod": "yarn lint && yarn test --coverage --no-cache",
+    "test.update": "yarn test --updateSnapshot",
+    "test.watch": "yarn test --watch"
+  },
+  "peerDependencies": {
+    "react": "16.x.x"
+  },
+  "dependencies": {
+    "@stoplight/ui-kit": "1.x.x"
+  },
+  "devDependencies": {
+    "@stoplight/scripts": "1.x.x",
+    "@types/react": "16.x.x",
+    "@types/react-dom": "16.x.x",
+    "react": "16.x.x",
+    "react-dom": "16.x.x",
+    "typescript": "3.1.6"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}$": [
+      "yarn lint.fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "extends": "@stoplight/scripts/release"
+  }
+}
