@@ -39,6 +39,7 @@
     "react": "16.x.x"
   },
   "dependencies": {
+    "@stoplight/graph": "file:.yalc/@stoplight/graph",
     "@stoplight/memoize-one": "^4.0.3",
     "@stoplight/ui-kit": "^1.6.1",
     "react-select": "^2.1.1",
@@ -48,10 +49,12 @@
     "@stoplight/scripts": "1.x.x",
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
+    "filer": "^0.0.44",
     "react": "16.x.x",
     "react-dom": "16.x.x",
     "react-object-inspector": "^0.2.1",
-    "typescript": "3.1.6"
+    "typescript": "3.1.6",
+    "util": "^0.11.1"
   },
   "lint-staged": {
     "*.{ts,tsx}$": [
