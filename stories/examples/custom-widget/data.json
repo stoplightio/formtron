@@ -1,0 +1,10 @@
+{
+  "_selection": "paths./todos.get",
+  "paths": {
+    "/todos": {
+      "get": {
+        "tags": ["Todos"]
+      }
+    }
+  }
+}

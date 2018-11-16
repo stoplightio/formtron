@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://npmjs.org/package/formtron",
+  "$ref": "#/definitions/form",
+  "definitions": {
+    "_primitive": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "custom": {}
+      },
+      "additionalProperties": true
+    },
+    "field": {
+      "anyOf": [
+        { "$ref": "#/definitions/_primitive" },
+        { "$ref": "#/definitions/array" },
+        { "$ref": "#/definitions/object" },
+        { "$ref": "#/definitions/form" }
+      ]
+    },
+    "form": {
+      "type": "object",
+      "required": ["title", "type", "fields"],
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["form"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/field" }
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "array": {
+      "type": "object",
+      "required": ["title", "type", "items"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["array"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "items": { "$ref": "#/definitions/field" },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "object": {
+      "type": "object",
+      "required": ["title", "type", "items"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["object"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "items": { "$ref": "#/definitions/field" },
+        "custom": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}

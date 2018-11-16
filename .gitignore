@@ -9,3 +9,4 @@ node_modules
 /yalc.lock
 /.yalc
 /coverage
+.cache

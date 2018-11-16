@@ -1,0 +1,41 @@
+{
+  "_selection": "paths./todos.get",
+  "tags": [
+    {
+      "name": "Admin"
+    },
+    {
+      "name": "Todos"
+    }
+  ],
+  "paths": {
+    "/todos": {
+      "get": {
+        "x-info": "foobar",
+        "tags": ["Todos"],
+        "taglist": [["Todos"]],
+        "description": "Foo"
+      },
+      "put": {
+        "x-info": "foobar",
+        "tags": ["Admin"],
+        "taglist": [["Admin"]],
+        "description": "Bar"
+      }
+    },
+    "/lists": {
+      "post": {
+        "x-info": "foobar",
+        "tags": ["Todos"],
+        "taglist": [["Todos"]],
+        "description": "Foo"
+      },
+      "delete": {
+        "x-info": "foobar",
+        "tags": ["Admin"],
+        "taglist": [["Admin"]],
+        "description": "Bar"
+      }
+    }
+  }
+}

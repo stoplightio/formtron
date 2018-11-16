@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "title": "Form (OASv2 Operation Node)",
+  "description": "An HTTP operation.",
+  "type": "form",
+  "fields": {
+    "paths.*.?": {
+      "type": "select",
+      "options": ["get", "post", "put", "delete", "options"],
+      "title": "Method",
+      "custom": {
+        "widget": "randomOption"
+      }
+    },
+    "paths.?": {
+      "type": "string",
+      "title": "path",
+      "required": true
+    },
+    "paths.*.*.tags": {
+      "type": "multiselect",
+      "title": "Tag",
+      "custom": {
+        "source": "tags"
+      }
+    }
+  }
+}

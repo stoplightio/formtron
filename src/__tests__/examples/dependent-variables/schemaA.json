@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "title": "$method listed before $path",
+  "type": "form",
+  "fields": {
+    "paths.*.?": {
+      "type": "string",
+      "title": "Method"
+    },
+    "paths.?.*": {
+      "type": "string",
+      "title": "path",
+      "required": true
+    },
+    "paths.*.*.tags": {
+      "type": "string",
+      "title": "Tag"
+    }
+  }
+}

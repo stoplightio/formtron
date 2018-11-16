@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "title": "Form (OASv2 Root Node)",
+  "description": "Top-level properties of your OASv2 spec.",
+  "type": "form",
+  "fields": {
+    "info.title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "info.version": {
+      "type": "integer",
+      "title": "Version"
+    },
+    "host": {
+      "type": "string",
+      "title": "Host",
+      "required": true
+    },
+    "info.description": {
+      "type": "markdown",
+      "title": "Description"
+    },
+    "schemes": {
+      "type": "multiselect",
+      "title": "Schemes",
+      "options": ["http", "https", "ws", "wss"]
+    },
+    "consumes": {
+      "type": "multiselect",
+      "title": "Consumes",
+      "options": ["application/json", "xml", "txt"]
+    },
+    "produces": {
+      "type": "multiselect",
+      "title": "Produces",
+      "options": ["application/json", "xml", "txt"]
+    },
+    "info.contact": {
+      "type": "form",
+      "title": "Contact",
+      "description": "",
+      "fields": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "required": true,
+          "path": "name"
+        },
+        "url": {
+          "type": "string",
+          "title": "URL",
+          "required": true,
+          "path": "url"
+        }
+      }
+    },
+    "info.license.name": {
+      "type": "string",
+      "title": "License"
+    }
+  }
+}

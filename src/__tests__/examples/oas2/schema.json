@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../schema.json",
+  "title": "Form (OASv2 Root Node)",
+  "description": "Top-level properties of your OASv2 spec.",
+  "type": "form",
+  "fields": {
+    "title": {
+      "type": "string",
+      "title": "Title",
+      "path": "info.title"
+    },
+    "version": {
+      "type": "integer",
+      "title": "Version",
+      "path": "info.version"
+    },
+    "host": {
+      "type": "string",
+      "title": "Host",
+      "required": true,
+      "path": "host"
+    },
+    "description": {
+      "type": "markdown",
+      "title": "Description",
+      "path": "info.description"
+    },
+    "schemes": {
+      "type": "multiselect",
+      "title": "Schemes",
+      "path": "schemes",
+      "options": ["http", "https", "ws", "wss"],
+      "custom": "foo"
+    },
+    "consumes": {
+      "type": "multiselect",
+      "title": "Consumes",
+      "path": "consumes",
+      "options": ["application/json", "xml", "txt"],
+      "custom": {
+        "widget": "foo"
+      }
+    },
+    "produces": {
+      "type": "multiselect",
+      "title": "Produces",
+      "path": "produces",
+      "options": ["application/json", "xml", "txt"],
+      "custom": {
+        "widget": "foo"
+      }
+    },
+    "contact": {
+      "type": "form",
+      "title": "Contact",
+      "description": "",
+      "path": "info.contact",
+      "fields": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "required": true,
+          "path": "name"
+        },
+        "url": {
+          "type": "string",
+          "title": "URL",
+          "required": true,
+          "path": "url"
+        }
+      }
+    },
+    "license": {
+      "type": "string",
+      "title": "License",
+      "path": "info.license.name"
+    }
+  }
+}

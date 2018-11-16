@@ -1,0 +1,24 @@
+{
+  "_selection": ".",
+  "host": "todos.stoplight.io",
+  "x-info": "foobar",
+  "info": {
+    "version": "1.0",
+    "title": "To-do Demo",
+    "x-info": "foobar",
+    "description": "Here is the markdown description.",
+    "contact": {
+      "name": "Stoplight",
+      "url": "https://stoplight.io",
+      "x-info": "foobar"
+    },
+    "license": {
+      "x-info": "foobar",
+      "name": "MIT"
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "colors": []
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "type": "form",
+  "title": "Simplest Ever Form",
+  "description": "A single string field",
+  "fields": {
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age"
+    }
+  }
+}

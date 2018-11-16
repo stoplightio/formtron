@@ -1,0 +1,10 @@
+{
+  "_selection": "paths./api.get",
+  "paths": {
+    "/api": {
+      "get": {
+        "tags": "foo"
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://npmjs.org/package/formtron",
+  "$ref": "#/definitions/form",
+  "definitions": {
+    "field": {
+      "oneOf": [
+        { "$ref": "#/definitions/string" },
+        { "$ref": "#/definitions/integer" },
+        { "$ref": "#/definitions/select" },
+        { "$ref": "#/definitions/multiselect" },
+        { "$ref": "#/definitions/markdown" },
+        { "$ref": "#/definitions/array" },
+        { "$ref": "#/definitions/object" },
+        { "$ref": "#/definitions/form" },
+        { "$ref": "#/definitions/json" }
+      ]
+    },
+    "form": {
+      "type": "object",
+      "required": ["title", "type", "fields"],
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["form"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/field" }
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "integer": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["integer"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "markdown": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["markdown"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "minLength": {
+          "type": "number"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "json": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["json"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "string": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["string"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "select": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["select"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "multiselect": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["multiselect"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "array": {
+      "type": "object",
+      "required": ["title", "type", "items"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["array"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "items": { "$ref": "#/definitions/field" },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "object": {
+      "type": "object",
+      "required": ["title", "type", "items"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["object"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "items": { "$ref": "#/definitions/field" },
+        "custom": {}
+      },
+      "additionalProperties": false
+    }
+  }
+}
