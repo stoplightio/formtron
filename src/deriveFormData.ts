@@ -4,12 +4,7 @@ import { Dictionary } from 'ts-essentials';
 // @ts-ignore
 import memoize from '@stoplight/memoize-one';
 
-const substituteVariables = (
-  key: string,
-  path: string,
-  selection: string,
-  vars: Dictionary<string>
-) => {
+const substituteVariables = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
   const _selection = selection.split('.');
   const _path = path.split('.');
   return _path
@@ -58,9 +53,7 @@ export const deriveFormData = memoize((schema: any, data: any, selection: string
           output[key] = get(data, path);
         }
         if (output[key] === undefined) {
-          throw new Error(
-            `Schema "${schema.title}" cannot locate path "${path}" used for field "${key}".`
-          );
+          throw new Error(`Schema "${schema.title}" cannot locate path "${path}" used for field "${key}".`);
         }
         unresolved.delete(key);
         break;

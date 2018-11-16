@@ -14,9 +14,7 @@ describe('formtron/computeOps', () => {
     for (const i of ['wildcards']) {
       const data = require(`./examples/${i}/data.json`);
       test(`example ${i}`, () => {
-        const warnings = computeWarnings(data, [
-          { op: 'move', from: 'paths./todos.get', path: 'paths./lists.get' },
-        ]);
+        const warnings = computeWarnings(data, [{ op: 'move', from: 'paths./todos.get', path: 'paths./lists.get' }]);
         expect(warnings.length).toEqual(0);
       });
     }
@@ -25,9 +23,7 @@ describe('formtron/computeOps', () => {
     for (const i of ['wildcards']) {
       const data = require(`./examples/${i}/data.json`);
       test(`example ${i}`, () => {
-        const warnings = computeWarnings(data, [
-          { op: 'move', from: 'paths./todos.get', path: 'paths./lists.post' },
-        ]);
+        const warnings = computeWarnings(data, [{ op: 'move', from: 'paths./todos.get', path: 'paths./lists.post' }]);
         expect(warnings.length).toEqual(1);
       });
     }

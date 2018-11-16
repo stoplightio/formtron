@@ -6,8 +6,8 @@ import { IOperation } from './types';
 const parentPath = (path: string) => path.slice(0, path.lastIndexOf('.'));
 const childPath = (path: string) => path.slice(path.lastIndexOf('.') + 1);
 
-export const applyOps = (data: any, ops: IOperation[]) =>
-  produce(data, data => {
+export const applyOps = (_data: any, ops: IOperation[]) =>
+  produce(_data, data => {
     // Apply operations
     for (const op of ops) {
       switch (op.op) {
