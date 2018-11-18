@@ -1,4 +1,4 @@
-import { IAutocompletionProvider, IAutocompletionSources } from '../src/components';
+import { IAutocompletionProvider, IAutocompletionSources } from '../components';
 
 // This emulates the async-ness if (say) looking up these values from
 // a remote HTTP API.

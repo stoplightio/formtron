@@ -9,20 +9,20 @@ import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { FormtronDebugger } from './FormtronDebugger';
 
-const simpleData = require('../src/__tests__/examples/simple/data.json');
-const simpleSchema = require('../src/__tests__/examples/simple/schema.json');
-const variousData = require('../src/__tests__/examples/various-types/data.json');
-const variousSchema = require('../src/__tests__/examples/various-types/schema.json');
-const wildcardData = require('../src/__tests__/examples/wildcards/data.json');
-const wildcardSchema = require('../src/__tests__/examples/wildcards/schema.json');
+const simpleData = require('../__tests__/examples/simple/data.json');
+const simpleSchema = require('../__tests__/examples/simple/schema.json');
+const variousData = require('../__tests__/examples/various-types/data.json');
+const variousSchema = require('../__tests__/examples/various-types/schema.json');
+const wildcardData = require('../__tests__/examples/wildcards/data.json');
+const wildcardSchema = require('../__tests__/examples/wildcards/schema.json');
 const customWidgetData = require('./examples/custom-widget/data.json');
 const customWidgetSchema = require('./examples/custom-widget/schema.json');
 
-const complexData = require('../src/__tests__/examples/complex/data.json');
-const complexSchema = require('../src/__tests__/examples/complex/schema.json');
-const dependentData = require('../src/__tests__/examples/dependent-variables/data.json');
-const dependendSchema1 = require('../src/__tests__/examples/dependent-variables/schemaA.json');
-const dependentSchema2 = require('../src/__tests__/examples/dependent-variables/schemaB.json');
+const complexData = require('../__tests__/examples/complex/data.json');
+const complexSchema = require('../__tests__/examples/complex/schema.json');
+const dependentData = require('../__tests__/examples/dependent-variables/data.json');
+const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
+const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
 
 import './style.css';
 

@@ -3,9 +3,8 @@ import * as React from 'react';
 // @ts-ignore
 import * as ObjectInspector from 'react-object-inspector';
 
-import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../src';
-
-import { AutocompletionContext, fieldComponents } from '../src/components';
+import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../';
+import { AutocompletionContext, fieldComponents } from '../components';
 import { autocompletionSources } from './autocompletionSources';
 import { customWidgets } from './customWidgets';
 
@@ -43,7 +42,13 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
       <AutocompletionContext.Provider value={autocompletionSources}>
         <div className="App">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr' }}>
-            <section style={{ gridArea: '1 / 1 / 2 / 2', border: '1px solid black', borderRadius: 5 }}>
+            <section
+              style={{
+                gridArea: '1 / 1 / 2 / 2',
+                border: '1px solid black',
+                borderRadius: 5,
+              }}
+            >
               <legend>Input</legend>
               <fieldset>
                 <legend>Source Data</legend>
@@ -122,7 +127,12 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                   const data = applyOps(this.state.data, this.state.ops);
                   const selectOp = this.state.ops.find(x => x.op === 'select');
                   const selection = selectOp ? selectOp.path : this.state.selection;
-                  this.setState(state => ({ ...state, ops: [], data, selection }));
+                  this.setState(state => ({
+                    ...state,
+                    ops: [],
+                    data,
+                    selection,
+                  }));
                 }}
                 style={{
                   border: '1px solid black',
@@ -134,7 +144,13 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                 Apply
               </button>
             </section>
-            <section style={{ gridArea: '1 / 3 / 2 / 4', border: '1px solid black', borderRadius: 5 }}>
+            <section
+              style={{
+                gridArea: '1 / 3 / 2 / 4',
+                border: '1px solid black',
+                borderRadius: 5,
+              }}
+            >
               <legend>Output</legend>
               <fieldset>
                 <legend>Result</legend>

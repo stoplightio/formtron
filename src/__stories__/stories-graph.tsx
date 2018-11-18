@@ -13,9 +13,8 @@ import { text } from '@storybook/addon-knobs/react';
 // @ts-ignore
 import * as ObjectInspector from 'react-object-inspector';
 
-import { applyOps, Formtron } from '../src';
-
-import { fieldComponents } from '../src/components';
+import { applyOps, Formtron } from '../';
+import { fieldComponents } from '../components';
 
 import { Defer } from './Defer';
 // import { FormtronDebugger } from './FormtronDebugger';
@@ -26,14 +25,14 @@ const oas2schema = require('./examples/oas2/schema.json');
 
 const FormtronLight = ({ value }: { value: any }) => (
   <State initialState={value}>
-    {(value: any, setValue: any) => (
+    {(innerValue: any, setValue: any) => (
       <Formtron
         fieldComponents={fieldComponents}
-        value={value}
+        value={innerValue}
         schema={oas2schema}
         selection={'.'}
         onChange={ops => {
-          const previewOutput = applyOps(value, ops);
+          const previewOutput = applyOps(innerValue, ops);
           setValue(previewOutput);
         }}
       />

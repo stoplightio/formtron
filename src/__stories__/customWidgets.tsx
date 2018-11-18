@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IFormtronControl } from '../src';
+import { IFormtronControl } from '../types';
 
 export const customWidgets = {
   randomNumber: (props: IFormtronControl) => (
