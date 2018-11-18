@@ -1,7 +1,7 @@
 {
   "name": "formtron",
   "version": "0.0.0",
-  "description": "JSON form builder for React",
+  "description": "JSON form builder for React.",
   "keywords": [],
   "sideEffects": false,
   "homepage": "https://github.com/stoplightio/formtron",
