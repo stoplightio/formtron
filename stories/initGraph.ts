@@ -8,7 +8,7 @@ const petstore = require('./examples/oas2/petstore.json');
 
 import * as fs from 'fs';
 // @ts-ignore
-Buffer._useTypedArrays = true; // needed to avoid error
+Buffer._useTypedArrays = true; // needed to avoid Uncaught TypeError: uint8BackedBuffer.toArrayBuffer is not a function
 
 const initFS = async () =>
   new Promise((resolve, reject) => {
