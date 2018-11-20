@@ -10,12 +10,11 @@ interface IDeferState {
 }
 
 export class Defer<T> extends React.Component<IDefer<T>, IDeferState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      data: null,
-    };
-    props.promise.then((data: any) => this.setState({ data }));
+  public state = {
+    data: null as any,
+  };
+  public componentWillMount() {
+    this.props.promise.then((data: any) => this.setState({ data }));
   }
   public render() {
     const { data } = this.state;

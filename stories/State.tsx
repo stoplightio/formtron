@@ -16,7 +16,9 @@ export class State<T> extends React.Component<IState<T>, IStateState<T>> {
       state: props.initialState,
     };
   }
+
   private _setState = (state: T) => this.setState({ state });
+
   public render() {
     return this.props.children(this.state.state, this._setState);
   }
