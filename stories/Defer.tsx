@@ -5,19 +5,19 @@ export interface IDefer<T> {
   children: (data: T) => React.ReactNode;
 }
 
-interface IDeferState {
-  data: any;
+interface IDeferState<T> {
+  data?: T;
 }
 
-export class Defer<T> extends React.Component<IDefer<T>, IDeferState> {
-  public state = {
-    data: null as any,
-  };
+export class Defer<T> extends React.Component<IDefer<T>, IDeferState<T>> {
   public componentWillMount() {
-    this.props.promise.then((data: any) => this.setState({ data }));
+    this.props.promise.then((data: T) => this.setState({ data }));
   }
   public render() {
-    const { data } = this.state;
-    return this.props.children(data);
+    if (this.state && this.state.data !== undefined) {
+      const { data } = this.state;
+      return this.props.children(data);
+    }
+    return null;
   }
 }

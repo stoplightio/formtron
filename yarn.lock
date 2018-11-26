@@ -1038,14 +1038,29 @@
     into-stream "^4.0.0"
     lodash "^4.17.4"
 
+"@stoplight/fast-safe-stringify@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/fast-safe-stringify/-/fast-safe-stringify-2.1.2.tgz#2811eff4989c3d4c5c9a3789f057e25358db0899"
+
 "@stoplight/graph@file:.yalc/@stoplight/graph":
-  version "0.0.0-df05fae1"
+  version "0.0.0-48b7f808"
   dependencies:
+    "@stoplight/json" "1.1.x"
+    "@stoplight/types" "2.x.x"
+    "@stoplight/yaml" "1.0.x"
     graphlib "2.1.5"
-    json-source-map "0.4.0"
-    lodash.get "4.4.x"
+    lodash "4.x.x"
+    urijs "1.19.x"
     vfile "3.0.x"
-    yaml-ast-parser "0.0.41"
+
+"@stoplight/json@1.1.x":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@stoplight/json/-/json-1.1.0.tgz#839b10852bdc10d50b08f23898136f561c33980c"
+  dependencies:
+    "@stoplight/fast-safe-stringify" "2.1.2"
+    "@stoplight/types" "2.x.x"
+    json-source-map "0.4.0"
+    lodash "4.x.x"
 
 "@stoplight/memoize-one@^4.0.3":
   version "4.0.3"
@@ -1106,6 +1121,10 @@
     react-dom "16.x.x"
     webpack "4.x.x"
 
+"@stoplight/types@2.0.0", "@stoplight/types@2.x.x":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@stoplight/types/-/types-2.0.0.tgz#3e78ad980bb0254759506f9201eb1331663d38f8"
+
 "@stoplight/ui-kit@^1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@stoplight/ui-kit/-/ui-kit-1.6.1.tgz#2106a6b3b4df3fe4b0023aa5ff8e8270b19daf83"
@@ -1123,6 +1142,14 @@
     react-textarea-autosize "7.1.0-1"
     styled-components "4.0.x"
     styled-system "3.1.x"
+
+"@stoplight/yaml@1.0.x":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/yaml/-/yaml-1.0.1.tgz#7431b15fd4d2055f800a62131df92f4639ce7c60"
+  dependencies:
+    "@stoplight/types" "2.0.0"
+    lodash "4.x.x"
+    yaml-ast-parser "0.0.43"
 
 "@storybook/addon-actions@4.0.6":
   version "4.0.6"
@@ -6946,10 +6973,6 @@ lodash.escaperegexp@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
 
-lodash.get@4.4.x:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-
 lodash.isfunction@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-2.4.1.tgz#2cfd575c73e498ab57e319b77fa02adef13a94d1"
@@ -11202,6 +11225,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+urijs@1.19.x:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.1.tgz#5b0ff530c0cbde8386f6342235ba5ca6e995d25a"
+
 urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
@@ -11640,9 +11667,9 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
 
-yaml-ast-parser@0.0.41:
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/yaml-ast-parser/-/yaml-ast-parser-0.0.41.tgz#e120d6933d11c1da091ad824e091eb5e3248cfdb"
+yaml-ast-parser@0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/yaml-ast-parser/-/yaml-ast-parser-0.0.43.tgz#e8a23e6fb4c38076ab92995c5dca33f3d3d7c9bb"
 
 yargs-parser@10.x, yargs-parser@^10.0.0, yargs-parser@^10.1.0:
   version "10.1.0"
