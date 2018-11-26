@@ -1,8 +1,8 @@
-import { Graph } from '@stoplight/graph/dist/index.d';
-import { createFilesystemPlugin } from '@stoplight/graph/dist/plugins/filesystem';
-import { FilesystemTypes, IDirectory, IDirectoryInput } from '@stoplight/graph/dist/plugins/filesystem/types';
-import { createJsonPlugin } from '@stoplight/graph/dist/plugins/json';
-import { createOas2Plugin } from '@stoplight/graph/dist/plugins/oas/oas2';
+import { Graph } from '@stoplight/graph';
+import { createFilesystemPlugin } from '@stoplight/graph/plugins/filesystem';
+import { FilesystemTypes, IDirectory, IDirectoryInput } from '@stoplight/graph/plugins/filesystem/types';
+import { createJsonPlugin } from '@stoplight/graph/plugins/json';
+import { createOas2Plugin } from '@stoplight/graph/plugins/oas/oas2';
 
 const petstore = require('./examples/oas2/petstore.json');
 
