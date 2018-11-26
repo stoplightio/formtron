@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translators translateOperation should translate operation 1`] = `
+Object {
+  "deprecated": true,
+  "description": "odesc",
+  "id": "?http-operation-id?",
+  "iid": "oid",
+  "method": "get",
+  "path": "/",
+  "request": Object {},
+  "responses": Object {},
+  "security": Object {},
+  "servers": Array [],
+  "summary": "osum",
+  "tags": Array [],
+}
+`;
+
+exports[`translators translateToServers given no scheme should return empty array 1`] = `Array []`;
+
+exports[`translators translateToServers given operation and spec schemes should take operation schemes 1`] = `
+Array [
+  Object {
+    "url": "http://stoplight.io/base-path",
+  },
+]
+`;
+
+exports[`translators translateToServers given operation schemes should return servers 1`] = `
+Array [
+  Object {
+    "url": "http://stoplight.io/base-path",
+  },
+  Object {
+    "url": "https://stoplight.io/base-path",
+  },
+]
+`;
+
+exports[`translators translateToServers given spec schemes should return servers 1`] = `
+Array [
+  Object {
+    "url": "http://stoplight.io/base-path",
+  },
+  Object {
+    "url": "https://stoplight.io/base-path",
+  },
+]
+`;

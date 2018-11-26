@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translateToTags should translate array of strings to tags 1`] = `
+Array [
+  Object {
+    "name": "a",
+  },
+  Object {
+    "name": "b",
+  },
+  Object {
+    "name": "c",
+  },
+]
+`;

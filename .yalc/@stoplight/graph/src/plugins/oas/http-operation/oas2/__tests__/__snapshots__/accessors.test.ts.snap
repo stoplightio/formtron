@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessors getConsumes given all empty arrays should return asterisk 1`] = `
+Array [
+  "*",
+]
+`;
+
+exports[`accessors getConsumes given all empty arrays should return asterisk 2`] = `
+Array [
+  "*",
+]
+`;
+
+exports[`accessors getConsumes should fallback to spec consumes 1`] = `
+Array [
+  "text/plain",
+]
+`;
+
+exports[`accessors getConsumes should prefer operation consumes 1`] = `
+Array [
+  "text/poem",
+]
+`;
+
+exports[`accessors getProduces given all empty arrays should return asterisk 1`] = `
+Array [
+  "*",
+]
+`;
+
+exports[`accessors getProduces given all empty arrays should return asterisk 2`] = `
+Array [
+  "*",
+]
+`;
+
+exports[`accessors getProduces should fallback to spec produces 1`] = `
+Array [
+  "text/plain",
+]
+`;
+
+exports[`accessors getProduces should prefer operation produces 1`] = `
+Array [
+  "text/poem",
+]
+`;
+
+exports[`accessors getSecurities should fallback to global security 1`] = `
+Array [
+  Object {
+    "type": "basic",
+  },
+  Object {
+    "type": "oauth2",
+  },
+]
+`;
+
+exports[`accessors getSecurities should fallback to operation security 1`] = `
+Array [
+  Object {
+    "type": "basic",
+  },
+]
+`;
+
+exports[`accessors getSecurities should prefer to operation security 1`] = `
+Array [
+  Object {
+    "type": "apiKey",
+  },
+]
+`;
+
+exports[`accessors getSecurities should return empty array 1`] = `Array []`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content.translator should translate a simple content 1`] = `
+Object {
+  "application/json": Object {
+    "mediaType": "application/json",
+    "schema": Object {
+      "any": "key",
+      "works": "fine",
+    },
+  },
+  "text/plain": Object {
+    "mediaType": "text/plain",
+    "schema": Object {
+      "any": "key",
+      "works": "fine",
+    },
+  },
+}
+`;

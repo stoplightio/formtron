@@ -1,63 +1,60 @@
 {
-  "name": "formtron",
-  "version": "0.0.0",
-  "description": "JSON form builder for React",
+  "name": "@stoplight/graph",
+  "version": "0.0.0-48b7f808",
+  "description": "Nodes'n Things.",
   "keywords": [],
+  "main": "src/index.ts",
   "sideEffects": false,
-  "homepage": "https://github.com/stoplightio/formtron",
-  "bugs": "https://github.com/stoplightio/formtron/issues",
+  "homepage": "https://github.com/stoplightio/graph",
+  "bugs": "https://github.com/stoplightio/graph/issues",
   "author": "Stoplight <support@stoplight.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stoplightio/formtron"
+    "url": "https://github.com/stoplightio/graph.git"
   },
-  "license": "Apache-2.0",
-  "main": "src/index.ts",
+  "license": "UNLICENSED",
   "files": [
-    "**/*",
-    "!__tests__"
+    "**/*"
   ],
   "engines": {
     "node": ">=8.3.0"
   },
   "scripts": {
     "build": "sl-scripts build",
-    "build.docs": "build-storybook -c .storybook -o docs-auto",
+    "build.docs": "sl-scripts build:typedoc",
     "commit": "git-cz",
     "lint": "sl-scripts lint",
     "lint.fix": "yarn lint --fix",
     "release": "sl-scripts release",
     "release.docs": "sl-scripts release:docs",
     "release.dryRun": "sl-scripts release --dry-run --debug",
-    "storybook": "start-storybook -p 9001",
     "test": "sl-scripts test",
-    "test.prod": "yarn lint && yarn test --coverage --no-cache",
+    "test.prod": "yarn lint && yarn test --coverage --no-cache --maxWorkers 2",
     "test.update": "yarn test --updateSnapshot",
     "test.watch": "yarn test --watch"
   },
-  "peerDependencies": {
-    "react": "16.x.x"
-  },
   "dependencies": {
-    "@stoplight/graph": "file:.yalc/@stoplight/graph",
-    "@stoplight/memoize-one": "^4.0.3",
-    "@stoplight/ui-kit": "^1.6.1",
-    "react-select": "^2.1.1",
-    "ts-essentials": "^1.0.0"
+    "@stoplight/json": "1.1.x",
+    "@stoplight/types": "2.x.x",
+    "@stoplight/yaml": "1.0.x",
+    "graphlib": "2.1.5",
+    "lodash": "4.x.x",
+    "urijs": "1.19.x",
+    "vfile": "3.0.x"
   },
   "devDependencies": {
-    "@stoplight/scripts": "1.x.x",
-    "@types/react": "16.x.x",
-    "@types/react-dom": "16.x.x",
-    "filer": "^0.0.44",
-    "react": "16.x.x",
-    "react-dom": "16.x.x",
-    "react-object-inspector": "^0.2.1",
-    "typescript": "3.1.6",
-    "util": "^0.11.1"
+    "@stoplight/scripts": "3.0.2",
+    "@stoplight/test-utils": "0.0.1",
+    "@types/graphlib": "2.1.4",
+    "@types/lodash": "4.x.x",
+    "@types/swagger-schema-official": "2.0.x",
+    "@types/urijs": "1.15.x",
+    "@types/vfile": "2.2.x",
+    "openapi3-ts": "1.1.x",
+    "typescript": "3.1.6"
   },
   "lint-staged": {
-    "*.{ts,tsx}$": [
+    "*.{ts,tsx}": [
       "yarn lint.fix",
       "git add"
     ]

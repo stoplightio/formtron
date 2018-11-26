@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`params.translator translateToBodyParameter should translate to body parameter 1`] = `
+Object {
+  "contents": Array [
+    Object {
+      "mediaType": "*",
+      "schema": Object {
+        "format": "e-mail",
+      },
+    },
+  ],
+  "description": "descr",
+  "required": true,
+}
+`;
+
+exports[`params.translator translateToFormDataParameter given no request body should create one 1`] = `
+Object {
+  "contents": Array [
+    Object {
+      "encodings": Array [
+        Object {
+          "property": "name",
+          "style": "form",
+        },
+      ],
+      "mediaType": "*",
+      "schema": Object {
+        "description": "desc",
+        "in": "body",
+        "name": "name",
+        "required": true,
+        "type": "formData",
+      },
+    },
+  ],
+  "description": "desc",
+  "required": true,
+}
+`;
+
+exports[`params.translator translateToFormDataParameter given request body with empty encodings should create encoding 1`] = `
+Object {
+  "contents": Array [
+    Object {
+      "encodings": Array [
+        Object {
+          "property": "name",
+          "style": "form",
+        },
+      ],
+      "mediaType": "application/json",
+    },
+  ],
+}
+`;
+
+exports[`params.translator translateToFormDataParameter given request body with existing encoding should append 1`] = `
+Object {
+  "contents": Array [
+    Object {
+      "encodings": Array [
+        Object {
+          "property": "prop",
+          "style": "spaceDelimited",
+        },
+        Object {
+          "property": "name",
+          "style": "form",
+        },
+      ],
+      "mediaType": "application/json",
+    },
+  ],
+}
+`;
+
+exports[`params.translator translateToHeaderParam should translate header param 1`] = `
+Object {
+  "content": "some fake content",
+  "description": "desc",
+  "name": "name",
+  "required": true,
+  "style": "simple",
+}
+`;
+
+exports[`params.translator translateToHeaderParams should translate empty dictionary to empty array 1`] = `Array []`;
+
+exports[`params.translator translateToHeaderParams should translate to multiple header params 1`] = `
+Array [
+  Object {
+    "content": "some fake content",
+    "description": "a description",
+    "name": "header-name",
+    "style": "simple",
+  },
+  Object {
+    "content": "some fake content",
+    "description": "another description",
+    "name": "plain-tex",
+    "style": "simple",
+  },
+]
+`;
+
+exports[`params.translator translateToHeaderParams should translate to simple header param 1`] = `
+Array [
+  Object {
+    "content": "some fake content",
+    "description": "a description",
+    "name": "header-name",
+    "style": "simple",
+  },
+]
+`;
+
+exports[`params.translator translateToPathParameter should translate 1`] = `
+Object {
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "simple",
+}
+`;
+
+exports[`params.translator translateToQueryParameter translate style: csv 1`] = `
+Object {
+  "allowEmptyValue": true,
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "form",
+}
+`;
+
+exports[`params.translator translateToQueryParameter translate style: multi 1`] = `
+Object {
+  "allowEmptyValue": true,
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "form",
+}
+`;
+
+exports[`params.translator translateToQueryParameter translate style: pipes 1`] = `
+Object {
+  "allowEmptyValue": true,
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "pipeDelimited",
+}
+`;
+
+exports[`params.translator translateToQueryParameter translate style: something-else 1`] = `
+Object {
+  "allowEmptyValue": true,
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "form",
+}
+`;
+
+exports[`params.translator translateToQueryParameter translate style: ssv 1`] = `
+Object {
+  "allowEmptyValue": true,
+  "content": "some fake content",
+  "description": "descr",
+  "name": "name",
+  "required": true,
+  "style": "spaceDelimited",
+}
+`;
