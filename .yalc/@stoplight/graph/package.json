@@ -1,0 +1,81 @@
+{
+  "name": "@stoplight/graph",
+  "version": "0.0.0-48b7f808",
+  "description": "Nodes'n Things.",
+  "keywords": [],
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "homepage": "https://github.com/stoplightio/graph",
+  "bugs": "https://github.com/stoplightio/graph/issues",
+  "author": "Stoplight <support@stoplight.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoplightio/graph.git"
+  },
+  "license": "UNLICENSED",
+  "files": [
+    "**/*"
+  ],
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "scripts": {
+    "build": "sl-scripts build",
+    "build.docs": "sl-scripts build:typedoc",
+    "commit": "git-cz",
+    "lint": "sl-scripts lint",
+    "lint.fix": "yarn lint --fix",
+    "release": "sl-scripts release",
+    "release.docs": "sl-scripts release:docs",
+    "release.dryRun": "sl-scripts release --dry-run --debug",
+    "test": "sl-scripts test",
+    "test.prod": "yarn lint && yarn test --coverage --no-cache --maxWorkers 2",
+    "test.update": "yarn test --updateSnapshot",
+    "test.watch": "yarn test --watch"
+  },
+  "dependencies": {
+    "@stoplight/json": "1.1.x",
+    "@stoplight/types": "2.x.x",
+    "@stoplight/yaml": "1.0.x",
+    "graphlib": "2.1.5",
+    "lodash": "4.x.x",
+    "urijs": "1.19.x",
+    "vfile": "3.0.x"
+  },
+  "devDependencies": {
+    "@stoplight/scripts": "3.0.2",
+    "@stoplight/test-utils": "0.0.1",
+    "@types/graphlib": "2.1.4",
+    "@types/lodash": "4.x.x",
+    "@types/swagger-schema-official": "2.0.x",
+    "@types/urijs": "1.15.x",
+    "@types/vfile": "2.2.x",
+    "openapi3-ts": "1.1.x",
+    "typescript": "3.1.6"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn lint.fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "extends": "@stoplight/scripts/release"
+  }
+}

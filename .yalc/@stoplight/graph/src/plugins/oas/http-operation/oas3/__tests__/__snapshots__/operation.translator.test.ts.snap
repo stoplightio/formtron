@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`translateOperation given no tags should translate operation with empty tags array 1`] = `
+Object {
+  "deprecated": true,
+  "description": "descr",
+  "id": "?http-oas3-operation-id?",
+  "iid": "opid",
+  "method": "method",
+  "path": "path",
+  "request": "translateOas3ToRequest(getOasParameters(undefined, undefined), undefined)",
+  "responses": "translateToOas3Responses({})",
+  "security": "translateOas3ToSecurities(getOas3Securities({\\"operationId\\":\\"opid\\",\\"responses\\":{},\\"deprecated\\":true,\\"description\\":\\"descr\\",\\"summary\\":\\"summary\\"}, {\\"info\\":{\\"title\\":\\"title\\",\\"version\\":\\"2\\"},\\"openapi\\":\\"2\\",\\"paths\\":[]}))",
+  "servers": "translateToServers(undefined)",
+  "summary": "summary",
+  "tags": "translateToTags([])",
+}
+`;
+
+exports[`translateOperation given operation servers should translate operation with those servers 1`] = `
+Object {
+  "deprecated": true,
+  "description": "descr",
+  "id": "?http-oas3-operation-id?",
+  "iid": "opid",
+  "method": "method",
+  "path": "path",
+  "request": "translateOas3ToRequest(getOasParameters(undefined, undefined), undefined)",
+  "responses": "translateToOas3Responses({})",
+  "security": "translateOas3ToSecurities(getOas3Securities({\\"operationId\\":\\"opid\\",\\"responses\\":{},\\"deprecated\\":true,\\"description\\":\\"descr\\",\\"summary\\":\\"summary\\",\\"servers\\":[{\\"url\\":\\"operation/server\\"}]}, {\\"info\\":{\\"title\\":\\"title\\",\\"version\\":\\"2\\"},\\"openapi\\":\\"2\\",\\"paths\\":[]}))",
+  "servers": "translateToServers([{\\"url\\":\\"operation/server\\"}])",
+  "summary": "summary",
+  "tags": "translateToTags([])",
+}
+`;
+
+exports[`translateOperation given path servers should translate operation with those servers 1`] = `
+Object {
+  "deprecated": true,
+  "description": "descr",
+  "id": "?http-oas3-operation-id?",
+  "iid": "opid",
+  "method": "method",
+  "path": "path",
+  "request": "translateOas3ToRequest(getOasParameters(undefined, undefined), undefined)",
+  "responses": "translateToOas3Responses({})",
+  "security": "translateOas3ToSecurities(getOas3Securities({\\"operationId\\":\\"opid\\",\\"responses\\":{},\\"deprecated\\":true,\\"description\\":\\"descr\\",\\"summary\\":\\"summary\\"}, {\\"info\\":{\\"title\\":\\"title\\",\\"version\\":\\"2\\"},\\"openapi\\":\\"2\\",\\"paths\\":[]}))",
+  "servers": "translateToServers([{\\"url\\":\\"path/server\\"}])",
+  "summary": "summary",
+  "tags": "translateToTags([])",
+}
+`;
+
+exports[`translateOperation given some tags should translate operation with those tags 1`] = `
+Object {
+  "deprecated": true,
+  "description": "descr",
+  "id": "?http-oas3-operation-id?",
+  "iid": "opid",
+  "method": "method",
+  "path": "path",
+  "request": "translateOas3ToRequest(getOasParameters(undefined, undefined), undefined)",
+  "responses": "translateToOas3Responses({})",
+  "security": "translateOas3ToSecurities(getOas3Securities({\\"operationId\\":\\"opid\\",\\"responses\\":{},\\"deprecated\\":true,\\"description\\":\\"descr\\",\\"summary\\":\\"summary\\",\\"tags\\":[\\"tag\\"]}, {\\"info\\":{\\"title\\":\\"title\\",\\"version\\":\\"2\\"},\\"openapi\\":\\"2\\",\\"paths\\":[]}))",
+  "servers": "translateToServers(undefined)",
+  "summary": "summary",
+  "tags": "translateToTags([\\"tag\\"])",
+}
+`;
+
+exports[`translateOperation given spec servers should translate operation with those servers 1`] = `
+Object {
+  "deprecated": true,
+  "description": "descr",
+  "id": "?http-oas3-operation-id?",
+  "iid": "opid",
+  "method": "method",
+  "path": "path",
+  "request": "translateOas3ToRequest(getOasParameters(undefined, undefined), undefined)",
+  "responses": "translateToOas3Responses({})",
+  "security": "translateOas3ToSecurities(getOas3Securities({\\"operationId\\":\\"opid\\",\\"responses\\":{},\\"deprecated\\":true,\\"description\\":\\"descr\\",\\"summary\\":\\"summary\\"}, {\\"info\\":{\\"title\\":\\"title\\",\\"version\\":\\"2\\"},\\"openapi\\":\\"2\\",\\"paths\\":[],\\"servers\\":[{\\"url\\":\\"spec/server\\"}]}))",
+  "servers": "translateToServers([{\\"url\\":\\"spec/server\\"}])",
+  "summary": "summary",
+  "tags": "translateToTags([])",
+}
+`;
