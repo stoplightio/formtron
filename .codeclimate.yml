@@ -29,3 +29,4 @@ checks:
       threshold: 200
 exclude_patterns:
   - "**/__tests__/"
+  - "**/__stories__/"

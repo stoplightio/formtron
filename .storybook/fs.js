@@ -1,6 +1,6 @@
 // WMH - Why am I using Filer instead of BrowserFS? IDK I just learned about Filer
 // recently and it's 1/2 the KB of BrowserFS so I thought I'd try it.
-import Filer from "filer";
+import Filer from 'filer';
 
 const fs = new Filer.FileSystem();
 

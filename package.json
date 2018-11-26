@@ -14,9 +14,7 @@
   "license": "Apache-2.0",
   "main": "src/index.ts",
   "files": [
-    "**/*",
-    "!__tests__",
-    "!__stories__"
+    "**/*"
   ],
   "engines": {
     "node": ">=8.3.0"
@@ -47,7 +45,7 @@
     "ts-essentials": "1.0.x"
   },
   "devDependencies": {
-    "@stoplight/scripts": "2.x.x",
+    "@stoplight/scripts": "3.x.x",
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
     "filer": "0.0.44",
