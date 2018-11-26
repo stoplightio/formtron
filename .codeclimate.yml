@@ -30,3 +30,4 @@ checks:
 exclude_patterns:
   - "**/__tests__/"
   - "**/__stories__/"
+  - ".yalc/"
