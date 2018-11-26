@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@stoplight/graph": {
-      "signature": "48b7f808e4ac24c4d54eed8754f3fa21",
+      "signature": "60f86eb697b30a41e1a2e8cd689c9d9f",
       "file": true
     }
   }

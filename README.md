@@ -2,15 +2,14 @@
 
 <!-- BADGES -->
 
-JSON form builder for React
+JSON form builder for React.
 
-- Explore the interfaces: [TSDoc](https://github.com/stoplightio/formtron)
+- Explore the components: [Storybook](https://stoplightio.github.io/formtron/)
 - View the changelog: [Releases](https://github.com/stoplightio/formtron/releases)
-
 
 Formtron consists of:
 
-- a [schema](./FormtronSchema.md) for defining a series of fields and mapping those fields to the underlying data
+- a [schema](./docs/FormtronSchema.md) for defining a series of fields and mapping those fields to the underlying data
 - a separate collection of React components built using the Stoplight UI kit: `fieldComponents`
 - a series of functions for transforming data: `deriveFormData`, `computeOps`, `applyOps`
 - a React component: `Formtron`
@@ -31,9 +30,8 @@ yarn add formtron
 
 ### Usage
 
-
 ```tsx
-import { applyOps, Formtron } from 'core/src/formtron';
+import { applyOps, Formtron } from "core/src/formtron";
 
 <Formtron
   fieldComponents={fieldComponents}
@@ -48,11 +46,11 @@ import { applyOps, Formtron } from 'core/src/formtron';
 ```
 
 `fieldComponents` is an object whose values are React components and whose keys correspond to field "type"s in the schema.
-Learn more about the react components in the next section. Learn more about schema types in the [FormtronSchema.md](./FormtronSchema.md)
+Learn more about the react components in the next section. Learn more about schema types in the [FormtronSchema.md](./docs/FormtronSchema.md)
 
 `value` is a read-only JSON-like data object that provides the initial values for the form.
 
-`schema` is a read-only JSON object that has it's own documentation [page](./FormtronSchema.md)
+`schema` is a read-only JSON object that has it's own documentation [page](./docs/FormtronSchema.md)
 
 `selection` is a read-only `.` separated path to the currently "selected" node.
 
