@@ -10,19 +10,17 @@ import * as fs from 'fs';
 // @ts-ignore
 Buffer._useTypedArrays = true; // needed to avoid Uncaught TypeError: uint8BackedBuffer.toArrayBuffer is not a function
 
-const initFS = async () =>
-  new Promise((resolve, reject) => {
-    const str = JSON.stringify(petstore, null, 2);
-    fs.mkdir('/pets', err => {
-      if (err && err.code !== 'EEXIST') return reject(err);
-      fs.writeFile('/pets/petstore.json', str, err => {
-        if (err) reject(err);
-        // @ts-ignore
-        global.fs = fs;
-        resolve();
-      });
-    });
-  });
+const initFS = async () => {
+  const str = JSON.stringify(petstore, null, 2);
+  await new Promise((resolve, reject) =>
+    fs.mkdir('/pets', err => (err && err.code !== 'EEXIST' ? reject(err) : resolve()))
+  );
+  await new Promise((resolve, reject) =>
+    fs.writeFile('/pets/petstore.json', str, err => (err ? reject(err) : resolve()))
+  );
+  // @ts-ignore
+  global.fs = fs;
+};
 
 const initGraph = async () => {
   await initFS();
