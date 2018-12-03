@@ -51,5 +51,24 @@ export const getNodes = async () => {
   if (_graph === null) {
     _graph = initGraph();
   }
-  return (await _graph).nodes;
+  const graph = (await _graph).graph;
+  // @ts-ignore
+  global.graph = graph;
+  const roots = graph.filterNodes((x: any) => !graph.parent(x)).nodes();
+  const all: string[] = [];
+  const depths: number[] = [];
+  let depth = 0;
+  const addChildren = (id: string) => {
+    depth += 1;
+    for (const node of graph.children(id)) {
+      all.push(node);
+      depths.push(depth);
+      addChildren(node);
+    }
+    depth -= 1;
+  };
+  addChildren(roots);
+  const nodes = all.map(id => graph.node(id.trim())).map((node, i) => ({ ...node, depth: depths[i] }));
+  return nodes;
+  // return (await _graph).nodes;
 };

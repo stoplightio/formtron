@@ -63,7 +63,7 @@ storiesOf('formtron-graph', module)
                             backgroundColor: x.id === activeId ? 'aliceblue' : '',
                           }}
                         >
-                          {x.id}
+                          {'-'.repeat(x.depth) + '' + x.id}
                         </div>
                       ))}
                   </div>
