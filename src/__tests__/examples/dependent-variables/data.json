@@ -1,5 +1,5 @@
 {
-  "_selection": "paths./api.get",
+  "_selection": "#/paths/~1api/get",
   "paths": {
     "/api": {
       "get": {

@@ -1,5 +1,5 @@
 {
-  "_selection": "paths./todos.get.responses.200",
+  "_selection": "#/paths/~1todos/get/responses/200",
   "tags": [
     {
       "name": "Admin"

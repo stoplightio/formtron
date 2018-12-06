@@ -37,10 +37,10 @@ describe('formtron/computeOps', () => {
       formData['paths.*.*.tags'] = 'taggy';
       let ops = computeOps(schemaA, data, data._selection, formData);
       ops = ops.filter(op => op.op !== 'select');
-      expect(ops.length).toEqual(2);
+      // expect(ops.length).toEqual(2);
       expect(ops).toEqual([
-        { op: 'add', path: 'paths./api.get.tags', value: 'taggy' },
-        { op: 'move', from: 'paths./api.get', path: 'paths./new/path.post' },
+        { op: 'add', path: '#/paths/~1api/get/tags', value: 'taggy' },
+        { op: 'move', from: '#/paths/~1api/get', path: '#/paths/~1new~1path/post' },
       ]);
     });
     test(`schema B`, () => {
@@ -52,8 +52,8 @@ describe('formtron/computeOps', () => {
       ops = ops.filter(op => op.op !== 'select');
       expect(ops.length).toEqual(2);
       expect(ops).toEqual([
-        { op: 'add', path: 'paths./api.get.tags', value: 'taggy' },
-        { op: 'move', from: 'paths./api.get', path: 'paths./new/path.post' },
+        { op: 'add', path: '#/paths/~1api/get/tags', value: 'taggy' },
+        { op: 'move', from: '#/paths/~1api/get', path: '#/paths/~1new~1path/post' },
       ]);
     });
   });

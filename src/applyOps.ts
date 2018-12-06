@@ -4,8 +4,8 @@ import { get, set, unset } from 'lodash';
 
 import { IOperation } from './types';
 
-const parentPath = (path: string) => path.slice(0, path.lastIndexOf('/'));
-const childPath = (path: string) => path.slice(path.lastIndexOf('/') + 1);
+const getParentPath = (path: string[]) => path.slice(0, path.length - 2);
+const getChildPath = (path: string[]) => path[path.length - 1];
 
 export const applyOps = (_data: any, ops: IOperation[]) =>
   produce(_data, data => {
@@ -17,20 +17,27 @@ export const applyOps = (_data: any, ops: IOperation[]) =>
           break;
         }
         case 'move': {
-          if (parentPath(op.from) === parentPath(op.path)) {
+          const from = pointerToPath(op.from);
+          const to = pointerToPath(op.path);
+          const parentFrom = getParentPath(from);
+          const parentTo = getParentPath(to);
+          if (parentFrom.length > 0 && parentFrom.join('/') === parentTo.join('/')) {
             // Detect and perform a rename in place.
             const o = {};
-            const parent = parentPath(op.from);
-            const childFrom = childPath(op.from);
-            const childTo = childPath(op.path);
-            for (const [key, value] of Object.entries(get(data, pointerToPath(parent)))) {
+            const childFrom = getChildPath(from);
+            const childTo = getChildPath(to);
+            console.log(from);
+            console.log(parentFrom);
+            console.log(childFrom);
+            console.log(childTo);
+            for (const [key, value] of Object.entries(get(data, parentFrom))) {
               if (key === childFrom) {
                 o[childTo] = value;
               } else {
                 o[key] = value;
               }
             }
-            set(data, pointerToPath(parent), o);
+            set(data, parentFrom, o);
           } else {
             const node = get(data, pointerToPath(op.from));
             set(data, pointerToPath(op.path), node);

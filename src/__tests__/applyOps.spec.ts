@@ -16,7 +16,7 @@ describe('formtron/applyOps', () => {
       [
         {
           op: 'add',
-          path: 'hello',
+          path: '#/hello',
           value: 'WORLD',
         },
       ]
@@ -34,8 +34,8 @@ describe('formtron/applyOps', () => {
       [
         {
           op: 'move',
-          from: 'hello',
-          path: 'world',
+          from: '#/hello',
+          path: '#/world',
         },
       ]
     );
@@ -58,8 +58,8 @@ describe('formtron/applyOps', () => {
       [
         {
           op: 'move',
-          from: 'target.hello',
-          path: 'target.world',
+          from: '#/target/hello',
+          path: '#/target/world',
         },
       ]
     );
@@ -83,12 +83,12 @@ describe('formtron/applyOps', () => {
       [
         {
           op: 'move',
-          from: 'hello',
-          path: 'world',
+          from: '#/hello',
+          path: '#/world',
         },
         {
           op: 'add',
-          path: 'world',
+          path: '#/world',
           value: 'hello',
         },
       ]
@@ -120,8 +120,8 @@ describe('formtron/applyOps', () => {
       [
         {
           op: 'move',
-          from: 'universe.stars.0.planets.Pluto',
-          path: 'universe.stars.0.dwarfplanets.Pluto',
+          from: '#/universe/stars/0/planets/Pluto',
+          path: '#/universe/stars/0/dwarfplanets/Pluto',
         },
       ]
     );

@@ -1,10 +1,10 @@
-import { pathToPointer } from '@stoplight/json';
+import { pathToPointer, pointerToPath } from '@stoplight/json';
 import { Dictionary } from 'ts-essentials';
 import { deriveFormData } from './deriveFormData';
 import { IOperation } from './types';
 
 const substitute = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
-  const _selection = selection.split('.');
+  const _selection = pointerToPath(selection).filter(x => x !== '');
   const _path = path.split('.');
   return pathToPointer(
     _path.map((part, index) => {
