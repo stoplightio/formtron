@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "$schema": "../../../../ui-schema.json",
   "title": "$path listed before $method",
   "type": "form",
   "fields": {
