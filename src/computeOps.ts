@@ -1,3 +1,4 @@
+import { pathToPointer } from '@stoplight/json';
 import { Dictionary } from 'ts-essentials';
 import { deriveFormData } from './deriveFormData';
 import { IOperation } from './types';
@@ -5,8 +6,8 @@ import { IOperation } from './types';
 const substitute = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
   const _selection = selection.split('.');
   const _path = path.split('.');
-  return _path
-    .map((part, index) => {
+  return pathToPointer(
+    _path.map((part, index) => {
       // non-wildcards need no processing
       if (part !== '*' && part !== '?') return part;
       if (index < _selection.length) {
@@ -19,7 +20,7 @@ const substitute = (key: string, path: string, selection: string, vars: Dictiona
         throw new Error(`Cannot extract index "${index}" from selection path "${selection}"`);
       }
     })
-    .join('.');
+  );
 };
 
 export const computeOps = (schema: any, data: any, selection: string, newFormData: any) => {
