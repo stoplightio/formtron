@@ -53,7 +53,7 @@ storiesOf('formtron-graph', module)
               console.log(data && data.find((x: any) => x.contentType === 'oas2'));
               return (
                 <div style={{ display: 'flex' }}>
-                  <div style={{ width: 300 }} className="border border-grey">
+                  <div style={{ width: 400 }} className="border border-grey">
                     {data &&
                       data.map((x: any) => (
                         <div
