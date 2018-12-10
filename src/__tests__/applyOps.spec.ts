@@ -5,7 +5,7 @@ describe('formtron/applyOps', () => {
     const data = {
       hello: 'world',
     };
-    const modifiedData = applyOps(data, []);
+    const modifiedData = applyOps(data, { redo: [], undo: [] });
     expect(modifiedData).toEqual(data);
   });
   test('add op', () => {
@@ -13,13 +13,16 @@ describe('formtron/applyOps', () => {
       {
         hello: 'world',
       },
-      [
-        {
-          op: 'add',
-          path: '#/hello',
-          value: 'WORLD',
-        },
-      ]
+      {
+        redo: [
+          {
+            op: 'add',
+            path: '#/hello',
+            value: 'WORLD',
+          },
+        ],
+        undo: [],
+      }
     );
     expect(modifiedData).toEqual({
       hello: 'WORLD',
@@ -31,67 +34,42 @@ describe('formtron/applyOps', () => {
         hello: 'world',
         foo: 'bar',
       },
-      [
-        {
-          op: 'move',
-          from: '#/hello',
-          path: '#/world',
-        },
-      ]
+      {
+        redo: [
+          {
+            op: 'move',
+            from: '#/hello',
+            path: '#/world',
+          },
+        ],
+        undo: [],
+      }
     );
     expect(modifiedData).toEqual({
       world: 'world',
       foo: 'bar',
     });
   });
-  test('move op in place', () => {
-    const modifiedData = applyOps(
-      {
-        hello: 'world',
-        target: {
-          foo: 'bar',
-          hello: ['world'],
-          bar: 'foo',
-        },
-        foo: 'bar',
-      },
-      [
-        {
-          op: 'move',
-          from: '#/target/hello',
-          path: '#/target/world',
-        },
-      ]
-    );
-    expect(modifiedData).toEqual({
-      hello: 'world',
-      target: {
-        foo: 'bar',
-        world: ['world'],
-        bar: 'foo',
-      },
-      foo: 'bar',
-    });
-    // Assert that it renamed the property in-place.
-    expect(Object.keys(modifiedData.target)).toEqual(['foo', 'world', 'bar']);
-  });
   test('combine multiple ops', () => {
     const modifiedData = applyOps(
       {
         hello: 'world',
       },
-      [
-        {
-          op: 'move',
-          from: '#/hello',
-          path: '#/world',
-        },
-        {
-          op: 'add',
-          path: '#/world',
-          value: 'hello',
-        },
-      ]
+      {
+        redo: [
+          {
+            op: 'move',
+            from: '#/hello',
+            path: '#/world',
+          },
+          {
+            op: 'add',
+            path: '#/world',
+            value: 'hello',
+          },
+        ],
+        undo: [],
+      }
     );
     expect(modifiedData).toEqual({
       world: 'hello',
@@ -117,13 +95,16 @@ describe('formtron/applyOps', () => {
           ],
         },
       },
-      [
-        {
-          op: 'move',
-          from: '#/universe/stars/0/planets/Pluto',
-          path: '#/universe/stars/0/dwarfplanets/Pluto',
-        },
-      ]
+      {
+        redo: [
+          {
+            op: 'move',
+            from: '#/universe/stars/0/planets/Pluto',
+            path: '#/universe/stars/0/dwarfplanets/Pluto',
+          },
+        ],
+        undo: [],
+      }
     );
     expect(modifiedData).toEqual({
       hello: 'world',

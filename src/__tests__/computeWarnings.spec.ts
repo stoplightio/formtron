@@ -1,11 +1,14 @@
 import { computeWarnings } from '..';
 
-describe('formtron/computeOps', () => {
+describe('formtron/computeWarnings', () => {
   describe('no ops = no warnings', () => {
     for (const i of ['simple', 'various-types', 'wildcards', 'complex']) {
       const data = require(`./examples/${i}/data.json`);
       test(`example ${i}`, () => {
-        const warnings = computeWarnings(data, []);
+        const warnings = computeWarnings(data, {
+          redo: [],
+          undo: [],
+        });
         expect(warnings).toEqual([]);
       });
     }
@@ -14,7 +17,10 @@ describe('formtron/computeOps', () => {
     for (const i of ['wildcards']) {
       const data = require(`./examples/${i}/data.json`);
       test(`example ${i}`, () => {
-        const warnings = computeWarnings(data, [{ op: 'move', from: 'paths./todos.get', path: 'paths./lists.get' }]);
+        const warnings = computeWarnings(data, {
+          redo: [{ op: 'move', from: '#/paths/~1todos/get', path: '#/paths/~1lists/get' }],
+          undo: [],
+        });
         expect(warnings.length).toEqual(0);
       });
     }
@@ -23,7 +29,10 @@ describe('formtron/computeOps', () => {
     for (const i of ['wildcards']) {
       const data = require(`./examples/${i}/data.json`);
       test(`example ${i}`, () => {
-        const warnings = computeWarnings(data, [{ op: 'move', from: 'paths./todos.get', path: 'paths./lists.post' }]);
+        const warnings = computeWarnings(data, {
+          redo: [{ op: 'move', from: '#/paths/~1todos/get', path: '#/paths/~1lists/post' }],
+          undo: [],
+        });
         expect(warnings.length).toEqual(1);
       });
     }

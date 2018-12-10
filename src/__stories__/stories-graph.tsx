@@ -30,7 +30,7 @@ const FormtronLight = ({ value }: { value: any }) => (
         fieldComponents={fieldComponents}
         value={innerValue}
         schema={oas2schema}
-        selection={'.'}
+        selection={'#/'}
         onChange={ops => {
           const previewOutput = applyOps(innerValue, ops);
           setValue(previewOutput);

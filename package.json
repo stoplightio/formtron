@@ -42,6 +42,7 @@
     "@stoplight/json": "1.1.x",
     "@stoplight/memoize-one": "4.0.x",
     "@stoplight/ui-kit": "1.7.x",
+    "fast-json-patch": "^2.0.7",
     "react-select": "2.1.x",
     "ts-essentials": "1.0.x"
   },

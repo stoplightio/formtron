@@ -10,14 +10,14 @@ describe('formtron/e2e', () => {
     formDataA['paths.?.*'] = '/new/path';
     formDataA['paths.*.*.tags'] = 'taggy';
     const opsA = computeOps(schemaA, data, data._selection, formDataA);
-    expect(opsA.length).toEqual(3);
+    expect(opsA.redo.length).toEqual(4);
 
     const formDataB: any = deriveFormData(schemaB, data, data._selection);
     formDataB['paths.*.?'] = 'post';
     formDataB['paths.?.*'] = '/new/path';
     formDataB['paths.*.*.tags'] = 'taggy';
     const opsB = computeOps(schemaB, data, data._selection, formDataB);
-    expect(opsB.length).toEqual(3);
+    expect(opsB.redo.length).toEqual(3);
 
     const dataA = applyOps(data, opsA);
     const dataB = applyOps(data, opsB);

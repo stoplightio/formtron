@@ -3,7 +3,7 @@ import * as React from 'react';
 // @ts-ignore
 import * as ObjectInspector from 'react-object-inspector';
 
-import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../';
+import { applyOps, computeWarnings, deriveFormData, Formtron, IGraphOperation } from '../';
 import { AutocompletionContext, fieldComponents } from '../components';
 import { autocompletionSources } from './autocompletionSources';
 import { customWidgets } from './customWidgets';
@@ -17,7 +17,7 @@ export interface IFormtronDebuggerState {
   initialForm: any;
   selection: string;
   form: any;
-  ops: IOperation[];
+  ops: IGraphOperation;
   data: any;
   previewOutput: any;
 }
@@ -27,12 +27,15 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
     super(props);
     const { input, schema, selection } = props;
     const initialForm = deriveFormData(schema, input, selection);
-    const initialOutput = applyOps(input, []);
+    const initialOutput = applyOps(input, { redo: [], undo: [] });
     this.state = {
       initialForm,
       selection,
       form: initialForm,
-      ops: [],
+      ops: {
+        redo: [],
+        undo: [],
+      },
       data: input,
       previewOutput: initialOutput,
     };
@@ -112,7 +115,7 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                   const warnings = computeWarnings(this.state.data, this.state.ops);
                   if (warnings.length > 0) {
                     for (const warning of warnings) {
-                      const parts = warning.op.path.split('.');
+                      const parts = warning.op.path.replace(/^#\//, '').split('/');
                       if (parts.length === 3) {
                         const res = window.confirm(
                           `There is already a "${parts[2]}" response defined on "${parts[1]}", overwrite it?`
@@ -125,11 +128,15 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                     }
                   }
                   const data = applyOps(this.state.data, this.state.ops);
-                  const selectOp = this.state.ops.find(x => x.op === 'select');
+                  const selectOp = this.state.ops.redo.find(x => x.op === 'select');
                   const selection = selectOp ? selectOp.path : this.state.selection;
                   this.setState(state => ({
                     ...state,
-                    ops: [],
+                    initialForm: deriveFormData(this.props.schema, data, selection),
+                    ops: {
+                      redo: [],
+                      undo: [],
+                    },
                     data,
                     selection,
                   }));

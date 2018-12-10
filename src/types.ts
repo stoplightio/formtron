@@ -19,22 +19,4 @@ export interface IFormtron extends IFormtronControl {
   onInternalChange?: any;
 }
 
-export interface IAddOperation {
-  op: 'add';
-  path: string;
-  value: any;
-}
-
-export interface IMoveOperation {
-  op: 'move';
-  from: string;
-  path: string;
-}
-
-export interface ISelectOperation {
-  op: 'select';
-  from: string;
-  path: string;
-}
-
-export type IOperation = IAddOperation | IMoveOperation | ISelectOperation;
+export * from './json-patch-types';
