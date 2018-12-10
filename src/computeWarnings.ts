@@ -1,5 +1,5 @@
-import { get } from 'lodash';
 import { pointerToPath } from '@stoplight/json';
+import { get } from 'lodash';
 
 import { IGraphOperation } from './types';
 
