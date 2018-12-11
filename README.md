@@ -54,7 +54,9 @@ Learn more about the react components in the next section. Learn more about sche
 
 `selection` is a read-only `.` separated path to the currently "selected" node.
 
-`onChange` emits a JSON-patch-like object... it's practically JSON patch except it uses "." for paths instead of "/".
+`onChange` emits an object with two properties, `undo` and `redo`, which are both Stoplight Enhanced JSON Patches.
+SEJP is regular JSON Patch ([RFC 6902](https://tools.ietf.org/html/rfc6902)) plus a couple new operations,
+which will probably be documented wherever the Graph module's `applyPatch` function ends up being.
 You can use the exported `applyOps` function to apply the changes when the user hits a Save button or something.
 
 ### Using @stoplight/ui-kit Field Components
