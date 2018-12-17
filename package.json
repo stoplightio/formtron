@@ -45,14 +45,14 @@
     "ts-essentials": "1.0.x"
   },
   "devDependencies": {
-    "@stoplight/scripts": "3.x.x",
+    "@stoplight/scripts": "3.1.1",
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
     "filer": "0.0.44",
     "react": "16.x.x",
     "react-dom": "16.x.x",
     "react-object-inspector": "0.2.x",
-    "typescript": "3.1.6",
+    "typescript": "3.2.2",
     "util": "0.11.x"
   },
   "lint-staged": {
