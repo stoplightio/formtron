@@ -224,7 +224,7 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
           <div>
             <label htmlFor={id}>{schema.title}</label>
             <Select
-              key={value}
+              key={JSON.stringify(value)}
               styles={{
                 container: (base: any) => ({
                   ...base,
@@ -232,11 +232,13 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
                   minWidth: 200,
                 }),
               }}
-              defaultValue={value.map(value => ({ value, label: value }))}
+              defaultValue={value.map(_value => ({ value: _value, label: _value }))}
               isMulti
               loadOptions={loadOptions}
               defaultOptions
-              onChange={(values: any[]) => onChange(values.map(v => v.value))}
+              onChange={values =>
+                values && Array.isArray(values) ? onChange(values.map(v => v.value)) : values && onChange(values.value)
+              }
             />
             <span />
             {schema.required && ' *'}

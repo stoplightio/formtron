@@ -40,7 +40,7 @@
   "dependencies": {
     "@stoplight/graph": "file:.yalc/@stoplight/graph",
     "@stoplight/memoize-one": "4.0.x",
-    "@stoplight/ui-kit": "1.7.x",
+    "@stoplight/ui-kit": "1.23.0",
     "react-select": "2.1.x",
     "ts-essentials": "1.0.x"
   },
@@ -49,8 +49,8 @@
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
     "filer": "0.0.44",
-    "react": "16.x.x",
-    "react-dom": "16.x.x",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-object-inspector": "0.2.x",
     "typescript": "3.2.2",
     "util": "0.11.x"
