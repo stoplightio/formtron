@@ -1,3 +1,6 @@
+/* @jsx jsx */
+import { jsx } from '@emotion/core';
+import { Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 // @ts-ignore
@@ -20,12 +23,12 @@ export const IntegerInput: React.SFC<IFormtronControl> = ({
   return (
     <div>
       <label htmlFor={id}>{schema.title}</label>
-      <input
+      <Input
         type="number"
         id={id}
         step="1.0"
         value={value}
-        onChange={e => onChange(Number(e.target.value))}
+        onChange={e => onChange(Number(e.currentTarget.value))}
         required={schema.required}
         onBlur={e => {
           e.target.checkValidity();
@@ -53,11 +56,11 @@ export const PasswordInput: React.SFC<IFormtronControl> = ({ id, value, onChange
   return (
     <div>
       <label htmlFor={id}>{schema.title}</label>
-      <input
+      <Input
         type="password"
         id={id}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={e => onChange(e.currentTarget.value)}
         minLength={schema.minLength}
         maxLength={schema.maxLength}
         required={schema.required}
@@ -76,11 +79,11 @@ export const StringInput: React.SFC<IFormtronControl> = ({ id, value, schema, on
   return (
     <div>
       <label htmlFor={id}>{schema.title}</label>
-      <input
+      <Input
         type="text"
         id={id}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={e => onChange(e.currentTarget.value)}
         minLength={schema.minLength}
         maxLength={schema.maxLength}
         required={schema.required}
@@ -169,7 +172,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
               }}
             >
               {({ value, onChange }) => (
-                <>
+                <React.Fragment>
                   <Select
                     styles={{
                       container: (base: any) => ({
@@ -197,7 +200,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
                       fieldComponents={fieldComponents}
                     />
                   )}
-                </>
+                </React.Fragment>
               )}
             </DraftValue>
           </div>
