@@ -1,6 +1,6 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
-import { Input } from '@stoplight/ui-kit';
+import { Checkbox, Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 // @ts-ignore
@@ -127,13 +127,13 @@ export const CheckboxInput: React.SFC<IFormtronControl> = ({ id, value, onChange
   return (
     <div>
       <label htmlFor={id}>{schema.title}</label>
-      <input
-        type="checkbox"
+      <Checkbox
         id={id}
         checked={value}
-        onChange={e => onChange(e.target.checked)}
+        disabled={false}
+        onChange={_value => onChange(_value)}
         required={schema.required}
-        onBlur={e => {
+        onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
           e.target.checkValidity();
           e.target.classList.add('was-validated');
         }}

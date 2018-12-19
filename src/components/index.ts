@@ -25,7 +25,7 @@ export const fieldComponents = {
   'multiselect[]': MultiSelectArrayInput,
   'string[]': StringArrayInput,
   'string{}': KeyedStringArrayInput,
-  boolean: CheckboxInput,
+  checkbox: CheckboxInput,
   form: Form,
   integer: IntegerInput,
   json: JsonInput,
