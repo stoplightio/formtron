@@ -59,6 +59,9 @@
         "path": {
           "type": "string"
         },
+        "required": {
+          "type": "boolean"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -76,6 +79,9 @@
         },
         "path": {
           "type": "string"
+        },
+        "required": {
+          "type": "boolean"
         },
         "custom": {}
       },
@@ -139,6 +145,12 @@
         },
         "required": {
           "type": "boolean"
+        },
+        "minLength": {
+          "type": "number"
+        },
+        "maxLength": {
+          "type": "number"
         },
         "custom": {}
       },

@@ -31,20 +31,6 @@ label {
   font-size: 0.8rem;
 }
 
-input.was-validated:invalid + span:after {
-  position: absolute;
-  content: '✖';
-  padding-left: 5px;
-  color: #8b0000;
-}
-
-input.was-validated:valid + span:after {
-  position: absolute;
-  content: '✓';
-  padding-left: 5px;
-  color: #009000;
-}
-
 legend code {
   color: white;
   background-color: #777;

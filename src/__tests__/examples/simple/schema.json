@@ -10,7 +10,8 @@
     },
     "age": {
       "type": "integer",
-      "title": "Age"
+      "title": "Age",
+      "required": true
     },
     "checked": {
       "type": "checkbox",

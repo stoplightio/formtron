@@ -1,6 +1,6 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
-import { Checkbox, Input } from '@stoplight/ui-kit';
+import { Box, Checkbox, Flex, Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 // @ts-ignore
@@ -11,6 +11,38 @@ import { DraftValue } from '../DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
 
+interface IValidityIndicator {
+  state: boolean | null;
+}
+
+const ValidityIndicator: React.SFC<IValidityIndicator> = ({ state }) => {
+  if (state === false) {
+    return (
+      <span
+        style={{
+          paddingLeft: '5px',
+          color: '#8b0000',
+        }}
+      >
+        *
+      </span>
+    );
+  } else if (state === true) {
+    return (
+      <span
+        style={{
+          paddingLeft: '5px',
+          color: '#009000',
+        }}
+      >
+        ✓
+      </span>
+    );
+  } else {
+    return <span />;
+  }
+};
+
 export const IntegerInput: React.SFC<IFormtronControl> = ({
   id,
   value,
@@ -20,39 +52,57 @@ export const IntegerInput: React.SFC<IFormtronControl> = ({
   fieldComponents,
 }) => {
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
+  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
+
+  const onBlur = React.useCallback(e => {
+    changeValidityState(e.target.checkValidity());
+  }, []);
+
   return (
-    <div>
-      <label htmlFor={id}>{schema.title}</label>
-      <Input
-        type="number"
-        id={id}
-        step="1.0"
-        value={value}
-        onChange={e => onChange(Number(e.currentTarget.value))}
-        required={schema.required}
-        onBlur={e => {
-          e.target.checkValidity();
-          e.target.classList.add('was-validated');
-        }}
-      />
-      <span />
-      {schema.required && ' *'}
-      {CustomWidget && (
-        <CustomWidget
-          value={value}
-          schema={schema}
-          selection={selection}
-          onChange={(val: any) => {
-            onChange(val);
-          }}
-          fieldComponents={fieldComponents}
-        />
-      )}
-    </div>
+    <Flex width="100%">
+      <Box flex="1" as="label" htmlFor={id}>
+        {schema.title}
+      </Box>
+      <Box flex="1">
+        <Flex width="100%">
+          <Input
+            flex="1"
+            type="number"
+            id={id}
+            step="1.0"
+            value={value}
+            onChange={e => onChange(Number(e.currentTarget.value))}
+            required={schema.required}
+            onBlur={onBlur}
+          />
+          <Box>
+            {schema.required && ' *'}
+            <ValidityIndicator state={validityState} />
+            {CustomWidget && (
+              <CustomWidget
+                value={value}
+                schema={schema}
+                selection={selection}
+                onChange={(val: any) => {
+                  onChange(val);
+                }}
+                fieldComponents={fieldComponents}
+              />
+            )}
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 
 export const PasswordInput: React.SFC<IFormtronControl> = ({ id, value, onChange, schema }) => {
+  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
+
+  const onBlur = React.useCallback(e => {
+    changeValidityState(e.target.checkValidity());
+  }, []);
+
   return (
     <div>
       <label htmlFor={id}>{schema.title}</label>
@@ -64,37 +114,46 @@ export const PasswordInput: React.SFC<IFormtronControl> = ({ id, value, onChange
         minLength={schema.minLength}
         maxLength={schema.maxLength}
         required={schema.required}
-        onBlur={e => {
-          e.target.checkValidity();
-          e.target.classList.add('was-validated');
-        }}
+        onBlur={onBlur}
       />
-      <span />
       {schema.required && ' *'}
+      <ValidityIndicator state={validityState} />
     </div>
   );
 };
 
 export const StringInput: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
+  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
+
+  const onBlur = React.useCallback(e => {
+    changeValidityState(e.target.checkValidity());
+  }, []);
+
   return (
-    <div>
-      <label htmlFor={id}>{schema.title}</label>
-      <Input
-        type="text"
-        id={id}
-        value={value}
-        onChange={e => onChange(e.currentTarget.value)}
-        minLength={schema.minLength}
-        maxLength={schema.maxLength}
-        required={schema.required}
-        onBlur={e => {
-          e.target.checkValidity();
-          e.target.classList.add('was-validated');
-        }}
-      />
-      <span />
-      {schema.required && ' *'}
-    </div>
+    <Flex width="100%">
+      <Box flex="1" as="label" htmlFor={id}>
+        {schema.title}
+      </Box>
+      <Box flex="1">
+        <Flex width="100%">
+          <Input
+            type="text"
+            id={id}
+            value={value}
+            onChange={e => onChange(e.currentTarget.value)}
+            minLength={schema.minLength}
+            maxLength={schema.maxLength}
+            required={schema.required}
+            onBlur={onBlur}
+            flex="1"
+          />
+          <Box>
+            {schema.required && ' *'}
+            <ValidityIndicator state={validityState} />
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 
@@ -124,23 +183,34 @@ export const TelephoneInput: React.SFC<IFormtronControl> = ({ id, value, onChang
 };
 
 export const CheckboxInput: React.SFC<IFormtronControl> = ({ id, value, onChange, schema }) => {
+  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
+
+  const onBlur = React.useCallback(e => {
+    changeValidityState(e.target.checkValidity());
+  }, []);
+
   return (
-    <div>
-      <label htmlFor={id}>{schema.title}</label>
-      <Checkbox
-        id={id}
-        checked={value}
-        disabled={false}
-        onChange={_value => onChange(_value)}
-        required={schema.required}
-        onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-          e.target.checkValidity();
-          e.target.classList.add('was-validated');
-        }}
-      />
-      <span />
-      {schema.required && ' *'}
-    </div>
+    <Flex width="100%">
+      <Box flex="1" as="label" htmlFor={id}>
+        {schema.title}
+      </Box>
+      <Box flex="1">
+        <Flex width="100%">
+          <Checkbox
+            id={id}
+            checked={value}
+            disabled={false}
+            onChange={_value => onChange(_value)}
+            required={schema.required}
+            onBlur={onBlur}
+          />
+          <Box>
+            {schema.required && ' *'}
+            <ValidityIndicator state={validityState} />
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 
