@@ -1,8 +1,0 @@
-export declare const headersHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const schemasHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const responsesHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const linksHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const callbacksHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const examplesHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const requestBodiesHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;
-export declare const securitySchemesHook: import("../../../types").IGraphHook<import("../../../types").INodeOptions<unknown>, import("../../../types").INodeInstance<unknown>, import("../../../types").INodeInstance<unknown>>;

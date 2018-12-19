@@ -38,7 +38,6 @@
     "react": "16.x.x"
   },
   "dependencies": {
-    "@stoplight/graph": "file:.yalc/@stoplight/graph",
     "@stoplight/memoize-one": "4.0.x",
     "@stoplight/ui-kit": "1.23.0",
     "react-select": "2.1.x",
