@@ -16,7 +16,7 @@ interface IValidityIndicator {
   state: boolean | null;
 }
 
-const ValidityIndicator: React.SFC<IValidityIndicator> = ({ state }) => {
+export const ValidityIndicator: React.SFC<IValidityIndicator> = ({ state }) => {
   if (state === false) {
     return (
       <span
