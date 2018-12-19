@@ -1,10 +1,11 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
 import { Box, Checkbox, Flex, Input } from '@stoplight/ui-kit';
+import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 // @ts-ignore
-import Select from 'react-select/lib/Async';
+// import Select from 'react-select/lib/Async';
 
 import { IFormtronControl } from '..';
 import { DraftValue } from '../DraftValue';
@@ -226,12 +227,13 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
         const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
-        const loadOptions =
-          schema.custom && schema.custom.source
-            ? autocompletionSources[schema.custom.source]
-            : schema.options
-              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async () => [];
+        const options = schema.options.map((o: string) => ({ value: o, label: o }));
+        // const loadOptions =
+        //   schema.custom && schema.custom.source
+        //     ? autocompletionSources[schema.custom.source]
+        //     : schema.options
+        //       ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+        //       : async () => [];
         return (
           <div>
             <label htmlFor={id}>{schema.title}</label>
@@ -253,8 +255,9 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
                     }}
                     value={{ value, label: value }}
                     defaultValue={{ value, label: value }}
-                    defaultOptions
-                    loadOptions={loadOptions}
+                    options={options}
+                    // defaultOptions
+                    // loadOptions={loadOptions}
                     onChange={(value: any) => onChange(value.value)}
                   />
                   <span />
@@ -287,12 +290,13 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
-        const loadOptions =
-          schema.custom && schema.custom.source
-            ? autocompletionSources[schema.custom.source]
-            : schema.options
-              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async () => [];
+        const options = schema.options.map((o: string) => ({ value: o, label: o }));
+        // const loadOptions =
+        //   schema.custom && schema.custom.source
+        //     ? autocompletionSources[schema.custom.source]
+        //     : schema.options
+        //       ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+        //       : async () => [];
         return (
           <div>
             <label htmlFor={id}>{schema.title}</label>
@@ -307,8 +311,9 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
               }}
               defaultValue={value.map(_value => ({ value: _value, label: _value }))}
               isMulti
-              loadOptions={loadOptions}
-              defaultOptions
+              options={options}
+              // loadOptions={loadOptions}
+              // defaultOptions
               onChange={values =>
                 values && Array.isArray(values) ? onChange(values.map(v => v.value)) : values && onChange(values.value)
               }
