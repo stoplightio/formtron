@@ -20,4 +20,15 @@ export const customWidgets = {
       🎲
     </Button>
   ),
+  addMoreAwesomeness: (props: IFormtronControl) => (
+    <Button
+      title="Add more awesomeness"
+      ml={2}
+      fontSize={4}
+      type="button"
+      onClick={() => props.onChange([...props.value, 'awesome'])}
+    >
+      🔥
+    </Button>
+  ),
 };

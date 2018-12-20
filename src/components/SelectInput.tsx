@@ -75,13 +75,21 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
   );
 };
 
-export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
+export const MultiSelect: React.SFC<IFormtronControl> = ({
+  id,
+  value,
+  schema,
+  onChange,
+  fieldComponents,
+  selection,
+}) => {
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array`);
   }
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
+        const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
         const loadOptions =
           schema.custom && schema.custom.source
             ? autocompletionSources[schema.custom.source]
@@ -89,28 +97,46 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async () => [];
         return (
-          <div>
-            <label htmlFor={id}>{schema.title}</label>
-            <Select
-              key={JSON.stringify(value)}
-              styles={{
-                container: (base: any) => ({
-                  ...base,
-                  display: 'inline-block',
-                  minWidth: 200,
-                }),
-              }}
-              defaultValue={value.map(_value => ({ value: _value, label: _value }))}
-              isMulti
-              loadOptions={loadOptions}
-              defaultOptions
-              onChange={values =>
-                values && Array.isArray(values) ? onChange(values.map(v => v.value)) : values && onChange(values.value)
-              }
-            />
-            <span />
-            {schema.required && ' *'}
-          </div>
+          <Box>
+            <Box as="label" htmlFor={id}>
+              {schema.title}
+            </Box>
+            <Flex width="100%">
+              <Box flex="1">
+                <Select
+                  key={JSON.stringify(value)}
+                  styles={{
+                    container: (base: any) => ({
+                      ...base,
+                      display: 'inline-block',
+                      minWidth: 200,
+                    }),
+                  }}
+                  defaultValue={value.map(_value => ({ value: _value, label: _value }))}
+                  isMulti
+                  loadOptions={loadOptions}
+                  defaultOptions
+                  onChange={values =>
+                    values && Array.isArray(values)
+                      ? onChange(values.map(v => v.value))
+                      : values && onChange(values.value)
+                  }
+                />
+              </Box>
+              {schema.required && ' *'}
+              {CustomWidget && (
+                <CustomWidget
+                  value={value}
+                  schema={schema}
+                  selection={selection}
+                  onChange={(val: any) => {
+                    onChange(val);
+                  }}
+                  fieldComponents={fieldComponents}
+                />
+              )}
+            </Flex>
+          </Box>
         );
       }}
     </AutocompletionContext.Consumer>
