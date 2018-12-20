@@ -1,5 +1,6 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
+import { Box, Flex } from '@stoplight/ui-kit';
 import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
@@ -20,56 +21,54 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
         const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
-        const options = schema.options.map((o: string) => ({ value: o, label: o }));
-        // const loadOptions =
-        //   schema.custom && schema.custom.source
-        //     ? autocompletionSources[schema.custom.source]
-        //     : schema.options
-        //       ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-        //       : async () => [];
+        const loadOptions =
+          schema.custom && schema.custom.source
+            ? autocompletionSources[schema.custom.source]
+            : schema.options
+              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+              : async () => [];
         return (
-          <div>
-            <label htmlFor={id}>{schema.title}</label>
-            <DraftValue
-              value={value}
-              onChange={(value: string) => {
-                onChange(value);
-              }}
-            >
-              {({ value, onChange }) => (
-                <React.Fragment>
-                  <Select
-                    styles={{
-                      container: (base: any) => ({
-                        ...base,
-                        display: 'inline-block',
-                        minWidth: 200,
-                      }),
-                    }}
-                    value={{ value, label: value }}
-                    defaultValue={{ value, label: value }}
-                    options={options}
-                    // defaultOptions
-                    // loadOptions={loadOptions}
-                    onChange={(value: any) => onChange(value.value)}
-                  />
-                  <span />
-                  {schema.required && ' *'}
-                  {CustomWidget && (
-                    <CustomWidget
-                      value={value}
-                      schema={schema}
-                      selection={selection}
-                      onChange={(val: any) => {
-                        onChange(val);
-                      }}
-                      fieldComponents={fieldComponents}
-                    />
+          <Flex width="100%">
+            <Box flex="1" as="label" htmlFor={id}>
+              {schema.title}
+            </Box>
+            <Box flex="1">
+              <Flex width="100%">
+                <DraftValue
+                  value={value}
+                  onChange={(value: string) => {
+                    onChange(value);
+                  }}
+                >
+                  {({ value, onChange }) => (
+                    <Flex width="100%">
+                      <Box flex="1">
+                        <Select
+                          value={{ value, label: value }}
+                          defaultValue={{ value, label: value }}
+                          defaultOptions
+                          loadOptions={loadOptions}
+                          onChange={(value: any) => onChange(value.value)}
+                        />
+                      </Box>
+                      {schema.required && ' *'}
+                      {CustomWidget && (
+                        <CustomWidget
+                          value={value}
+                          schema={schema}
+                          selection={selection}
+                          onChange={(val: any) => {
+                            onChange(val);
+                          }}
+                          fieldComponents={fieldComponents}
+                        />
+                      )}
+                    </Flex>
                   )}
-                </React.Fragment>
-              )}
-            </DraftValue>
-          </div>
+                </DraftValue>
+              </Flex>
+            </Box>
+          </Flex>
         );
       }}
     </AutocompletionContext.Consumer>
@@ -83,13 +82,12 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
-        const options = schema.options.map((o: string) => ({ value: o, label: o }));
-        // const loadOptions =
-        //   schema.custom && schema.custom.source
-        //     ? autocompletionSources[schema.custom.source]
-        //     : schema.options
-        //       ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-        //       : async () => [];
+        const loadOptions =
+          schema.custom && schema.custom.source
+            ? autocompletionSources[schema.custom.source]
+            : schema.options
+              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+              : async () => [];
         return (
           <div>
             <label htmlFor={id}>{schema.title}</label>
@@ -104,9 +102,8 @@ export const MultiSelect: React.SFC<IFormtronControl> = ({ id, value, schema, on
               }}
               defaultValue={value.map(_value => ({ value: _value, label: _value }))}
               isMulti
-              options={options}
-              // loadOptions={loadOptions}
-              // defaultOptions
+              loadOptions={loadOptions}
+              defaultOptions
               onChange={values =>
                 values && Array.isArray(values) ? onChange(values.map(v => v.value)) : values && onChange(values.value)
               }
