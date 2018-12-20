@@ -1,48 +1,11 @@
 import * as React from 'react';
 
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
-// @ts-ignore
-import TextareaAutosize from 'react-textarea-autosize';
 
 import { IFormtronControl } from '..';
 import { DraftValue } from '../DraftValue';
 
-import { ThrottleValue } from './utils/ThrottleValue';
-
-import { ValidityIndicator } from './basic';
-
-export const MarkdownInput: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback(e => {
-    changeValidityState(e.target.checkValidity());
-  }, []);
-
-  return (
-    <ThrottleValue ms={1000} value={value} onChange={onChange}>
-      {({ value, onChange }) => (
-        <Flex width="100%">
-          <Box flex="1" as="label" htmlFor={id}>
-            {schema.title}
-          </Box>
-          <Box flex="1">
-            <Flex width="100%">
-              <Textarea
-                width="100%"
-                id={id}
-                autosize={true}
-                value={value}
-                onChange={(e: any) => onChange(e.target.value)}
-                onBlur={onBlur}
-              />
-              <ValidityIndicator state={validityState} />
-            </Flex>
-          </Box>
-        </Flex>
-      )}
-    </ThrottleValue>
-  );
-};
+import { ValidityIndicator } from './ValidityIndicator';
 
 export const JsonInput: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
@@ -71,6 +34,7 @@ export const JsonInput: React.SFC<IFormtronControl> = ({ id, value, schema, onCh
             <Box flex="1">
               <Flex width="100%">
                 <Textarea
+                  autosize={true}
                   color={nonDraftValue === value ? undefined : 'red'}
                   id={id}
                   value={value}
