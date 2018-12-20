@@ -1,11 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-// @ts-ignore
+import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-
-// @ts-ignore
-import { boolean, number, select, text } from '@storybook/addon-knobs/react';
+import { boolean, number, text } from '@storybook/addon-knobs/react';
 
 import { IntegerInput } from '../components/IntegerInput';
 
@@ -20,7 +18,7 @@ storiesOf('Inputs', module)
           title: text('schema.title', 'Title'),
           required: boolean('schema.required', false),
         }}
-        onChange={() => void 0}
+        onChange={action('onChange')}
         fieldComponents={{}}
       />
     );

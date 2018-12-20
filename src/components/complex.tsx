@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Form } from './Form';
-import { MultiSelect } from './SelectInput';
+import { MultiselectInput } from './SelectInput';
 import { StringInput } from './StringInput';
 
 import { IFormtronControl } from '..';
@@ -24,8 +24,8 @@ StringArrayInput.displayName = 'StringArrayInput';
 export const KeyedStringArrayInput = KeyedArrayInput(StringInput, '');
 KeyedStringArrayInput.displayName = 'KeyedStringArrayInput';
 
-export const MultiSelectArrayInput = ArrayInput(MultiSelect, []);
-MultiSelectArrayInput.displayName = 'MultiSelectArrayInput';
+export const MultiselectArrayInput = ArrayInput(MultiselectInput, []);
+MultiselectArrayInput.displayName = 'MultiselectArrayInput';
 
 export const FormArrayInput = ArrayInput(Form, {});
 FormArrayInput.displayName = 'FormArrayInput';

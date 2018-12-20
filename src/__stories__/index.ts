@@ -4,5 +4,7 @@ import './CheckboxInput';
 import './IntegerInput';
 import './JsonInput';
 import './MarkdownInput';
+import './MultiselectInput';
+import './SelectInput';
 import './stories.tsx';
 import './StringInput';

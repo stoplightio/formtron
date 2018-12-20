@@ -3,21 +3,21 @@ import { Form } from './Form';
 import { IntegerInput } from './IntegerInput';
 import { JsonInput } from './JsonInput';
 import { MarkdownInput } from './MarkdownInput';
-import { MultiSelect, SelectInput } from './SelectInput';
+import { MultiselectInput, SelectInput } from './SelectInput';
 import { StringInput } from './StringInput';
 
 import {
   FormArrayInput,
   KeyedFormArrayInput,
   KeyedStringArrayInput,
-  MultiSelectArrayInput,
+  MultiselectArrayInput,
   StringArrayInput,
 } from './complex';
 
 export const fieldComponents = {
   'form[]': FormArrayInput,
   'form{}': KeyedFormArrayInput,
-  'multiselect[]': MultiSelectArrayInput,
+  'multiselect[]': MultiselectArrayInput,
   'string[]': StringArrayInput,
   'string{}': KeyedStringArrayInput,
   checkbox: CheckboxInput,
@@ -25,7 +25,7 @@ export const fieldComponents = {
   integer: IntegerInput,
   json: JsonInput,
   markdown: MarkdownInput,
-  multiselect: MultiSelect,
+  multiselect: MultiselectInput,
   select: SelectInput,
   string: StringInput,
 };

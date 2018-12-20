@@ -75,7 +75,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
   );
 };
 
-export const MultiSelect: React.SFC<IFormtronControl> = ({
+export const MultiselectInput: React.SFC<IFormtronControl> = ({
   id,
   value,
   schema,
