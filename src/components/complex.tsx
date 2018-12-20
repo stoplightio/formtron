@@ -2,6 +2,8 @@
 import { jsx } from '@emotion/core';
 import * as React from 'react';
 
+import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
+
 import { Form } from './Form';
 import { MultiselectInput } from './SelectInput';
 import { StringInput } from './StringInput';
@@ -60,24 +62,26 @@ export function ArrayInput(ChildInput: React.SFC<IFormtronControl>, defaultValue
       <div style={{ display, verticalAlign: 'text-top' }}>
         {value.map((val, index) => {
           return (
-            <div key={index} style={{ display: 'flex' }}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <button onClick={() => onChange(insert(index))} style={{ color: 'green' }}>
-                  +
-                </button>
-                <button onClick={() => onChange(remove(index))} style={{ color: 'red' }}>
-                  x
-                </button>
-              </div>
-              <ChildInput
-                id={(id && `${id}-${index}`) || undefined}
-                value={val}
-                schema={schema.items}
-                selection={selection}
-                fieldComponents={fieldComponents}
-                onChange={val => onChange(update(index, val))}
-              />
-            </div>
+            <Flex key={index}>
+              <Flex flexDirection="column">
+                <Button type="button" onClick={() => onChange(insert(index))}>
+                  <Text color="green">+</Text>
+                </Button>
+                <Button type="button" onClick={() => onChange(remove(index))}>
+                  <Text color="red">x</Text>
+                </Button>
+              </Flex>
+              <Box flex={1}>
+                <ChildInput
+                  id={(id && `${id}-${index}`) || undefined}
+                  value={val}
+                  schema={schema.items}
+                  selection={selection}
+                  fieldComponents={fieldComponents}
+                  onChange={val => onChange(update(index, val))}
+                />
+              </Box>
+            </Flex>
           );
         })}
         <button onClick={() => onChange(append(defaultValue))} style={{ color: 'green' }}>

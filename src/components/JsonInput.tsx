@@ -34,6 +34,7 @@ export const JsonInput: React.SFC<IFormtronControl> = ({ id, value, schema, onCh
             <Box flex="1">
               <Flex width="100%">
                 <Textarea
+                  flex="1"
                   autosize={true}
                   color={nonDraftValue === value ? undefined : 'red'}
                   id={id}
