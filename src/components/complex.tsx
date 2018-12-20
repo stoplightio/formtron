@@ -84,9 +84,9 @@ export function ArrayInput(ChildInput: React.SFC<IFormtronControl>, defaultValue
             </Flex>
           );
         })}
-        <button onClick={() => onChange(append(defaultValue))} style={{ color: 'green' }}>
-          +
-        </button>
+        <Button type="button" onClick={() => onChange(append(defaultValue))}>
+          <Text color="green">+</Text>
+        </Button>
       </div>
     );
   };
