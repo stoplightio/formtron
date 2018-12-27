@@ -49,9 +49,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
                 value={value}
                 schema={schema}
                 selection={selection}
-                onChange={(val: any) => {
-                  onChange(val);
-                }}
+                onChange={onChange}
                 fieldComponents={fieldComponents}
               />
             )}

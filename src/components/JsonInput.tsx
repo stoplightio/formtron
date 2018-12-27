@@ -33,21 +33,19 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
             <Box flex="1" as="label" htmlFor={id}>
               {schema.title}
             </Box>
-            <Box flex="1">
-              <Flex width="100%">
-                <Textarea
-                  flex="1"
-                  autosize={true}
-                  color={nonDraftValue === value ? undefined : 'red'}
-                  id={id}
-                  value={value}
-                  onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-                  onBlur={onBlur}
-                />
-                {schema.required && ' *'}
-                <ValidityIndicator state={validityState} />
-              </Flex>
-            </Box>
+            <Flex flex="1" width="100%">
+              <Textarea
+                flex="1"
+                autosize={true}
+                color={nonDraftValue === value ? undefined : 'red'}
+                id={id}
+                value={value}
+                onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
+                onBlur={onBlur}
+              />
+              {schema.required && ' *'}
+              <ValidityIndicator state={validityState} />
+            </Flex>
           </Flex>
         );
       }}

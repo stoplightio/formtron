@@ -32,35 +32,33 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
             <Box flex="1" as="label" htmlFor={id}>
               {schema.title}
             </Box>
-            <Box flex="1">
-              <Flex width="100%">
-                <DraftValue value={value} onChange={onChange}>
-                  {({ value, onChange }) => (
-                    <Flex width="100%">
-                      <Box flex="1">
-                        <Select
-                          value={{ value, label: value }}
-                          defaultValue={{ value, label: value }}
-                          defaultOptions
-                          loadOptions={loadOptions}
-                          onChange={(value: any) => onChange(value.value)}
-                        />
-                      </Box>
-                      {schema.required && ' *'}
-                      {CustomWidget && (
-                        <CustomWidget
-                          value={value}
-                          schema={schema}
-                          selection={selection}
-                          onChange={onChange}
-                          fieldComponents={fieldComponents}
-                        />
-                      )}
-                    </Flex>
-                  )}
-                </DraftValue>
-              </Flex>
-            </Box>
+            <Flex flex="1" width="100%">
+              <DraftValue value={value} onChange={onChange}>
+                {({ value, onChange }) => (
+                  <Flex width="100%">
+                    <Box flex="1">
+                      <Select
+                        value={{ value, label: value }}
+                        defaultValue={{ value, label: value }}
+                        defaultOptions
+                        loadOptions={loadOptions}
+                        onChange={(value: any) => onChange(value.value)}
+                      />
+                    </Box>
+                    {schema.required && ' *'}
+                    {CustomWidget && (
+                      <CustomWidget
+                        value={value}
+                        schema={schema}
+                        selection={selection}
+                        onChange={onChange}
+                        fieldComponents={fieldComponents}
+                      />
+                    )}
+                  </Flex>
+                )}
+              </DraftValue>
+            </Flex>
           </Flex>
         );
       }}

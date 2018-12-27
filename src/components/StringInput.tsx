@@ -21,25 +21,23 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           {schema.title}
         </Text>
       </Box>
-      <Box flex="1">
-        <Flex width="100%">
-          <Input
-            type="text"
-            id={id}
-            value={value}
-            onChange={e => onChange(e.currentTarget.value)}
-            minLength={schema.minLength}
-            maxLength={schema.maxLength}
-            required={schema.required}
-            onBlur={onBlur}
-            flex="1"
-          />
-          <Box>
-            {schema.required && ' *'}
-            <ValidityIndicator state={validityState} />
-          </Box>
-        </Flex>
-      </Box>
+      <Flex flex="1" width="100%">
+        <Input
+          type="text"
+          id={id}
+          value={value}
+          onChange={e => onChange(e.currentTarget.value)}
+          minLength={schema.minLength}
+          maxLength={schema.maxLength}
+          required={schema.required}
+          onBlur={onBlur}
+          flex="1"
+        />
+        <Box>
+          {schema.required && ' *'}
+          <ValidityIndicator state={validityState} />
+        </Box>
+      </Flex>
     </Flex>
   );
 };

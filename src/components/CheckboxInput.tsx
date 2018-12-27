@@ -21,22 +21,20 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, v
           {schema.title}
         </Text>
       </Box>
-      <Box flex="1">
-        <Flex width="100%">
-          <Checkbox
-            id={id}
-            checked={value}
-            disabled={false}
-            onChange={onChange}
-            required={schema.required}
-            onBlur={onBlur}
-          />
-          <Box>
-            {schema.required && ' *'}
-            <ValidityIndicator state={validityState} />
-          </Box>
-        </Flex>
-      </Box>
+      <Flex flex="1" width="100%">
+        <Checkbox
+          id={id}
+          checked={value}
+          disabled={false}
+          onChange={onChange}
+          required={schema.required}
+          onBlur={onBlur}
+        />
+        <Box>
+          {schema.required && ' *'}
+          <ValidityIndicator state={validityState} />
+        </Box>
+      </Flex>
     </Flex>
   );
 };
