@@ -27,7 +27,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, v
             id={id}
             checked={value}
             disabled={false}
-            onChange={_value => onChange(_value)}
+            onChange={onChange}
             required={schema.required}
             onBlur={onBlur}
           />
