@@ -1,6 +1,6 @@
 import { createThemedModule, ICustomTheme } from '@stoplight/ui-kit';
 
-export type themeZones = 'formtron';
+export type themeZones = 'formtron' | string;
 
 export type themeTypes = IFormtronTheme;
 

@@ -825,7 +825,7 @@
     "@emotion/stylis" "^0.7.1"
     "@emotion/utils" "^0.8.2"
 
-"@emotion/core@10.0.x", "@emotion/core@^10.0.5":
+"@emotion/core@10.0.x":
   version "10.0.5"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.5.tgz#fda655bb040deb69090faf2fa9d66d39b2bbe4bf"
   integrity sha512-kCw+JNXy5DmtS4qbCklz8hEobdJ0m9q0tAVzpAjHDAsbRwfSL/Kj3ObMG0DiLhbUPXOGAHSWCVXa4DmXvgup+Q==
@@ -886,7 +886,7 @@
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.6.6.tgz#004b98298d04c7ca3b4f50ca2035d4f60d2eed1b"
 
-"@emotion/provider@0.11.x", "@emotion/provider@^0.11.2":
+"@emotion/provider@^0.11.2":
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@emotion/provider/-/provider-0.11.2.tgz#7099f1df5641969ee4d6ff5cf1561295914030aa"
   integrity sha512-y/BRd6cJ9tyxsy4EK8WheD2X1/RfmudMYILpa8sgI3dKCjVWeEZuQM17wXRVEyhrisaRaIp1qT4h0eWUaaqNLg==
