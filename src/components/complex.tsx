@@ -35,7 +35,10 @@ FormArrayInput.displayName = 'FormArrayInput';
 export const KeyedFormArrayInput = KeyedArrayInput(Form, {});
 KeyedFormArrayInput.displayName = 'KeyedFormArrayInput';
 
-export function ArrayInput(ChildInput: React.SFC<IFormtronControl>, defaultValue: any): React.SFC<IFormtronControl> {
+export function ArrayInput(
+  ChildInput: React.FunctionComponent<IFormtronControl>,
+  defaultValue: any
+): React.FunctionComponent<IFormtronControl> {
   return ({ id, value, schema, onChange, fieldComponents, selection }) => {
     if (!Array.isArray(value)) {
       throw new Error(`ArrayInput expects it's value prop to be an array`);
@@ -59,7 +62,7 @@ export function ArrayInput(ChildInput: React.SFC<IFormtronControl>, defaultValue
     };
     const display = typeof defaultValue !== 'object' || Array.isArray(defaultValue) ? 'inline-block' : undefined;
     return (
-      <div style={{ display, verticalAlign: 'text-top' }}>
+      <Box display={display} verticalAlign="text-top">
         {value.map((val, index) => {
           return (
             <Flex key={index}>
@@ -87,15 +90,15 @@ export function ArrayInput(ChildInput: React.SFC<IFormtronControl>, defaultValue
         <Button type="button" onClick={() => onChange(append(defaultValue))}>
           <Text color="green">+</Text>
         </Button>
-      </div>
+      </Box>
     );
   };
 }
 
 export function KeyedArrayInput(
-  ChildInput: React.SFC<IFormtronControl>,
+  ChildInput: React.FunctionComponent<IFormtronControl>,
   defaultValue: any
-): React.SFC<IFormtronControl> {
+): React.FunctionComponent<IFormtronControl> {
   const ActualInput = ArrayInput(ChildInput, defaultValue);
   ActualInput.displayName = 'ArrayInput';
   return (props: IFormtronControl) => {

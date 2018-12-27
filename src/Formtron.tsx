@@ -7,7 +7,7 @@ import { DraftValue } from './DraftValue';
 import { fieldName } from './fieldName';
 import { ThemeZone } from '@stoplight/ui-kit';
 
-export const Formtron: React.SFC<IFormtron> = ({
+export const Formtron: React.FunctionComponent<IFormtron> = ({
   value,
   themeName = 'formtron',
   schema,

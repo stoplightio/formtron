@@ -9,6 +9,10 @@ export interface IFormtronTheme extends ICustomTheme {
     bg: string;
     fg: string;
   };
+  validation: {
+    valid: string;
+    invalid: string;
+  };
 }
 
 export const { useTheme, ThemeZone } = createThemedModule<themeZones, themeTypes>();

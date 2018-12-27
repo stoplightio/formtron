@@ -1,3 +1,5 @@
+/* @jsx jsx */
+import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
@@ -7,11 +9,11 @@ import { DraftValue } from '../DraftValue';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
-export const JsonInput: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
+export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
 
-  const onBlur = React.useCallback(e => {
-    changeValidityState(e.target.checkValidity());
+  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+    changeValidityState(e.currentTarget.checkValidity());
   }, []);
 
   return (
@@ -42,6 +44,7 @@ export const JsonInput: React.SFC<IFormtronControl> = ({ id, value, schema, onCh
                   onChange={(e: any) => onChange(e.target.value)}
                   onBlur={onBlur}
                 />
+                {schema.required && ' *'}
                 <ValidityIndicator state={validityState} />
               </Flex>
             </Box>

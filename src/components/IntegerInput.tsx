@@ -7,7 +7,7 @@ import { IFormtronControl } from '..';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
-export const IntegerInput: React.SFC<IFormtronControl> = ({
+export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
   selection,
@@ -18,8 +18,8 @@ export const IntegerInput: React.SFC<IFormtronControl> = ({
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
 
-  const onBlur = React.useCallback(e => {
-    changeValidityState(e.target.checkValidity());
+  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
+    changeValidityState(e.currentTarget.checkValidity());
   }, []);
 
   return (

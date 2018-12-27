@@ -7,11 +7,11 @@ import { IFormtronControl } from '..';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
-export const CheckboxInput: React.SFC<IFormtronControl> = ({ id, value, onChange, schema }) => {
+export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema }) => {
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
 
-  const onBlur = React.useCallback(e => {
-    changeValidityState(e.target.checkValidity());
+  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
+    changeValidityState(e.currentTarget.checkValidity());
   }, []);
 
   return (

@@ -1,3 +1,5 @@
+/* @jsx jsx */
+import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
@@ -8,11 +10,11 @@ import { ThrottleValue } from './utils/ThrottleValue';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
-export const MarkdownInput: React.SFC<IFormtronControl> = ({ id, value, schema, onChange }) => {
+export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
 
-  const onBlur = React.useCallback(e => {
-    changeValidityState(e.target.checkValidity());
+  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+    changeValidityState(e.currentTarget.checkValidity());
   }, []);
 
   return (
@@ -22,20 +24,18 @@ export const MarkdownInput: React.SFC<IFormtronControl> = ({ id, value, schema, 
           <Box flex="1" as="label" htmlFor={id}>
             {schema.title}
           </Box>
-          <Box flex="1">
-            <Flex width="100%">
-              <Textarea
-                width="100%"
-                id={id}
-                autosize={true}
-                value={value}
-                onChange={(e: any) => onChange(e.target.value)}
-                onBlur={onBlur}
-              />
-              {schema.required && ' *'}
-              <ValidityIndicator state={validityState} />
-            </Flex>
-          </Box>
+          <Flex flex="1" width="100%">
+            <Textarea
+              width="100%"
+              id={id}
+              autosize={true}
+              value={value}
+              onChange={(e: any) => onChange(e.target.value)}
+              onBlur={onBlur}
+            />
+            {schema.required && ' *'}
+            <ValidityIndicator state={validityState} />
+          </Flex>
         </Flex>
       )}
     </ThrottleValue>

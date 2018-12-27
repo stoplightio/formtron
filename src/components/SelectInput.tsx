@@ -9,7 +9,7 @@ import { DraftValue } from '../DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
 
-export const SelectInput: React.SFC<IFormtronControl> = ({
+export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
   schema,
@@ -34,12 +34,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
             </Box>
             <Box flex="1">
               <Flex width="100%">
-                <DraftValue
-                  value={value}
-                  onChange={(value: string) => {
-                    onChange(value);
-                  }}
-                >
+                <DraftValue value={value} onChange={onChange}>
                   {({ value, onChange }) => (
                     <Flex width="100%">
                       <Box flex="1">
@@ -57,9 +52,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
                           value={value}
                           schema={schema}
                           selection={selection}
-                          onChange={(val: any) => {
-                            onChange(val);
-                          }}
+                          onChange={onChange}
                           fieldComponents={fieldComponents}
                         />
                       )}
@@ -75,7 +68,7 @@ export const SelectInput: React.SFC<IFormtronControl> = ({
   );
 };
 
-export const MultiselectInput: React.SFC<IFormtronControl> = ({
+export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
   schema,
@@ -129,9 +122,7 @@ export const MultiselectInput: React.SFC<IFormtronControl> = ({
                   value={value}
                   schema={schema}
                   selection={selection}
-                  onChange={(val: any) => {
-                    onChange(val);
-                  }}
+                  onChange={onChange}
                   fieldComponents={fieldComponents}
                 />
               )}

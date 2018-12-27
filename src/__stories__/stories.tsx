@@ -30,8 +30,6 @@ import { IconLibrary } from '@stoplight/ui-kit';
 // @ts-ignore
 IconLibrary.add(faCheck);
 
-// import './style.css';
-
 storiesOf('formtron', module)
   .addDecorator(withKnobs)
   .add('simple', () => {

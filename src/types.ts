@@ -1,5 +1,5 @@
-import { Dictionary } from 'ts-essentials';
 import { ICustomTheme } from '@stoplight/ui-kit';
+import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './components/theme';
 
 export interface IFormtronTheme extends ICustomTheme {}
@@ -21,7 +21,7 @@ export interface IFormtronControl extends IFormtronWidget, IFormtronContext {
 
 export interface IFormtron extends IFormtronControl {
   onInternalChange?: any;
-  themeName?: themeTypes,
+  themeName?: themeTypes;
 }
 
 export interface IAddOperation {
