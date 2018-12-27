@@ -30,7 +30,7 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, v
               id={id}
               autosize={true}
               value={value}
-              onChange={(e: any) => onChange(e.target.value)}
+              onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
               onBlur={onBlur}
             />
             {schema.required && ' *'}

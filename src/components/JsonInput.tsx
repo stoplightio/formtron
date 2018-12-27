@@ -41,7 +41,7 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
                   color={nonDraftValue === value ? undefined : 'red'}
                   id={id}
                   value={value}
-                  onChange={(e: any) => onChange(e.target.value)}
+                  onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
                   onBlur={onBlur}
                 />
                 {schema.required && ' *'}
