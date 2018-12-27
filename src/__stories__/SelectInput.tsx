@@ -6,9 +6,11 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { SelectInput } from '../components/SelectInput';
+import { ThemeZone } from '../theme';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
+  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
   .add('SelectInput', () => {
     const options = ['choice a', 'choice b', 'choice c'];
     return (

@@ -6,9 +6,11 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { array, boolean, text } from '@storybook/addon-knobs/react';
 
 import { MultiselectInput } from '../components/SelectInput';
+import { ThemeZone } from '../theme';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
+  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
   .add('MultiselectInput', () => {
     const options = ['choice a', 'choice b', 'choice c'];
     return (

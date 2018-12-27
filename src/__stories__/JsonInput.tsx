@@ -6,9 +6,11 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { boolean, object, text } from '@storybook/addon-knobs/react';
 
 import { JsonInput } from '../components/JsonInput';
+import { ThemeZone } from '../theme';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
+  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
   .add('JsonInput', () => {
     return (
       <JsonInput

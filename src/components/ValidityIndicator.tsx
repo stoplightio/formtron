@@ -1,7 +1,7 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
 import { Box } from '@stoplight/ui-kit';
-import { useTheme } from './theme';
+import { useTheme } from '../theme';
 
 interface IValidityIndicator {
   state: boolean | null;

@@ -1,8 +1,5 @@
-import { ICustomTheme } from '@stoplight/ui-kit';
 import { Dictionary } from 'ts-essentials';
-import { themeTypes } from './components/theme';
-
-export interface IFormtronTheme extends ICustomTheme {}
+import { themeTypes } from './theme';
 
 export interface IFormtronWidget {
   value: any;

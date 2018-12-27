@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core';
 import { Box } from '@stoplight/ui-kit';
 import * as React from 'react';
 
-import { useTheme } from './theme';
+import { useTheme } from '../theme';
 
 import { fieldName, IFormtronControl } from '..';
 

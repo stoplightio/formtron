@@ -1,5 +1,3 @@
-import './theme';
-
 // NOTE: The ordering of these imports determines the ordering in Storybook
 import './CheckboxInput';
 import './IntegerInput';

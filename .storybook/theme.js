@@ -12,15 +12,15 @@ export const zones = {
       canvas: {
         bg: '#111',
         fg: '#fff',
-        valid: '#8b0000',
-        invalid: '#009000'
+        valid: '#009000',
+        invalid: '#8b0000'
       },
     } : {
       canvas: {
         bg: '#fff',
         fg: '#111',
-        valid: '#8b0000',
-        invalid: '#009000'
+        valid: '#009000',
+        invalid: '#8b0000'
       },
     },
 };
