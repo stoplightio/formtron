@@ -35,24 +35,25 @@
     "test.watch": "yarn test --watch"
   },
   "peerDependencies": {
+    "@stoplight/ui-kit": "^1.24.0",
     "react": "16.x.x"
   },
   "dependencies": {
-    "@stoplight/graph": "file:.yalc/@stoplight/graph",
-    "@stoplight/memoize-one": "4.0.x",
-    "@stoplight/ui-kit": "1.7.x",
-    "react-select": "2.1.x",
-    "ts-essentials": "1.0.x"
+    "@stoplight/memoize-one": "4.0.x"
   },
   "devDependencies": {
-    "@stoplight/scripts": "3.x.x",
+    "@fortawesome/free-solid-svg-icons": "^5.6.1",
+    "@stoplight/scripts": "4.0.0",
+    "@stoplight/storybook-config": "1.x.x",
+    "@stoplight/ui-kit": "1.24.0",
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
     "filer": "0.0.44",
-    "react": "16.x.x",
-    "react-dom": "16.x.x",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
     "react-object-inspector": "0.2.x",
-    "typescript": "3.1.6",
+    "typescript": "3.2.2",
+    "ts-essentials": "1.0.x",
     "util": "0.11.x"
   },
   "lint-staged": {

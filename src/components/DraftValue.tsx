@@ -11,7 +11,7 @@ export interface IDraftValueState {
 }
 
 export interface IDraftValue extends IInputWidget {
-  children: React.SFC<IInputWidget & { nonDraftValue: any }>;
+  children: React.FunctionComponent<IInputWidget & { nonDraftValue: any }>;
 }
 
 export class DraftValue extends React.Component<IDraftValue, IDraftValueState> {

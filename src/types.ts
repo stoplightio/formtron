@@ -1,4 +1,5 @@
 import { Dictionary } from 'ts-essentials';
+import { themeTypes } from './theme';
 
 export interface IFormtronWidget {
   value: any;
@@ -17,6 +18,7 @@ export interface IFormtronControl extends IFormtronWidget, IFormtronContext {
 
 export interface IFormtron extends IFormtronControl {
   onInternalChange?: any;
+  themeName?: themeTypes;
 }
 
 export interface IAddOperation {

@@ -1,1 +1,1 @@
-import '@stoplight/scripts/.storybook/addons';
+import '@stoplight/storybook-config/addons';

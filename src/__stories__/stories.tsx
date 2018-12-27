@@ -24,7 +24,11 @@ const dependentData = require('../__tests__/examples/dependent-variables/data.js
 const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
 const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
 
-import './style.css';
+// We need to load some Icons into the IconLibrary!
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { IconLibrary } from '@stoplight/ui-kit';
+// @ts-ignore
+IconLibrary.add(faCheck);
 
 storiesOf('formtron', module)
   .addDecorator(withKnobs)

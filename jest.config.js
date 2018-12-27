@@ -1,3 +1,4 @@
 module.exports = {
-  preset: "@stoplight/scripts"
+  preset: "@stoplight/scripts",
+  coveragePathIgnorePatterns: ["\.tsx$"]
 };

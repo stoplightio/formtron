@@ -1,40 +1,33 @@
-import {
-  CheckboxInput,
-  IntegerInput,
-  MultiSelect,
-  PasswordInput,
-  SelectInput,
-  StringInput,
-  TelephoneInput,
-} from './basic';
-
-import { JsonInput, MarkdownInput } from './advanced';
+import { CheckboxInput } from './CheckboxInput';
+import { Form } from './Form';
+import { IntegerInput } from './IntegerInput';
+import { JsonInput } from './JsonInput';
+import { MarkdownInput } from './MarkdownInput';
+import { MultiselectInput, SelectInput } from './SelectInput';
+import { StringInput } from './StringInput';
 
 import {
-  Form,
   FormArrayInput,
   KeyedFormArrayInput,
   KeyedStringArrayInput,
-  MultiSelectArrayInput,
+  MultiselectArrayInput,
   StringArrayInput,
 } from './complex';
 
 export const fieldComponents = {
   'form[]': FormArrayInput,
   'form{}': KeyedFormArrayInput,
-  'multiselect[]': MultiSelectArrayInput,
+  'multiselect[]': MultiselectArrayInput,
   'string[]': StringArrayInput,
   'string{}': KeyedStringArrayInput,
-  boolean: CheckboxInput,
+  checkbox: CheckboxInput,
   form: Form,
   integer: IntegerInput,
   json: JsonInput,
   markdown: MarkdownInput,
-  multiselect: MultiSelect,
-  password: PasswordInput,
+  multiselect: MultiselectInput,
   select: SelectInput,
   string: StringInput,
-  telephone: TelephoneInput,
 };
 
 export * from './AutocompletionContext';

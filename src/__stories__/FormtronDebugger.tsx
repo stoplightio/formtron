@@ -3,6 +3,8 @@ import * as React from 'react';
 // @ts-ignore
 import * as ObjectInspector from 'react-object-inspector';
 
+import { Button } from '@stoplight/ui-kit';
+
 import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../';
 import { AutocompletionContext, fieldComponents } from '../components';
 import { autocompletionSources } from './autocompletionSources';
@@ -106,7 +108,7 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                   this.setState(state => ({ ...state, form }));
                 }}
               />
-              <button
+              <Button
                 type="button"
                 onClick={() => {
                   const warnings = computeWarnings(this.state.data, this.state.ops);
@@ -134,15 +136,9 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                     selection,
                   }));
                 }}
-                style={{
-                  border: '1px solid black',
-                  borderRadius: 5,
-                  margin: 5,
-                  padding: '5px 15px 10px',
-                }}
               >
                 Apply
-              </button>
+              </Button>
             </section>
             <section
               style={{

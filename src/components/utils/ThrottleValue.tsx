@@ -11,7 +11,7 @@ export interface IInputWidget {
 
 export interface IThrottleValue extends IInputWidget {
   ms: number;
-  children: React.SFC<IInputWidget>;
+  children: React.FunctionComponent<IInputWidget>;
 }
 
 export class ThrottleValue extends React.Component<IThrottleValue> {

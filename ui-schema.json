@@ -7,6 +7,7 @@
       "oneOf": [
         { "$ref": "#/definitions/string" },
         { "$ref": "#/definitions/integer" },
+        { "$ref": "#/definitions/checkbox" },
         { "$ref": "#/definitions/select" },
         { "$ref": "#/definitions/multiselect" },
         { "$ref": "#/definitions/markdown" },
@@ -57,6 +58,30 @@
         },
         "path": {
           "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    },
+    "checkbox": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["checkbox"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
         },
         "custom": {}
       },
@@ -120,6 +145,12 @@
         },
         "required": {
           "type": "boolean"
+        },
+        "minLength": {
+          "type": "number"
+        },
+        "maxLength": {
+          "type": "number"
         },
         "custom": {}
       },

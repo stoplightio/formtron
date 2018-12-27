@@ -1,8 +1,8 @@
 {
-  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "$schema": "../../../../ui-schema.json",
   "type": "form",
   "title": "Simplest Ever Form",
-  "description": "A single string field",
+  "description": "A string, an integer, and a checkbox walk into a form",
   "fields": {
     "name": {
       "type": "string",
@@ -10,7 +10,12 @@
     },
     "age": {
       "type": "integer",
-      "title": "Age"
+      "title": "Age",
+      "required": true
+    },
+    "checked": {
+      "type": "checkbox",
+      "title": "Checked"
     }
   }
 }

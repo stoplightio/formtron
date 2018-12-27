@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@stoplight/graph": {
-      "signature": "60f86eb697b30a41e1a2e8cd689c9d9f",
-      "file": true
-    }
-  }
-}
