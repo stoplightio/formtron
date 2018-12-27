@@ -8,8 +8,6 @@ export interface IFormtronTheme extends ICustomTheme {
   canvas?: {
     bg: string;
     fg: string;
-  };
-  validation: {
     valid: string;
     invalid: string;
   };

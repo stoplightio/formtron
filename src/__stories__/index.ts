@@ -1,10 +1,11 @@
-// NOTE: The ordering of these imports determines the ordering in Storybook
+import './theme';
 
+// NOTE: The ordering of these imports determines the ordering in Storybook
 import './CheckboxInput';
 import './IntegerInput';
 import './JsonInput';
 import './MarkdownInput';
 import './MultiselectInput';
 import './SelectInput';
-import './stories.tsx';
+import './stories';
 import './StringInput';

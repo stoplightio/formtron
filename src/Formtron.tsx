@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { IFormtron } from './types';
+import { ThemeZone } from '@stoplight/ui-kit';
 import { computeOps } from './computeOps';
 import { deriveFormData } from './deriveFormData';
 import { DraftValue } from './DraftValue';
 import { fieldName } from './fieldName';
-import { ThemeZone } from '@stoplight/ui-kit';
+import { IFormtron } from './types';
 
 export const Formtron: React.FunctionComponent<IFormtron> = ({
   value,
