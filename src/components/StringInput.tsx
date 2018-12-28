@@ -33,10 +33,8 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           onBlur={onBlur}
           flex="1"
         />
-        <Box>
-          {schema.required && ' *'}
-          <ValidityIndicator state={validityState} />
-        </Box>
+        <Box>{schema.required && ' *'}</Box>
+        <ValidityIndicator state={validityState} />
       </Flex>
     </Flex>
   );

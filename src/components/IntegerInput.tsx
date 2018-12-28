@@ -29,33 +29,29 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           {schema.title}
         </Text>
       </Box>
-      <Box flex="1">
-        <Flex width="100%">
-          <Input
-            flex="1"
-            type="number"
-            id={id}
-            step="1.0"
+      <Flex flex="1" width="100%">
+        <Input
+          flex="1"
+          type="number"
+          id={id}
+          step="1.0"
+          value={value}
+          onChange={e => onChange(Number(e.currentTarget.value))}
+          required={schema.required}
+          onBlur={onBlur}
+        />
+        <Box>{schema.required && ' *'}</Box>
+        <ValidityIndicator state={validityState} />
+        {CustomWidget && (
+          <CustomWidget
             value={value}
-            onChange={e => onChange(Number(e.currentTarget.value))}
-            required={schema.required}
-            onBlur={onBlur}
+            schema={schema}
+            selection={selection}
+            onChange={onChange}
+            fieldComponents={fieldComponents}
           />
-          <Box>
-            {schema.required && ' *'}
-            <ValidityIndicator state={validityState} />
-            {CustomWidget && (
-              <CustomWidget
-                value={value}
-                schema={schema}
-                selection={selection}
-                onChange={onChange}
-                fieldComponents={fieldComponents}
-              />
-            )}
-          </Box>
-        </Flex>
-      </Box>
+        )}
+      </Flex>
     </Flex>
   );
 };

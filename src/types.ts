@@ -9,7 +9,7 @@ export interface IFormtronWidget {
 export interface IFormtronContext {
   schema: any;
   selection: string;
-  fieldComponents: Dictionary<React.StatelessComponent<IFormtronControl>>;
+  fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
 }
 
 export interface IFormtronControl extends IFormtronWidget, IFormtronContext {
