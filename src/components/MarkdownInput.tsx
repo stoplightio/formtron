@@ -33,7 +33,7 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, v
               onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
               onBlur={onBlur}
             />
-            {schema.required && ' *'}
+            <Box>{schema.required && ' *'}</Box>
             <ValidityIndicator state={validityState} />
           </Flex>
         </Flex>

@@ -43,7 +43,7 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
                 onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
                 onBlur={onBlur}
               />
-              {schema.required && ' *'}
+              <Box>{schema.required && ' *'}</Box>
               <ValidityIndicator state={validityState} />
             </Flex>
           </Flex>

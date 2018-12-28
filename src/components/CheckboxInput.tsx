@@ -30,10 +30,8 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, v
           required={schema.required}
           onBlur={onBlur}
         />
-        <Box>
-          {schema.required && ' *'}
-          <ValidityIndicator state={validityState} />
-        </Box>
+        <Box>{schema.required && ' *'}</Box>
+        <ValidityIndicator state={validityState} />
       </Flex>
     </Flex>
   );
