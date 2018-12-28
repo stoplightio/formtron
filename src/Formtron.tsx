@@ -22,7 +22,7 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
       onChange={v => {
         const ops = computeOps(schema, value, selection, v);
         onChange(ops);
-        onInternalChange(v);
+        if (onInternalChange) onInternalChange(v);
       }}
     >
       {({ value, onChange }) => {

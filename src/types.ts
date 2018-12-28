@@ -17,7 +17,7 @@ export interface IFormtronControl extends IFormtronWidget, IFormtronContext {
 }
 
 export interface IFormtron extends IFormtronControl {
-  onInternalChange?: any;
+  onInternalChange?: Function;
   themeName?: themeTypes;
 }
 
