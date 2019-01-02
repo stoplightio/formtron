@@ -20,7 +20,7 @@
     "node": ">=8.3.0"
   },
   "scripts": {
-    "build": "sl-scripts build",
+    "build": "sl-scripts build && cp ui-schema.json dist/ui-schema.json",
     "build.docs": "build-storybook -c .storybook -o docs-auto",
     "commit": "git-cz",
     "lint": "sl-scripts lint",
