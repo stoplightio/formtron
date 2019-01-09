@@ -1,6 +1,5 @@
 {
   "_selection": ".",
   "name": "Alice",
-  "age": 1,
-  "checked": false
+  "age": 1
 }

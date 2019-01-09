@@ -52,9 +52,6 @@ export const deriveFormData = memoize((schema: any, data: any, selection: string
         } else {
           output[key] = get(data, path);
         }
-        if (output[key] === undefined) {
-          throw new Error(`Schema "${schema.title}" cannot locate path "${path}" used for field "${key}".`);
-        }
         unresolved.delete(key);
         break;
       }
