@@ -68,15 +68,12 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
 
 export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
-  value,
+  value = [],
   schema,
   onChange,
   fieldComponents,
   selection,
 }) => {
-  if (!Array.isArray(value)) {
-    throw new Error(`MultiSelect expects it's value prop to be an array`);
-  }
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -103,7 +100,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                       minWidth: 200,
                     }),
                   }}
-                  defaultValue={value.map(_value => ({ value: _value, label: _value }))}
+                  defaultValue={value.map((_value: any) => ({ value: _value, label: _value }))}
                   isMulti
                   loadOptions={loadOptions}
                   defaultOptions
