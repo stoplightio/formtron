@@ -7,7 +7,7 @@ import { IFormtronControl } from '..';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
-export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
+export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange }) => {
   const [validityState, changeValidityState] = React.useState<boolean | null>(null);
 
   const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {

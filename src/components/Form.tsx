@@ -8,7 +8,7 @@ import { useTheme } from '../theme';
 import { fieldName, IFormtronControl } from '..';
 
 export const Form: React.FunctionComponent<IFormtronControl> = ({
-  value,
+  value = {},
   schema,
   onChange,
   fieldComponents,
@@ -35,7 +35,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
           <div key={formId}>
             <Widget
               id={formId}
-              value={value[name] || ''}
+              value={value[name]}
               schema={propSchema}
               selection={selection}
               onChange={(val: any) => {
