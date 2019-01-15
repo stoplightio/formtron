@@ -43,6 +43,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         defaultOptions
                         loadOptions={loadOptions}
                         onChange={(value: any) => onChange(value.value)}
+                        menuPlacement="auto"
                       />
                     </Box>
                     {schema.required && ' *'}
@@ -112,6 +113,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                       ? onChange(values.map(v => v.value))
                       : values && onChange(values.value)
                   }
+                  menuPlacement="auto"
                 />
               </Box>
               {schema.required && ' *'}
