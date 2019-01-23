@@ -201,25 +201,23 @@ Then in your schema, you could use them like:
 
 ## Complex Field Types
 
-While Formtron is agnostic about the set of primitive types (components) you use to build your form,
-it _does_ have two special builtin higher-order types: `array` and `object`.
+Since Formtron is agnostic about the set of primitive types (components) you use to build your form,
+it is _also_ agnostic about complex types (higher-order components).
+Every `fieldComponent` receives a copy of the top-level `fieldComponents` prop originally passed to `<Formtron>`,
+so you can nest and inject components ad-hoc.
 
-These to types require another property in addition to `type`, `title`, and `path`: `item`.
-The `item` property holds a subschema for another field.
-The only difference between an `item` schema and a normal field schema is that `item` schemas cannot have a `path` property.
-(Because the path is determined by the placement in the `array` or `object`.)
+For instance, you can implement a generic `array` component (such as the one in `formtron/components/ArrayInput`)
+that includes UI for appending, inserting, and deleting items from a list.
+It uses an additional schema property - `items` - to hold a subschema that is used to render each item.
 
-Unfortunately, even if `array` or `object` components are implemented as a HOC, each variant of `array` or `object` must be pre-built and registered separately.
-(This is not a design feature as much as a compromise due to my programming skills. :wink:)
-Formtron will translate a `array` with `items.type` of "foo" into a key "foo[]", and an `object` with `items.type` of "foo" into a key "foo{}".
-
-Here's an example where we register both `string` and `string[]`:
+Here's an example.
 
 ```jsx
 <Formtron
   fieldComponents={
-    string: TextInput,
-    'string[]': ListHOC(TextInput)
+    form: FormInput,
+    array: ArrayInput,
+    string: StringInput
   }
 />
 ```
@@ -228,8 +226,8 @@ Here's an example where we register both `string` and `string[]`:
 {
   "$schema": "../../../schema.json",
   "type": "form",
-  "title": "Simplest Ever Form",
-  "description": "A single string field",
+  "title": "Arrays",
+  "description": "Array demonstration",
   "fields": {
     "tags": {
       "type": "array",
@@ -242,5 +240,3 @@ Here's an example where we register both `string` and `string[]`:
   }
 }
 ```
-
-Note: You don't ever have to use this feature. It's provided merely as a convenience, and is maybe a bad idea.

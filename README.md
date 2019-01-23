@@ -31,7 +31,7 @@ yarn add formtron
 ### Usage
 
 ```tsx
-import { applyOps, Formtron } from "core/src/formtron";
+import { applyOps, Formtron } from "formtron";
 
 <Formtron
   fieldComponents={fieldComponents}
