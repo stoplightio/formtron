@@ -60,7 +60,7 @@ To do this, it transforms the raw input data into an intermediary format that is
 ## Mapping form fields to Object keys
 
 All sane schemas data use known keys, and variable data.
-However OAS and other schemas are insane and don't do this.
+However OAS and other schemas don't do this.
 This requires a way to map form value to _path names_ as well as _values_.
 
 This is done using wildcard matching syntax. `*` lets you match any key name and an `?` indicates the key name to use as the form value.
