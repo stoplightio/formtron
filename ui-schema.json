@@ -188,6 +188,9 @@
           "type": "string",
           "enum": ["multiselect"]
         },
+        "required": {
+          "type": "boolean"
+        },
         "title": {
           "type": "string"
         },
