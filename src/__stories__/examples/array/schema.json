@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "title": "Arrays",
+  "description": "Several types of arrays",
+  "type": "form",
+  "fields": {
+    "paths.*.*.tags": {
+      "type": "array",
+      "title": "Strings",
+      "items": {
+        "title": "Tag name",
+        "type": "string"
+      }
+    },
+    "paths.*.*.numbers": {
+      "type": "array",
+      "title": "Integers",
+      "items": {
+        "title": "Number",
+        "type": "integer"
+      }
+    },
+    "paths.*.*.schemes": {
+      "type": "array",
+      "title": "Multiselects",
+      "items": {
+        "title": "Scheme",
+        "type": "multiselect",
+        "options": ["http", "https", "ws", "wss"]
+      }
+    }
+  }
+}
