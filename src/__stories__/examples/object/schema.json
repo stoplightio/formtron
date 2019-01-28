@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "title": "Objects",
+  "description": "Several types of objects",
+  "type": "form",
+  "fields": {
+    "paths.*.*.strings": {
+      "type": "object",
+      "title": "Strings",
+      "keys": {
+        "title": "Header",
+        "type": "string"
+      },
+      "values": {
+        "title": "Value",
+        "type": "string"
+      },
+      "default": ""
+    },
+    "paths.*.*.numbers": {
+      "type": "object",
+      "title": "Integers",
+      "keys": {
+        "title": "Name",
+        "type": "string"
+      },
+      "values": {
+        "title": "Number",
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "paths.*.*.json": {
+      "type": "object",
+      "title": "Examples",
+      "keys": {
+        "title": "Status Code",
+        "type": "string"
+      },
+      "values": {
+        "title": "Response",
+        "type": "json"
+      },
+      "default": {}
+    },
+    "paths.*.*.select": {
+      "type": "object",
+      "title": "Select",
+      "keys": {
+        "title": "Method",
+        "type": "select",
+        "options": ["get", "post", "put", "delete", "options"]
+      },
+      "values": {
+        "title": "Status Code",
+        "type": "integer"
+      },
+      "default": 100
+    },
+    "paths.*.*.security": {
+      "title": "Security",
+      "type": "object",
+      "keys": {
+        "title": "Security Scheme",
+        "type": "string"
+      },
+      "values": {
+        "title": "OAuth2 Scopes",
+        "type": "multiselect"
+      },
+      "default": []
+    }
+  }
+}

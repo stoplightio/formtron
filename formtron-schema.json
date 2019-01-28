@@ -67,6 +67,7 @@
         "path": {
           "type": "string"
         },
+        "default": {},
         "items": { "$ref": "#/definitions/field" },
         "custom": {}
       },
@@ -74,7 +75,7 @@
     },
     "object": {
       "type": "object",
-      "required": ["title", "type", "items"],
+      "required": ["title", "type", "keys", "values"],
       "properties": {
         "type": {
           "type": "string",
@@ -86,7 +87,9 @@
         "path": {
           "type": "string"
         },
-        "items": { "$ref": "#/definitions/field" },
+        "default": {},
+        "keys": { "$ref": "#/definitions/field" },
+        "values": { "$ref": "#/definitions/field" },
         "custom": {}
       },
       "additionalProperties": false

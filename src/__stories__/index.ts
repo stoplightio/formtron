@@ -5,6 +5,7 @@ import './IntegerInput';
 import './JsonInput';
 import './MarkdownInput';
 import './MultiselectInput';
+import './ObjectInput';
 import './SelectInput';
 import './stories';
 import './StringInput';

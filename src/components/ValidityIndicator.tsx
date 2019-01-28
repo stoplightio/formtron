@@ -23,6 +23,6 @@ export const ValidityIndicator: React.FunctionComponent<IValidityIndicator> = ({
       </Box>
     );
   } else {
-    return <Box />;
+    return <Box display="inline-block" />;
   }
 };

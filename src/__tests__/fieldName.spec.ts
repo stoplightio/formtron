@@ -16,6 +16,6 @@ describe('formtron/fieldName', () => {
       },
     };
     const field = fieldName(schema);
-    expect(field).toEqual('string{}');
+    expect(field).toEqual('object');
   });
 });

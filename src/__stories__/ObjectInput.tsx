@@ -5,21 +5,25 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import { fieldComponents } from '../components';
-import { ArrayInput } from '../components/ArrayInput';
+import { ObjectInput } from '../components/ObjectInput';
 import { ThemeZone } from '../theme';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
-  .add('ArrayInput', () => {
+  .add('ObjectInput', () => {
     return (
-      <ArrayInput
-        value={[42, 23, 97]}
+      <ObjectInput
+        value={{ first: 42, second: 23, third: 97 }}
         selection="."
         schema={{
-          type: 'array',
-          title: 'Array',
-          items: {
+          type: 'object',
+          title: 'Object',
+          keys: {
+            type: 'string',
+            title: 'Name',
+          },
+          values: {
             type: 'integer',
             title: 'Number',
           },

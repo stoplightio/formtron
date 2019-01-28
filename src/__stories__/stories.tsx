@@ -21,6 +21,9 @@ const customWidgetSchema = require('./examples/custom-widget/schema.json');
 const arrayData = require('./examples/array/data.json');
 const arraySchema = require('./examples/array/schema.json');
 
+const objectData = require('./examples/object/data.json');
+const objectSchema = require('./examples/object/schema.json');
+
 const complexData = require('../__tests__/examples/complex/data.json');
 const complexSchema = require('../__tests__/examples/complex/schema.json');
 const dependentData = require('../__tests__/examples/dependent-variables/data.json');
@@ -92,6 +95,13 @@ storiesOf('formtron', module)
     return (
       <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
         <FormtronDebugger input={arrayData} schema={arraySchema} selection={arrayData._selection} />
+      </div>
+    );
+  })
+  .add('object', () => {
+    return (
+      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <FormtronDebugger input={objectData} schema={objectSchema} selection={objectData._selection} />
       </div>
     );
   });

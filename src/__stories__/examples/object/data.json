@@ -1,0 +1,36 @@
+{
+  "_selection": "paths./todos.get",
+  "paths": {
+    "/todos": {
+      "get": {
+        "strings": {
+          "authorization": "Bearer TOKEN",
+          "content-type": "application/json",
+          "expires": "Tuesday"
+        },
+        "numbers": {
+          "answer": 42,
+          "leet": 1337,
+          "there-can-be-only": 1
+        },
+        "json": {
+          "example-1": {
+            "foo": "bar"
+          },
+          "example-2": [
+            "foo", "bar"
+          ]
+        },
+        "select": {
+          "post": 201,
+          "get": 200,
+          "delete": 204
+        },
+        "security": {
+          "basic": [],
+          "oauth2": ["read:repo", "write:repo"]
+        }
+      }
+    }
+  }
+}
