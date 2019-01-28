@@ -16,24 +16,22 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
 }) => {
   // Make shallow copy
   const items = [...value];
-  const update = (index: number, val: any) => {
-    items.splice(index, 1, val);
-    return items;
-  };
-  const insert = (index: number) => {
-    items.splice(index, 0, defaultValue);
-    return items;
-  };
-  const append = (val: any) => {
-    items.push(val);
-    return items;
-  };
-  const remove = (index: number) => {
-    items.splice(index, 1);
-    return items;
-  };
   const defaultValue = schema.default;
   const Widget = fieldComponents[fieldName(schema.items)];
+
+  const splice = (start: number, deleteCount: number, ...vals: any[]) => {
+    items.splice(start, deleteCount, ...vals);
+    return items;
+  };
+
+  const update = (index: number, val: any) => splice(index, 1, val);
+
+  const insert = (index: number) => splice(index, 0, defaultValue);
+
+  const append = () => splice(items.length, 0, defaultValue);
+
+  const remove = (index: number) => splice(index, 1);
+
   return (
     <Box as="fieldset" position="relative">
       <legend>{schema.title}</legend>
@@ -62,7 +60,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
           </Flex>
         );
       })}
-      <Button type="button" title="Append item" onClick={() => onChange(append(defaultValue))}>
+      <Button type="button" title="Append item" onClick={() => onChange(append())}>
         <Text color="green">+</Text>
       </Button>
     </Box>
