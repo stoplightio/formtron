@@ -20,8 +20,6 @@
     "field": {
       "anyOf": [
         { "$ref": "#/definitions/_primitive" },
-        { "$ref": "#/definitions/array" },
-        { "$ref": "#/definitions/object" },
         { "$ref": "#/definitions/form" }
       ]
     },
@@ -49,47 +47,6 @@
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/field" }
         },
-        "custom": {}
-      },
-      "additionalProperties": false
-    },
-    "array": {
-      "type": "object",
-      "required": ["title", "type", "items"],
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["array"]
-        },
-        "title": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "default": {},
-        "items": { "$ref": "#/definitions/field" },
-        "custom": {}
-      },
-      "additionalProperties": false
-    },
-    "object": {
-      "type": "object",
-      "required": ["title", "type", "keys", "values"],
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["object"]
-        },
-        "title": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "default": {},
-        "keys": { "$ref": "#/definitions/field" },
-        "values": { "$ref": "#/definitions/field" },
         "custom": {}
       },
       "additionalProperties": false

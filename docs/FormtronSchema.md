@@ -209,6 +209,7 @@ so you can nest and inject components ad-hoc.
 For instance, you can implement a generic `array` component (such as the one in `formtron/components/ArrayInput`)
 that includes UI for appending, inserting, and deleting items from a list.
 It uses an additional schema property - `items` - to hold a subschema that is used to render each item.
+The `default` schema property is used when inserting new items.
 
 Here's an example.
 
@@ -232,9 +233,51 @@ Here's an example.
     "tags": {
       "type": "array",
       "title": "Tag List",
+      "default": "",
       "items": {
         "type": "string",
         "title": "Tag"
+      }
+    }
+  }
+}
+```
+
+The UI-kit also includes a generic `object` component (`formtron/components/ObjectInput`)
+that includes UI for appending, inserting, and deleting key/value pairs from an object.
+It uses two additional schema properties - `keys` and `values` - to hold the subschema that is used to render each.
+The `default` schema property is needed so that newly created properties have some kind of value.
+
+Here's an example.
+
+```jsx
+<Formtron
+  fieldComponents={
+    form: FormInput,
+    object: ObjectInput,
+    multiselect: MultiselectInput
+  }
+/>
+```
+
+```json
+{
+  "$schema": "../../../schema.json",
+  "type": "form",
+  "title": "Object",
+  "description": "Object demonstration",
+  "fields": {
+    "security": {
+      "type": "object",
+      "title": "Security",
+      "default": [],
+      "keys": {
+        "type": "string",
+        "title": "Security Scheme"
+      },
+      "values": {
+        "type": "multiselect",
+        "title": "OAuth2 Scopes"
       }
     }
   }
