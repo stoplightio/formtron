@@ -14,10 +14,10 @@
           "there-can-be-only": 1
         },
         "json": {
-          "example-1": {
+          "404": {
             "foo": "bar"
           },
-          "example-2": [
+          "200": [
             "foo", "bar"
           ]
         },

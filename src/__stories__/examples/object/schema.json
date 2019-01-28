@@ -35,7 +35,7 @@
       "title": "Examples",
       "keys": {
         "title": "Status Code",
-        "type": "string"
+        "type": "integer"
       },
       "values": {
         "title": "Response",

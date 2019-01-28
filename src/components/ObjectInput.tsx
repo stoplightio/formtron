@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
+import fromPairs = require('lodash/fromPairs');
 
 import { fieldName, IFormtronControl } from '..';
 import { DraftValue } from './DraftValue';
@@ -16,23 +17,15 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   selection,
 }) => {
-  // Make shallow copy
+  // Make this thing an array
   const items = [...Object.entries(value)];
   const defaultValue = schema.default;
   const KeyWidget = fieldComponents[fieldName(schema.keys)];
   const ValWidget = fieldComponents[fieldName(schema.values)];
 
-  const fromEntries = (entries: Array<[string, {}]>) => {
-    const obj = {};
-    for (const [k, v] of entries) {
-      obj[k] = v;
-    }
-    return obj;
-  };
-
   const splice = (start: number, deleteCount: number, ...vals: any[]) => {
     items.splice(start, deleteCount, ...vals);
-    return fromEntries(items);
+    return fromPairs(items);
   };
 
   const noConflict = (key: any) => !(key in value);
