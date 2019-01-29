@@ -26,7 +26,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
             ? autocompletionSources[schema.custom.source]
             : schema.options
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async () => [];
+              : async (search: string) => [{ value: search, label: search }];
         return (
           <Flex width="100%">
             <Box flex="1" as="label" htmlFor={id}>
@@ -87,7 +87,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
             ? autocompletionSources[schema.custom.source]
             : schema.options
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async () => [];
+              : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
             <Box as="label" htmlFor={id}>
