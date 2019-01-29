@@ -43,7 +43,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   return (
     <Box as="fieldset" position="relative">
       <legend>{schema.title}</legend>
-      {items.map((entry: any[], index: number) => {
+      {(items as any[]).map((entry, index) => {
         const [key, val] = entry;
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
