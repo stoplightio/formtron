@@ -6,6 +6,8 @@ import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { fieldName, IFormtronControl } from '..';
 
+import { EasyArray } from './utils/EasyArray';
+
 export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value = [],
@@ -14,36 +16,21 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   selection,
 }) => {
-  // Make shallow copy
-  const items = [...value];
-  const defaultValue = schema.default;
+  const easyArray = new EasyArray(value, schema.default);
   const Widget = fieldComponents[fieldName(schema.items)];
-
-  const splice = (start: number, deleteCount: number, ...vals: any[]) => {
-    items.splice(start, deleteCount, ...vals);
-    return items;
-  };
-
-  const update = (index: number, val: any) => splice(index, 1, val);
-
-  const insert = (index: number) => splice(index, 0, defaultValue);
-
-  const append = () => splice(items.length, 0, defaultValue);
-
-  const remove = (index: number) => splice(index, 1);
 
   return (
     <Box as="fieldset" position="relative">
       <legend>{schema.title}</legend>
-      {value.map((val: any, index: number) => {
+      {easyArray.items.map((val: any, index: number) => {
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
           <Flex key={`${index}-${value.length}`}>
             <Flex flexDirection="column">
-              <Button type="button" title="Insert item" onClick={() => onChange(insert(index))}>
+              <Button type="button" title="Insert item" onClick={() => onChange(easyArray.insert(index))}>
                 <Text color="green">+</Text>
               </Button>
-              <Button type="button" title="Delete item" onClick={() => onChange(remove(index))}>
+              <Button type="button" title="Delete item" onClick={() => onChange(easyArray.remove(index))}>
                 <Text color="red">x</Text>
               </Button>
             </Flex>
@@ -54,13 +41,13 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                 schema={schema.items}
                 selection={_selection}
                 fieldComponents={fieldComponents}
-                onChange={_val => onChange(update(index, _val))}
+                onChange={_val => onChange(easyArray.update(index, _val))}
               />
             </Box>
           </Flex>
         );
       })}
-      <Button type="button" title="Append item" onClick={() => onChange(append())}>
+      <Button type="button" title="Append item" onClick={() => onChange(easyArray.append())}>
         <Text color="green">+</Text>
       </Button>
     </Box>

@@ -4,15 +4,13 @@ import { Form } from './Form';
 import { IntegerInput } from './IntegerInput';
 import { JsonInput } from './JsonInput';
 import { MarkdownInput } from './MarkdownInput';
+import { ObjectInput } from './ObjectInput';
 import { MultiselectInput, SelectInput } from './SelectInput';
 import { StringInput } from './StringInput';
 
-import { KeyedFormArrayInput, KeyedStringArrayInput } from './complex';
-
 export const fieldComponents = {
-  'form{}': KeyedFormArrayInput,
-  'string{}': KeyedStringArrayInput,
   array: ArrayInput,
+  object: ObjectInput,
   checkbox: CheckboxInput,
   form: Form,
   integer: IntegerInput,
