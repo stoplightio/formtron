@@ -8,16 +8,6 @@ describe('formtron/fieldName', () => {
     const field = fieldName(schema);
     expect(field).toEqual('string');
   });
-  test('array', () => {
-    const schema = {
-      type: 'array',
-      items: {
-        type: 'string',
-      },
-    };
-    const field = fieldName(schema);
-    expect(field).toEqual('string[]');
-  });
   test('object', () => {
     const schema = {
       type: 'object',
@@ -26,6 +16,6 @@ describe('formtron/fieldName', () => {
       },
     };
     const field = fieldName(schema);
-    expect(field).toEqual('string{}');
+    expect(field).toEqual('object');
   });
 });
