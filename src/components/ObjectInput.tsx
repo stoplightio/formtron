@@ -4,8 +4,8 @@ import * as React from 'react';
 
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
-import { fieldName, IFormtronControl } from '..';
-import { DraftValue } from './DraftValue';
+import { IFormtronControl } from '..';
+import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
 import { ValidityIndicator } from './ValidityIndicator';
 
@@ -19,8 +19,8 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
 }) => {
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
-  const KeyWidget = fieldComponents[fieldName(schema.keys)];
-  const ValWidget = fieldComponents[fieldName(schema.values)];
+  const KeyWidget = fieldComponents[schema.keys.type];
+  const ValWidget = fieldComponents[schema.values.type];
 
   const noConflict = (key: any) => !(key in value);
 
