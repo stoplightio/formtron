@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "$schema": "../../../../ui-schema.json",
   "title": "Form (OASv2 Operation Node)",
   "description": "An HTTP operation.",
   "type": "form",
@@ -24,6 +24,7 @@
     "paths.*.*.taglist": {
       "title": "List of Tags",
       "type": "array",
+      "default": [],
       "items": {
         "type": "multiselect",
         "title": "Tag",
