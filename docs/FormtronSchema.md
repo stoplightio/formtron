@@ -209,7 +209,7 @@ so you can nest and inject components ad-hoc.
 For instance, you can implement a generic `array` component (such as the one in `formtron/components/ArrayInput`)
 that includes UI for appending, inserting, and deleting items from a list.
 It uses an additional schema property - `items` - to hold a subschema that is used to render each item.
-The `default` schema property is used when inserting new items.
+The `default` schema property is needed so that newly created items have a valid initial value.
 
 Here's an example.
 
@@ -246,7 +246,7 @@ Here's an example.
 The UI-kit also includes a generic `object` component (`formtron/components/ObjectInput`)
 that includes UI for appending, inserting, and deleting key/value pairs from an object.
 It uses two additional schema properties - `keys` and `values` - to hold the subschema that is used to render each.
-The `default` schema property is needed so that newly created properties have some kind of value.
+The `default` schema property is needed so that newly created properties have a valid initial value.
 
 Here's an example.
 
