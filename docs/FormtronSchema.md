@@ -6,7 +6,7 @@ Here's a brief tutorial.
 
 ```json
 {
-  "$schema": "./node_modules/formtron/formtron.json",
+  "$schema": "./node_modules/formtron/formtron-schema.json",
   "type": "form",
   "title": "Simplest Ever Form",
   "description": "A single string field",
@@ -139,7 +139,7 @@ then you can escape the value in the path with a double-backslash.
 
 ```json
 {
-  "$schema": "./node_modules/formtron/formtron.json",
+  "$schema": "./node_modules/formtron/formtron-schema.json",
   "type": "form",
   "title": "Translations",
   "description": "Translation table for punctuation",
