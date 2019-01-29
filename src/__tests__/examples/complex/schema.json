@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../../formtron-sl/ui-schema.json",
+  "$schema": "../../../../ui-schema.json",
   "type": "form",
   "title": "HTTP Response",
   "description": "HTTP Response",
@@ -24,6 +24,13 @@
     "paths.*.*.responses.*.headers": {
       "type": "array",
       "title": "Headers",
+      "default": {
+        "name": "",
+        "type": "bug",
+        "format": "json",
+        "default": "",
+        "description": ""
+      },
       "items": {
         "title": "Header",
         "type": "form",
@@ -68,19 +75,14 @@
     "paths.*.*.responses.*.examples": {
       "type": "object",
       "title": "Examples",
-      "items": {
-        "title": "Example",
-        "type": "form",
-        "fields": {
-          "?": {
-            "type": "string",
-            "title": "Name"
-          },
-          "*": {
-            "type": "json",
-            "title": "Content"
-          }
-        }
+      "default": {},
+      "keys": {
+        "type": "string",
+        "title": "Name"
+      },
+      "values": {
+        "type": "json",
+        "title": "Content"
       }
     }
   }

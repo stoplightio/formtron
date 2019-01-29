@@ -7,6 +7,7 @@
     "paths.*.*.tags": {
       "type": "array",
       "title": "Strings",
+      "default": "",
       "items": {
         "title": "Tag name",
         "type": "string"
@@ -15,6 +16,7 @@
     "paths.*.*.numbers": {
       "type": "array",
       "title": "Integers",
+      "default": 0,
       "items": {
         "title": "Number",
         "type": "integer"
@@ -23,6 +25,7 @@
     "paths.*.*.schemes": {
       "type": "array",
       "title": "Multiselects",
+      "default": [],
       "items": {
         "title": "Scheme",
         "type": "multiselect",
