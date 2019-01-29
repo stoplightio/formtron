@@ -18,7 +18,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   selection,
 }) => {
   // Make this thing an array
-  const obj = new EasyObject(value, schema.default);
+  const easyObject = new EasyObject(value, schema.default);
   const KeyWidget = fieldComponents[fieldName(schema.keys)];
   const ValWidget = fieldComponents[fieldName(schema.values)];
 
@@ -27,20 +27,20 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   return (
     <Box as="fieldset" position="relative">
       <legend>{schema.title}</legend>
-      {obj.items.map((entry, index) => {
+      {easyObject.items.map((entry, index) => {
         const [key, val] = entry;
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
-          <Flex key={`${index}-${obj.items.length}`}>
+          <Flex key={`${index}-${easyObject.items.length}`}>
             <Flex flexDirection="column">
-              <Button type="button" title="Insert item" onClick={() => onChange(obj.insert(index))}>
+              <Button type="button" title="Insert item" onClick={() => onChange(easyObject.insert(index))}>
                 <Text color="green">+</Text>
               </Button>
-              <Button type="button" title="Delete item" onClick={() => onChange(obj.remove(index))}>
+              <Button type="button" title="Delete item" onClick={() => onChange(easyObject.remove(index))}>
                 <Text color="red">x</Text>
               </Button>
             </Flex>
-            <DraftValue value={key} onChange={_key => noConflict(_key) && onChange(obj.updateKey(index, _key))}>
+            <DraftValue value={key} onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}>
               {({ value, onChange }) => {
                 return (
                   <React.Fragment>
@@ -66,13 +66,13 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 schema={schema.values}
                 selection={_selection}
                 fieldComponents={fieldComponents}
-                onChange={_val => onChange(obj.updateVal(index, _val))}
+                onChange={_val => onChange(easyObject.updateVal(index, _val))}
               />
             </Box>
           </Flex>
         );
       })}
-      <Button type="button" title="Append item" onClick={() => onChange(obj.append())}>
+      <Button type="button" title="Append item" onClick={() => onChange(easyObject.append())}>
         <Text color="green">+</Text>
       </Button>
     </Box>

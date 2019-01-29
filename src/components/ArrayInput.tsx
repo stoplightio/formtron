@@ -16,21 +16,21 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   selection,
 }) => {
-  const arr = new EasyArray(value, schema.default);
+  const easyArray = new EasyArray(value, schema.default);
   const Widget = fieldComponents[fieldName(schema.items)];
 
   return (
     <Box as="fieldset" position="relative">
       <legend>{schema.title}</legend>
-      {arr.items.map((val: any, index: number) => {
+      {easyArray.items.map((val: any, index: number) => {
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
           <Flex key={`${index}-${value.length}`}>
             <Flex flexDirection="column">
-              <Button type="button" title="Insert item" onClick={() => onChange(arr.insert(index))}>
+              <Button type="button" title="Insert item" onClick={() => onChange(easyArray.insert(index))}>
                 <Text color="green">+</Text>
               </Button>
-              <Button type="button" title="Delete item" onClick={() => onChange(arr.remove(index))}>
+              <Button type="button" title="Delete item" onClick={() => onChange(easyArray.remove(index))}>
                 <Text color="red">x</Text>
               </Button>
             </Flex>
@@ -41,13 +41,13 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                 schema={schema.items}
                 selection={_selection}
                 fieldComponents={fieldComponents}
-                onChange={_val => onChange(arr.update(index, _val))}
+                onChange={_val => onChange(easyArray.update(index, _val))}
               />
             </Box>
           </Flex>
         );
       })}
-      <Button type="button" title="Append item" onClick={() => onChange(arr.append())}>
+      <Button type="button" title="Append item" onClick={() => onChange(easyArray.append())}>
         <Text color="green">+</Text>
       </Button>
     </Box>
