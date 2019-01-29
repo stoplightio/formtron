@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
-import { fieldName, IFormtronControl } from '..';
+import { IFormtronControl } from '..';
 
 import { EasyArray } from './utils/EasyArray';
 
@@ -17,7 +17,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   selection,
 }) => {
   const easyArray = new EasyArray(value, schema.default);
-  const Widget = fieldComponents[fieldName(schema.items)];
+  const Widget = fieldComponents[schema.items.type];
 
   return (
     <Box as="fieldset" position="relative">

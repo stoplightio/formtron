@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { throttle } from 'lodash';
 
-import { DraftValue } from '../DraftValue';
+import { DraftValue } from './DraftValue';
 
 export interface IInputWidget {
   value: any;

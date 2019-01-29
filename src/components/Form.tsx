@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { useTheme } from '../theme';
 
-import { fieldName, IFormtronControl } from '..';
+import { IFormtronControl } from '..';
 
 export const Form: React.FunctionComponent<IFormtronControl> = ({
   value = {},
@@ -27,7 +27,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       {Object.keys(schema.fields).map((name, index) => {
         const formId = `${name}-${index}`;
         const propSchema = schema.fields[name];
-        const Widget = fieldComponents[fieldName(propSchema)];
+        const Widget = fieldComponents[propSchema.type];
         if (Widget === undefined) {
           throw new Error(`No appropriate widget could be found for type "${propSchema.type}"`);
         }

@@ -5,7 +5,7 @@ import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-import { DraftValue } from '../DraftValue';
+import { DraftValue } from './utils/DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
 

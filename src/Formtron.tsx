@@ -1,10 +1,9 @@
 import * as React from 'react';
 
 import { ThemeZone } from '@stoplight/ui-kit';
+import { DraftValue } from './components/utils/DraftValue';
 import { computeOps } from './computeOps';
 import { deriveFormData } from './deriveFormData';
-import { DraftValue } from './DraftValue';
-import { fieldName } from './fieldName';
 import { IFormtron } from './types';
 
 export const Formtron: React.FunctionComponent<IFormtron> = ({
@@ -26,7 +25,7 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
       }}
     >
       {({ value, onChange }) => {
-        const Widget = fieldComponents[fieldName(schema)];
+        const Widget = fieldComponents[schema.type];
         return (
           <Widget
             value={value}

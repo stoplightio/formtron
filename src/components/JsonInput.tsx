@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
-import { DraftValue } from '../DraftValue';
+import { DraftValue } from './utils/DraftValue';
 
 import { ValidityIndicator } from './ValidityIndicator';
 
