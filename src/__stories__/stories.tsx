@@ -11,10 +11,20 @@ import { FormtronDebugger } from './FormtronDebugger';
 
 const simpleData = require('../__tests__/examples/simple/data.json');
 const simpleSchema = require('../__tests__/examples/simple/schema.json');
+
 const variousData = require('../__tests__/examples/various-types/data.json');
 const variousSchema = require('../__tests__/examples/various-types/schema.json');
+
 const wildcardData = require('../__tests__/examples/wildcards/data.json');
 const wildcardSchema = require('../__tests__/examples/wildcards/schema.json');
+
+const complexData = require('../__tests__/examples/complex/data.json');
+const complexSchema = require('../__tests__/examples/complex/schema.json');
+
+const dependentData = require('../__tests__/examples/dependent-variables/data.json');
+const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
+const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
+
 const customWidgetData = require('./examples/custom-widget/data.json');
 const customWidgetSchema = require('./examples/custom-widget/schema.json');
 
@@ -23,12 +33,6 @@ const arraySchema = require('./examples/array/schema.json');
 
 const objectData = require('./examples/object/data.json');
 const objectSchema = require('./examples/object/schema.json');
-
-const complexData = require('../__tests__/examples/complex/data.json');
-const complexSchema = require('../__tests__/examples/complex/schema.json');
-const dependentData = require('../__tests__/examples/dependent-variables/data.json');
-const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
-const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
 
 // We need to load some Icons into the IconLibrary!
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -59,17 +63,6 @@ storiesOf('formtron', module)
       </div>
     );
   })
-  .add('custom widgets', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger
-          input={customWidgetData}
-          schema={customWidgetSchema}
-          selection={customWidgetData._selection}
-        />
-      </div>
-    );
-  })
   .add('complex', () => {
     return (
       <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -88,6 +81,17 @@ storiesOf('formtron', module)
     return (
       <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
         <FormtronDebugger input={dependentData} schema={dependentSchema2} selection={dependentData._selection} />
+      </div>
+    );
+  })
+  .add('custom widgets', () => {
+    return (
+      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <FormtronDebugger
+          input={customWidgetData}
+          schema={customWidgetSchema}
+          selection={customWidgetData._selection}
+        />
       </div>
     );
   })
