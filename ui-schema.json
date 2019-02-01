@@ -14,7 +14,8 @@
         { "$ref": "#/definitions/array" },
         { "$ref": "#/definitions/object" },
         { "$ref": "#/definitions/form" },
-        { "$ref": "#/definitions/json" }
+        { "$ref": "#/definitions/json" },
+        { "$ref": "#/definitions/schema" }
       ]
     },
     "form": {
@@ -172,7 +173,7 @@
         },
         "required": {
           "type": "boolean"
-        },        
+        },
         "options": {
           "type": "array",
           "items": {
@@ -250,6 +251,20 @@
         "custom": {}
       },
       "additionalProperties": false
-    }
+    },
+    "schema": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["schema"]
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }    
   }
 }
