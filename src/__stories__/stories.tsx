@@ -34,6 +34,9 @@ const arraySchema = require('./examples/array/schema.json');
 const objectData = require('./examples/object/data.json');
 const objectSchema = require('./examples/object/schema.json');
 
+const showData = require('./examples/show/data.json');
+const showSchema = require('./examples/show/schema.json');
+
 // We need to load some Icons into the IconLibrary!
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { IconLibrary } from '@stoplight/ui-kit';
@@ -106,6 +109,13 @@ storiesOf('formtron', module)
     return (
       <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
         <FormtronDebugger input={objectData} schema={objectSchema} selection={objectData._selection} />
+      </div>
+    );
+  })
+  .add('show', () => {
+    return (
+      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <FormtronDebugger input={showData} schema={showSchema} selection={showData._selection} />
       </div>
     );
   });

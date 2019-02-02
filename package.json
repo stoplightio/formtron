@@ -39,7 +39,8 @@
     "react": "16.x.x"
   },
   "dependencies": {
-    "@stoplight/memoize-one": "4.0.x"
+    "@stoplight/memoize-one": "4.0.x",
+    "expression-eval": "1.4.0"
   },
   "devDependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.6.1",
@@ -52,8 +53,8 @@
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
     "react-object-inspector": "0.2.x",
-    "typescript": "3.2.2",
     "ts-essentials": "1.0.x",
+    "typescript": "3.2.2",
     "util": "0.11.x"
   },
   "lint-staged": {
