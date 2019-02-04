@@ -156,7 +156,9 @@ then you can escape the value in the path with a double-backslash.
 }
 ```
 
-## Conditional showing / hiding of fields
+## Conditional / Dynamic behavior
+
+### Conditional showing / hiding of fields
 
 Sometimes you want fields to only be visible if certain other fields have certain values.
 Formtron includes an expression interpreter that lets you add this conditional logic.
@@ -202,6 +204,34 @@ The variables used in expressions are the field keys, trimmed after the last per
 You can only reference a field that precedes the current field.
 (E.g. you cannot have a field's visibility depend on its own value, or the value of a field below it.)
 This ensures a nice top-to-bottom data dependency that keeps the form from becoming a nightmare to debug.
+
+### Dynamic `options` for selects
+
+The ui-kit "select" and "multiselect" Formtron components allow specifying an `evalOptions` property.
+It is just like an `options` property except instead of an array, it is a string containing a JavaScript expression that should evaluate to an array.
+
+Example:
+
+```json
+{
+  "$schema": "./node_modules/formtron/ui-schema.json",
+  "type": "form",
+  "title": "Parameter",
+  "description": "Parameter",
+  "fields": {
+    "paths.*.*.parameters.*.type": {
+      "type": "select",
+      "title": "Type",
+      "options": ["number", "integer", "boolean"]
+    },
+    "paths.*.*.parameters.*.format": {
+      "type": "select",
+      "title": "Format",
+      "evalOptions": "type === 'integer' ? ['int32','int64'] : type === 'number' ? ['float','double'] : []"
+    },
+  }
+}
+```
 
 ## Primitive Field Types
 
