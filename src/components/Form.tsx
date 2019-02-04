@@ -33,6 +33,9 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
           const show = evaluate(propSchema.show, value, name);
           if (!show) return null;
         }
+        if (propSchema.evalOptions) {
+          propSchema.options = evaluate(propSchema.evalOptions, value, name);
+        }
         const Widget = fieldComponents[propSchema.type];
         if (Widget === undefined) {
           throw new Error(`No appropriate widget could be found for type "${propSchema.type}"`);

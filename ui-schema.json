@@ -42,6 +42,9 @@
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/field" }
         },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -195,6 +198,12 @@
             "type": "string"
           }
         },
+        "strict": {
+          "type": "boolean"
+        },
+        "evalOptions": {
+          "type": "string"
+        },
         "show": {
           "type": "string"
         },
@@ -224,6 +233,12 @@
           "items": {
             "type": "string"
           }
+        },
+        "strict": {
+          "type": "boolean"
+        },
+        "evalOptions": {
+          "type": "string"
         },
         "show": {
           "type": "string"
