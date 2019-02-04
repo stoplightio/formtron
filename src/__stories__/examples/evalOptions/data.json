@@ -1,0 +1,18 @@
+{
+  "_selection": "paths.pets.get.parameters.nasino",
+  "paths": {
+    "pets": {
+      "get": {
+        "parameters": {
+          "nasino": {
+            "name": "Nasino",
+            "in": "formData",
+            "type": "integer",
+            "format": "int32",
+            "allowEmptyValue": true
+          }
+        }
+      }
+    }
+  }
+}

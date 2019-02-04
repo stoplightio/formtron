@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "type": "form",
+  "title": "Parameter",
+  "description": "Describes a single parameter",
+  "fields": {
+    "paths.*.*.parameters.?": {
+      "type": "string",
+      "title": "parameterId",
+      "required": true
+    },
+    "paths.*.*.parameters.*.name": {
+      "type": "string",
+      "title": "Name",
+      "required": true
+    },
+    "paths.*.*.parameters.*.in": {
+      "type": "select",
+      "title": "In",
+      "options": ["query", "header", "path", "formData", "body"],
+      "required": true
+    },
+    "paths.*.*.parameters.*.description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "paths.*.*.parameters.*.required": {
+      "type": "checkbox",
+      "title": "Required"
+    },
+    "paths.*.*.parameters.*.schema": {
+      "type": "schema",
+      "title": "Schema",
+      "show": "in === 'body'"
+    },
+    "paths.*.*.parameters.*.type": {
+      "type": "select",
+      "title": "Type",
+      "evalOptions": "in === 'formData' ? ['string','number','integer','boolean','array','file'] : ['string','number','integer','boolean','array']",
+      "show": "in !== 'body'"
+    },
+    "paths.*.*.parameters.*.format": {
+      "type": "select",
+      "title": "Format",
+      "evalOptions": "type === 'integer' ? ['int32','int64'] : type === 'number' ? ['float','double'] : type === 'string' ? ['byte','binary','date','date-time','password'] : []",
+      "strict": false
+    },
+    "paths.*.*.parameters.*.allowEmptyValue": {
+      "type": "checkbox",
+      "title": "Allow Empty",
+      "show": "in === 'query' || in === 'formData'"
+    },
+    "paths.*.*.parameters.*.default": {
+      "type": "string",
+      "title": "Default"
+    },
+    "paths.*.*.parameters.*.items": {
+      "type": "form",
+      "title": "Items",
+      "show": "type === 'array'",
+      "fields": {
+        "type": {
+          "type": "select",
+          "title": "Type",
+          "options": [
+            "string",
+            "number",
+            "integer",
+            "boolean",
+            "array"
+          ]
+        }
+      }
+    }
+  }
+}
