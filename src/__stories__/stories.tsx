@@ -49,83 +49,39 @@ IconLibrary.add(faCheck);
 storiesOf('formtron', module)
   .addDecorator(withKnobs)
   .add('simple', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={simpleData} schema={simpleSchema} selection={simpleData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={simpleData} schema={simpleSchema} selection={simpleData._selection} />;
   })
   .add('various types', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={variousData} schema={variousSchema} selection={variousData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={variousData} schema={variousSchema} selection={variousData._selection} />;
   })
   .add('wildcards', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={wildcardData} schema={wildcardSchema} selection={wildcardData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={wildcardData} schema={wildcardSchema} selection={wildcardData._selection} />;
   })
   .add('complex', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={complexData} schema={complexSchema} selection={complexData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={complexData} schema={complexSchema} selection={complexData._selection} />;
   })
   .add('dependent variables 1', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={dependentData} schema={dependendSchema1} selection={dependentData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={dependentData} schema={dependendSchema1} selection={dependentData._selection} />;
   })
   .add('dependent variables 2', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={dependentData} schema={dependentSchema2} selection={dependentData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={dependentData} schema={dependentSchema2} selection={dependentData._selection} />;
   })
   .add('custom widgets', () => {
     return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger
-          input={customWidgetData}
-          schema={customWidgetSchema}
-          selection={customWidgetData._selection}
-        />
-      </div>
+      <FormtronDebugger input={customWidgetData} schema={customWidgetSchema} selection={customWidgetData._selection} />
     );
   })
   .add('array', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={arrayData} schema={arraySchema} selection={arrayData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={arrayData} schema={arraySchema} selection={arrayData._selection} />;
   })
   .add('object', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={objectData} schema={objectSchema} selection={objectData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={objectData} schema={objectSchema} selection={objectData._selection} />;
   })
   .add('show', () => {
-    return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={showData} schema={showSchema} selection={showData._selection} />
-      </div>
-    );
+    return <FormtronDebugger input={showData} schema={showSchema} selection={showData._selection} />;
   })
   .add('evalOptions', () => {
     return (
-      <div className="formtron" style={{ width: '100%', height: '100%', position: 'relative' }}>
-        <FormtronDebugger input={evalOptionsData} schema={evalOptionsSchema} selection={evalOptionsData._selection} />
-      </div>
+      <FormtronDebugger input={evalOptionsData} schema={evalOptionsSchema} selection={evalOptionsData._selection} />
     );
   });
