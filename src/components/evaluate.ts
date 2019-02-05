@@ -13,7 +13,7 @@ function compile(str: string) {
   }
 }
 
-export function evaluate(str: string, context: any, currentProp: string) {
+export function evaluate(str: string, context: any, currentProp: string, fallbackValue: any) {
   // Transform `paths.*.*.responses.*.foo` into `foo`
   const _context = {};
   for (const prop in context) {
@@ -28,6 +28,6 @@ export function evaluate(str: string, context: any, currentProp: string) {
     return compile(str)(_context);
   } catch (err) {
     console.log(err, str, _context);
-    return true;
+    return fallbackValue;
   }
 }
