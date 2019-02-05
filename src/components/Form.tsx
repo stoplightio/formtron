@@ -30,11 +30,11 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         const formId = `${name}-${index}`;
         const propSchema = schema.fields[name];
         if (propSchema.show) {
-          const show = evaluate(propSchema.show, value, name);
+          const show = evaluate(propSchema.show, value, name, true);
           if (!show) return null;
         }
         if (propSchema.evalOptions) {
-          propSchema.options = evaluate(propSchema.evalOptions, value, name);
+          propSchema.options = evaluate(propSchema.evalOptions, value, name, []);
         }
         const Widget = fieldComponents[propSchema.type];
         if (Widget === undefined) {
