@@ -1279,14 +1279,13 @@
     tslint-config-stoplight "1.2.x"
     typedoc "0.13.x"
 
-"@stoplight/storybook-config@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/storybook-config/-/storybook-config-1.1.0.tgz#807c1d4c0a6273a7076750609fa97dedcb1ab3b1"
-  integrity sha512-mujcE1R/YgT/8Np24ym9iIVdLJSwcIpZY38MNve+gixPidGSGibYO/fv+9IbgNPSGdny8t9N6gg6KkKCqqlyPA==
+"@stoplight/storybook-config@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/storybook-config/-/storybook-config-1.1.1.tgz#74f9df7b46db99c50eedd54f6b8e265f9d96a6ba"
+  integrity sha512-Ieyum5b94Vqiifm+cYYrFEtJERXARwIhCowQj3jGH6t6G1mh2Eyi3p2uyuCPaqDLu77paAmrHlngvUJ95It41w==
   dependencies:
     "@babel/core" "7.x.x"
     "@storybook/addon-actions" "4.0.x"
-    "@storybook/addon-info" "4.0.x"
     "@storybook/addon-knobs" "4.0.x"
     "@storybook/addon-links" "4.0.x"
     "@storybook/addon-options" "4.0.x"
@@ -1362,24 +1361,6 @@
     prop-types "^15.6.2"
     react-inspector "^2.3.0"
     uuid "^3.3.2"
-
-"@storybook/addon-info@4.0.x":
-  version "4.0.12"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-4.0.12.tgz#7d11dd941fa47ba9a0147732ac4dd93d373db2c2"
-  integrity sha512-hrF0tzHa5axoJGmuale+CZtBnYrrPAXonByXZ1SY6y2/iRSWug5Af3JaKDorcPZaP1JJ0PK+dJCOKD74mjGXWQ==
-  dependencies:
-    "@emotion/styled" "^0.10.6"
-    "@storybook/addons" "4.0.12"
-    "@storybook/client-logger" "4.0.12"
-    "@storybook/components" "4.0.12"
-    core-js "2.5.7"
-    global "^4.3.2"
-    marksy "^6.1.0"
-    nested-object-assign "^1.0.1"
-    prop-types "^15.6.2"
-    react-addons-create-fragment "^15.5.3"
-    react-lifecycles-compat "^3.0.4"
-    util-deprecate "^1.0.2"
 
 "@storybook/addon-knobs@4.0.x":
   version "4.0.12"
@@ -2772,10 +2753,6 @@ babel-runtime@6.26.0, babel-runtime@6.x.x, babel-runtime@^6.11.6, babel-runtime@
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-standalone@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-standalone/-/babel-standalone-6.26.0.tgz#15fb3d35f2c456695815ebf1ed96fe7f015b6886"
-
 babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
@@ -3867,13 +3844,13 @@ copy-to-clipboard@^3.0.8:
   dependencies:
     toggle-selection "^1.0.3"
 
-core-js@2.5.7, core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.7:
-  version "2.5.7"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
-
 core-js@^1.0.0:
   version "1.2.7"
   resolved "http://registry.npmjs.org/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
+
+core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.7:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -5022,7 +4999,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.4, fbjs@^0.8.9:
+fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -5750,7 +5727,7 @@ hawk@1.1.1:
     hoek "0.9.x"
     sntp "0.2.x"
 
-he@1.2.x, he@^1.1.1:
+he@1.2.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
 
@@ -7592,10 +7569,6 @@ marked-terminal@^3.0.0:
     lodash.assign "^4.2.0"
     node-emoji "^1.4.1"
 
-marked@^0.3.12:
-  version "0.3.19"
-  resolved "http://registry.npmjs.org/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
-
 marked@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.4.0.tgz#9ad2c2a7a1791f10a852e0112f77b571dce10c66"
@@ -7603,14 +7576,6 @@ marked@^0.4.0:
 marked@^0.5.0:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.5.2.tgz#3efdb27b1fd0ecec4f5aba362bddcd18120e5ba9"
-
-marksy@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/marksy/-/marksy-6.1.0.tgz#36482148a1115cc78570855f7ebd744bb453d5cc"
-  dependencies:
-    babel-standalone "^6.26.0"
-    he "^1.1.1"
-    marked "^0.3.12"
 
 matcher@^1.0.0:
   version "1.1.1"
@@ -8019,10 +7984,6 @@ neo-async@^2.5.0:
 nerf-dart@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/nerf-dart/-/nerf-dart-1.0.0.tgz#e6dab7febf5ad816ea81cf5c629c5a0ebde72c1a"
-
-nested-object-assign@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/nested-object-assign/-/nested-object-assign-1.0.3.tgz#5aca69390d9affe5a612152b5f0843ae399ac597"
 
 next-tick@1:
   version "1.0.0"
@@ -9428,14 +9389,6 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7, rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-
-react-addons-create-fragment@^15.5.3:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-addons-create-fragment/-/react-addons-create-fragment-15.6.2.tgz#a394de7c2c7becd6b5475ba1b97ac472ce7c74f8"
-  dependencies:
-    fbjs "^0.8.4"
-    loose-envify "^1.3.1"
-    object-assign "^4.1.0"
 
 react-color@^2.14.1:
   version "2.14.1"
