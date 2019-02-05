@@ -45,7 +45,7 @@
   "devDependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.6.1",
     "@stoplight/scripts": "4.0.0",
-    "@stoplight/storybook-config": "1.x.x",
+    "@stoplight/storybook-config": "1.1.0",
     "@stoplight/ui-kit": "1.24.0",
     "@types/react": "16.x.x",
     "@types/react-dom": "16.x.x",
