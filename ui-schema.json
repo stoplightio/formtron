@@ -14,7 +14,8 @@
         { "$ref": "#/definitions/array" },
         { "$ref": "#/definitions/object" },
         { "$ref": "#/definitions/form" },
-        { "$ref": "#/definitions/json" }
+        { "$ref": "#/definitions/json" },
+        { "$ref": "#/definitions/schema" }
       ]
     },
     "form": {
@@ -41,6 +42,9 @@
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/field" }
         },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -62,6 +66,9 @@
         "required": {
           "type": "boolean"
         },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -82,6 +89,9 @@
         },
         "required": {
           "type": "boolean"
+        },
+        "show": {
+          "type": "string"
         },
         "custom": {}
       },
@@ -107,6 +117,9 @@
         "minLength": {
           "type": "number"
         },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -126,6 +139,9 @@
           "type": "string"
         },
         "custom": {}
+      },
+      "show": {
+        "type": "string"
       },
       "additionalProperties": false
     },
@@ -152,6 +168,9 @@
         "maxLength": {
           "type": "number"
         },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -172,12 +191,21 @@
         },
         "required": {
           "type": "boolean"
-        },        
+        },
         "options": {
           "type": "array",
           "items": {
             "type": "string"
           }
+        },
+        "strict": {
+          "type": "boolean"
+        },
+        "evalOptions": {
+          "type": "string"
+        },
+        "show": {
+          "type": "string"
         },
         "custom": {}
       },
@@ -206,6 +234,15 @@
             "type": "string"
           }
         },
+        "strict": {
+          "type": "boolean"
+        },
+        "evalOptions": {
+          "type": "string"
+        },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -226,6 +263,9 @@
         },
         "default": {},
         "items": { "$ref": "#/definitions/field" },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -247,9 +287,30 @@
         "default": {},
         "keys": { "$ref": "#/definitions/field" },
         "values": { "$ref": "#/definitions/field" },
+        "show": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
-    }
+    },
+    "schema": {
+      "type": "object",
+      "required": ["title", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["schema"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "show": {
+          "type": "string"
+        },
+        "custom": {}
+      },
+      "additionalProperties": false
+    }    
   }
 }
