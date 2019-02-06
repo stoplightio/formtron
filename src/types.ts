@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 

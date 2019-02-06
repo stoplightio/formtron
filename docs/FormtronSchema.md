@@ -156,6 +156,83 @@ then you can escape the value in the path with a double-backslash.
 }
 ```
 
+## Conditional / Dynamic behavior
+
+### Conditional showing / hiding of fields
+
+Sometimes you want fields to only be visible if certain other fields have certain values.
+Formtron includes an expression interpreter that lets you add this conditional logic.
+Just add a `show` property to a form field with a JavaScript expression in a string.
+(For technical limitations of the interpreter, see the `expression-eval` package on npm.)
+
+```json
+{
+  "$schema": "./node_modules/formtron/ui-schema.json",
+  "type": "form",
+  "title": "Pets",
+  "description": "Pet form",
+  "fields": {
+    "pets.*.name": {
+      "type": "string",
+      "title": "Pet's Name"
+    },
+    "pets.*.kind": {
+      "type": "select",
+      "title": "Type of Animal",
+      "options": ["bird", "dog", "cat"]
+    },
+    "pets.*.airSpeed": {
+      "type": "number",
+      "title": "Airspeed Velocity (unladen)",
+      "show": "kind === 'bird'"
+    },
+    "pets.*.groundSpeed": {
+      "type": "string",
+      "title": "Top speed (fetching)",
+      "show": "kind === 'dog'"
+    },
+    "pets.*.jumpHeight": {
+      "type": "string",
+      "title": "Max jump height",
+      "show": "kind === 'cat'"
+    }
+  }
+}
+```
+
+The variables used in expressions are the field keys, trimmed after the last period.
+You can only reference a field that precedes the current field.
+(E.g. you cannot have a field's visibility depend on its own value, or the value of a field below it.)
+This ensures a nice top-to-bottom data dependency that keeps the form from becoming a nightmare to debug.
+
+### Dynamic `options` for selects
+
+The ui-kit "select" and "multiselect" Formtron components allow specifying an `evalOptions` property.
+It is just like an `options` property except instead of an array, it is a string containing a JavaScript expression that should evaluate to an array.
+
+Example:
+
+```json
+{
+  "$schema": "./node_modules/formtron/ui-schema.json",
+  "type": "form",
+  "title": "Parameter",
+  "description": "Parameter",
+  "fields": {
+    "paths.*.*.parameters.*.type": {
+      "type": "select",
+      "title": "Type",
+      "options": ["number", "integer", "boolean"]
+    },
+    "paths.*.*.parameters.*.format": {
+      "type": "select",
+      "title": "Format",
+      "evalOptions": "type === 'integer' ? ['int32','int64'] : type === 'number' ? ['float','double'] : []"
+    },
+  }
+}
+```
+
 ## Primitive Field Types
 
 The `<Formtron>` component is not aware of any primitive types - the core set of field types is whatever you define.

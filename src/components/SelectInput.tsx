@@ -38,12 +38,20 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Flex width="100%">
                     <Box flex="1">
                       <Select
+                        key={JSON.stringify(schema.options)}
                         value={{ value, label: value }}
                         defaultValue={{ value, label: value }}
                         defaultOptions
                         loadOptions={loadOptions}
-                        onChange={(value: any) => onChange(value.value)}
+                        onChange={(value: any, action) => {
+                          if (value === null) {
+                            onChange(value);
+                          } else {
+                            onChange(value.value);
+                          }
+                        }}
                         menuPlacement="auto"
+                        clearable={!schema.required}
                       />
                     </Box>
                     {schema.required && ' *'}
@@ -96,7 +104,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
             <Flex width="100%">
               <Box flex="1">
                 <Select
-                  key={JSON.stringify(value)}
+                  key={JSON.stringify(value) + JSON.stringify(schema.options)}
                   styles={{
                     container: (base: any) => ({
                       ...base,

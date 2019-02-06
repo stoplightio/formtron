@@ -1,3 +1,6 @@
 {
-  "extends": ["./node_modules/@stoplight/scripts/tslint.json"]
+  "extends": ["./node_modules/@stoplight/scripts/tslint.json"],
+  "rules": {
+    "no-shadowed-variable": false
+  }
 }

@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "type": "form",
+  "title": "Security",
+  "description": "A shared security scheme definition",
+  "fields": {
+    "securityDefinitions.?": {
+      "type": "string",
+      "title": "securityId"
+    },
+    "securityDefinitions.*.type": {
+      "type": "select",
+      "title": "Type",
+      "options": ["basic", "apiKey", "oauth2"]
+    },
+    "securityDefinitions.*.description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "securityDefinitions.*.name": {
+      "type": "string",
+      "title": "Name",
+      "show": "type === 'apiKey'"
+    },
+    "securityDefinitions.*.in": {
+      "type": "select",
+      "title": "In",
+      "options": ["query", "header"],
+      "show": "type === 'apiKey'"
+    },
+    "securityDefinitions.*.flow": {
+      "type": "select",
+      "title": "Flow",
+      "options": ["implicit", "password", "application", "accessCode"],
+      "show": "type === 'oauth2'"
+    },
+    "securityDefinitions.*.authorizationUrl": {
+      "type": "string",
+      "title": "Authorization URL",
+      "show": "type === 'oauth2' && (flow === 'implicit' || flow === 'accessCode')"
+    },
+    "securityDefinitions.*.tokenUrl": {
+      "type": "string",
+      "title": "Token URL",
+      "show": "type === 'oauth2' && (flow === 'password' || flow === 'application' || flow === 'accessCode')"
+    },
+    "securityDefinitions.*.scopes": {
+      "type": "object",
+      "title": "Scopes",
+      "default": "",
+      "keys": {
+        "type": "string",
+        "title": "Name"
+      },
+      "values": {
+        "type": "string",
+        "title": "Description"
+      },
+      "show": "type === 'oauth2'"
+    }
+  }
+}
