@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { throttle } from 'lodash';
+import throttle = require('lodash/throttle');
 
 import { DraftValue } from './DraftValue';
 

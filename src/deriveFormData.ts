@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import get = require('lodash/get');
 import { Dictionary } from 'ts-essentials';
 
 // @ts-ignore

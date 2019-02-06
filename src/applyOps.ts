@@ -1,5 +1,7 @@
 import produce from 'immer';
-import { get, set, unset } from 'lodash';
+import get = require('lodash/get');
+import set = require('lodash/set');
+import unset = require('lodash/unset');
 
 import { IOperation } from './types';
 
