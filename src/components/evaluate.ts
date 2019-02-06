@@ -1,17 +1,8 @@
 const expr = require('expression-eval');
-const cache = new Map();
+const memoize = require('lodash/memoize');
 
 // Compile expression or return cached compiled expression
-function compile(str: string) {
-  const cached = cache.get(str);
-  if (cached) {
-    return cached;
-  } else {
-    const compiled = expr.compile(str);
-    cache.set(str, compiled);
-    return compiled;
-  }
-}
+const compile = memoize(expr.compile);
 
 export function evaluate(str: string, context: any, currentProp: string, fallbackValue: any) {
   // Transform `paths.*.*.responses.*.foo` into `foo`

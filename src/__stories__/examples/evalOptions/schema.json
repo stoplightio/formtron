@@ -29,7 +29,7 @@
       "title": "Required"
     },
     "paths.*.*.parameters.*.schema": {
-      "type": "schema",
+      "type": "string",
       "title": "Schema",
       "show": "in === 'body'"
     },
