@@ -235,7 +235,7 @@ Example:
 
 ### `strict` option for selects
 
-The ui-kit "select" and "multiselect" Formtron components allow specifying an `strict` boolean property.
+The ui-kit "select" and "multiselect" Formtron components allow specifying a `strict` boolean property.
 It defaults to `false`. If set to true, then users will not be allowed
 to enter arbitrary values and are forced to pick from the options list
 presented.
