@@ -43,7 +43,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         defaultValue={{ value, label: value }}
                         defaultOptions
                         loadOptions={loadOptions}
-                        onChange={(value: any, action) => {
+                        onChange={(value: any) => {
                           if (value === null) {
                             onChange(value);
                           } else {
@@ -52,6 +52,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         }}
                         menuPlacement="auto"
                         clearable={!schema.required}
+                        allowCreate={!schema.strict}
                       />
                     </Box>
                     {schema.required && ' *'}
@@ -116,12 +117,13 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   isMulti
                   loadOptions={loadOptions}
                   defaultOptions
-                  onChange={values =>
+                  onChange={(values: any) =>
                     values && Array.isArray(values)
                       ? onChange(values.map(v => v.value))
                       : values && onChange(values.value)
                   }
                   menuPlacement="auto"
+                  allowCreate={!schema.strict}
                 />
               </Box>
               {schema.required && ' *'}
