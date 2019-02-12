@@ -233,6 +233,13 @@ Example:
 }
 ```
 
+### `strict` option for selects
+
+The ui-kit "select" and "multiselect" Formtron components allow specifying a `strict` boolean property.
+It defaults to `false`. If set to true, then users will not be allowed
+to enter arbitrary values and are forced to pick from the options list
+presented.
+
 ## Primitive Field Types
 
 The `<Formtron>` component is not aware of any primitive types - the core set of field types is whatever you define.
