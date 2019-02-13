@@ -3,6 +3,7 @@
   "type": "form",
   "title": "Security",
   "description": "A shared security scheme definition",
+  "columns": 2,
   "fields": {
     "securityDefinitions.?": {
       "type": "string",
@@ -48,6 +49,7 @@
       "type": "object",
       "title": "Scopes",
       "default": "",
+      "span": 2,
       "keys": {
         "type": "string",
         "title": "Name"

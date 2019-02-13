@@ -15,7 +15,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
   }, []);
 
   return (
-    <Flex width="100%">
+    <Flex width="100%" flexDirection={schema.vertical ? 'column' : 'row'}>
       <Box flex="1">
         <Text as="label" htmlFor={id}>
           {schema.title}

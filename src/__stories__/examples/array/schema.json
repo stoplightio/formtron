@@ -3,6 +3,7 @@
   "title": "Arrays",
   "description": "Several types of arrays",
   "type": "form",
+  "columns": 2,
   "fields": {
     "paths.*.*.tags": {
       "type": "array",
@@ -26,6 +27,7 @@
       "type": "array",
       "title": "Multiselects",
       "default": [],
+      "span": 2,
       "items": {
         "title": "Scheme",
         "type": "multiselect",

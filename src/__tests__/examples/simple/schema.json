@@ -3,19 +3,28 @@
   "type": "form",
   "title": "Simplest Ever Form",
   "description": "A string, an integer, and a checkbox walk into a form",
+  "columns": 3,
   "fields": {
     "name": {
       "type": "string",
-      "title": "Name"
+      "title": "Name",
+      "vertical": true
     },
     "age": {
       "type": "integer",
       "title": "Age",
-      "required": true
+      "vertical": true,
+      "required": true,
+      "span": 2
     },
     "checked": {
       "type": "checkbox",
       "title": "Checked"
+    },
+    "schema": {
+      "type": "string",
+      "title": "JSON Schema",
+      "span": 3
     }
   }
 }
