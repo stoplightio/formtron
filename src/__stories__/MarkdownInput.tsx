@@ -14,7 +14,7 @@ storiesOf('Inputs', module)
   .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
   .add('MarkdownInput', () => {
     return (
-      <Box width="300px">
+      <Box width="500px">
         <MarkdownInput
           value={text(
             'value',
@@ -31,6 +31,8 @@ It is a long established fact that a reader will be distracted by the readable c
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
+          valid={boolean('valid', true)}
+          validationMessages={[]}
         />
       </Box>
     );

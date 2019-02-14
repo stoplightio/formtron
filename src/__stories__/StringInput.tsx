@@ -26,6 +26,8 @@ storiesOf('Inputs', module)
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
+          valid={boolean('valid', true)}
+          validationMessages={[]}
         />
       </Box>
     );

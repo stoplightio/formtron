@@ -4,8 +4,7 @@ import { Box, Flex, Input, Text } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-
-import { ValidityIndicator } from './ValidityIndicator';
+import { useInvalidColor } from '../hooks';
 
 export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -14,13 +13,11 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   schema,
   fieldComponents,
+  valid,
+  validationMessages,
 }) => {
+  const invalidColor = useInvalidColor(valid);
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
 
   return (
     <Flex width="100%">
@@ -37,11 +34,8 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           step="1.0"
           value={value}
           onChange={e => onChange(Number(e.currentTarget.value))}
-          required={schema.required}
-          onBlur={onBlur}
+          borderColor={invalidColor}
         />
-        <Box>{schema.required && ' *'}</Box>
-        <ValidityIndicator state={validityState} />
         {CustomWidget && (
           <CustomWidget
             value={value}
@@ -49,6 +43,8 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
             selection={selection}
             onChange={onChange}
             fieldComponents={fieldComponents}
+            valid={true}
+            validationMessages={[]}
           />
         )}
       </Flex>

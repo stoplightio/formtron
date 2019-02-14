@@ -52,6 +52,8 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 onChange(v);
               }}
               fieldComponents={fieldComponents}
+              valid={true}
+              validationMessages={[]}
             />
           </div>
         );

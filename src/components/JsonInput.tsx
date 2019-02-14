@@ -5,16 +5,12 @@ import * as React from 'react';
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
+
 import { DraftValue } from './utils/DraftValue';
 
-import { ValidityIndicator } from './ValidityIndicator';
-
-export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLTextAreaElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
+export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange, valid }) => {
+  const invalidColor = useInvalidColor(valid);
 
   return (
     <DraftValue
@@ -41,10 +37,8 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
                 id={id}
                 value={value}
                 onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-                onBlur={onBlur}
+                borderColor={invalidColor}
               />
-              <Box>{schema.required && ' *'}</Box>
-              <ValidityIndicator state={validityState} />
             </Flex>
           </Flex>
         );

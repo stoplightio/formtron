@@ -5,9 +5,10 @@ import * as React from 'react';
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
+
 import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
-import { ValidityIndicator } from './ValidityIndicator';
 
 export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -16,7 +17,9 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   selection,
+  valid,
 }) => {
+  const invalidColor = useInvalidColor(valid);
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
   const KeyWidget = fieldComponents[schema.keys.type];
@@ -25,7 +28,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const noConflict = (key: any) => !(key in value);
 
   return (
-    <Box as="fieldset" position="relative">
+    <Box as="fieldset" position="relative" borderColor={invalidColor}>
       <legend>{schema.title}</legend>
       {easyObject.items.map((entry, index) => {
         const [key, val] = entry;
@@ -44,7 +47,6 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
               {({ value, onChange }) => {
                 return (
                   <React.Fragment>
-                    <ValidityIndicator state={key !== value ? false : null} />
                     <Box flex={1}>
                       <KeyWidget
                         id={(id && `${id}-${index}`) || undefined}
@@ -53,6 +55,8 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                         selection={_selection}
                         fieldComponents={fieldComponents}
                         onChange={_key => onChange(_key)}
+                        valid={key === value}
+                        validationMessages={[]}
                       />
                     </Box>
                   </React.Fragment>
@@ -67,6 +71,8 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 selection={_selection}
                 fieldComponents={fieldComponents}
                 onChange={_val => onChange(easyObject.updateVal(index, _val))}
+                valid={true}
+                validationMessages={[]}
               />
             </Box>
           </Flex>

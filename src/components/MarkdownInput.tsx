@@ -5,17 +5,12 @@ import * as React from 'react';
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
 
 import { ThrottleValue } from './utils/ThrottleValue';
 
-import { ValidityIndicator } from './ValidityIndicator';
-
-export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLTextAreaElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
+export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange, valid }) => {
+  const invalidColor = useInvalidColor(valid);
 
   return (
     <ThrottleValue ms={1000} value={value} onChange={onChange}>
@@ -31,10 +26,8 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, v
               autosize={true}
               value={value}
               onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-              onBlur={onBlur}
+              borderColor={invalidColor}
             />
-            <Box>{schema.required && ' *'}</Box>
-            <ValidityIndicator state={validityState} />
           </Flex>
         </Flex>
       )}

@@ -5,6 +5,7 @@ import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
 import { DraftValue } from './utils/DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
@@ -16,7 +17,9 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   selection,
   fieldComponents,
+  valid,
 }) => {
+  const invalidColor = useInvalidColor(valid);
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -36,7 +39,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               <DraftValue value={value} onChange={onChange}>
                 {({ value, onChange }) => (
                   <Flex width="100%">
-                    <Box flex="1">
+                    <Box flex="1" border={1} borderRadius="3px" borderColor={invalidColor || 'rgba(0,0,0,0)'}>
                       <Select
                         key={JSON.stringify(schema.options)}
                         value={{ value, label: value }}
@@ -55,7 +58,6 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         allowCreate={!schema.strict}
                       />
                     </Box>
-                    {schema.required && ' *'}
                     {CustomWidget && (
                       <CustomWidget
                         value={value}
@@ -63,6 +65,8 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         selection={selection}
                         onChange={onChange}
                         fieldComponents={fieldComponents}
+                        valid={true}
+                        validationMessages={[]}
                       />
                     )}
                   </Flex>
@@ -83,7 +87,9 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   selection,
+  valid,
 }) => {
+  const invalidColor = useInvalidColor(valid);
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
   }
@@ -103,7 +109,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               {schema.title}
             </Box>
             <Flex width="100%">
-              <Box flex="1">
+              <Box flex="1" border={1} borderRadius="3px" borderColor={invalidColor || 'rgba(0,0,0,0)'}>
                 <Select
                   key={JSON.stringify(value) + JSON.stringify(schema.options)}
                   styles={{
@@ -126,7 +132,6 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   allowCreate={!schema.strict}
                 />
               </Box>
-              {schema.required && ' *'}
               {CustomWidget && (
                 <CustomWidget
                   value={value}
@@ -134,6 +139,8 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   selection={selection}
                   onChange={onChange}
                   fieldComponents={fieldComponents}
+                  valid={true}
+                  validationMessages={[]}
                 />
               )}
             </Flex>

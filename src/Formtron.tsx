@@ -33,6 +33,8 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
             onChange={onChange}
             schema={schema}
             fieldComponents={fieldComponents}
+            valid={true}
+            validationMessages={[]}
           />
         );
       }}

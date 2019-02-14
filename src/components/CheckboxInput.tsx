@@ -4,15 +4,10 @@ import { Box, Checkbox, Flex, Text } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
 
-import { ValidityIndicator } from './ValidityIndicator';
-
-export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
+export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema, valid }) => {
+  const invalidColor = useInvalidColor(valid);
 
   return (
     <Flex width="100%">
@@ -22,16 +17,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, v
         </Text>
       </Box>
       <Flex flex="1" width="100%">
-        <Checkbox
-          id={id}
-          checked={value}
-          disabled={false}
-          onChange={onChange}
-          required={schema.required}
-          onBlur={onBlur}
-        />
-        <Box>{schema.required && ' *'}</Box>
-        <ValidityIndicator state={validityState} />
+        <Checkbox id={id} checked={value} disabled={false} onChange={onChange} borderColor={invalidColor} />
       </Flex>
     </Flex>
   );

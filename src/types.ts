@@ -2,19 +2,17 @@ import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
-export interface IFormtronWidget {
+export interface IFormtronControl {
+  id?: string;
   value: any;
   onChange: (value: any) => void;
-}
 
-export interface IFormtronContext {
   schema: any;
   selection: string;
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
-}
 
-export interface IFormtronControl extends IFormtronWidget, IFormtronContext {
-  id?: string;
+  valid: boolean;
+  validationMessages: string[];
 }
 
 export interface IFormtron extends IFormtronControl {

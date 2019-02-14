@@ -4,15 +4,10 @@ import { Box, Flex, Input, Text } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
+import { useInvalidColor } from '../hooks';
 
-import { ValidityIndicator } from './ValidityIndicator';
-
-export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
+export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange, valid }) => {
+  const invalidColor = useInvalidColor(valid);
 
   return (
     <Flex width="100%">
@@ -30,11 +25,9 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           minLength={schema.minLength}
           maxLength={schema.maxLength}
           required={schema.required}
-          onBlur={onBlur}
           flex="1"
+          borderColor={invalidColor}
         />
-        <Box>{schema.required && ' *'}</Box>
-        <ValidityIndicator state={validityState} />
       </Flex>
     </Flex>
   );
