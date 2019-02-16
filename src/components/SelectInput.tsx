@@ -5,7 +5,7 @@ import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-import { useInvalidColor } from '../hooks';
+import { Label } from './Label';
 import { DraftValue } from './utils/DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
@@ -19,7 +19,6 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   valid,
 }) => {
-  const invalidColor = useInvalidColor(valid);
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -31,15 +30,17 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Flex width="100%">
-            <Box flex="1" as="label" htmlFor={id}>
-              {schema.title}
+          <Flex width="100%" alignItems="center">
+            <Box flex="1">
+              <Label htmlFor={id} invalid={!valid}>
+                {schema.title}
+              </Label>
             </Box>
             <Flex flex="1" width="100%">
               <DraftValue value={value} onChange={onChange}>
                 {({ value, onChange }) => (
                   <Flex width="100%">
-                    <Box flex="1" border={1} borderRadius="3px" borderColor={invalidColor || 'rgba(0,0,0,0)'}>
+                    <Box flex="1">
                       <Select
                         key={JSON.stringify(schema.options)}
                         value={{ value, label: value }}
@@ -56,6 +57,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         menuPlacement="auto"
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
+                        invalid={!valid}
                       />
                     </Box>
                     {CustomWidget && (
@@ -89,7 +91,6 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   selection,
   valid,
 }) => {
-  const invalidColor = useInvalidColor(valid);
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
   }
@@ -105,11 +106,11 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
-            <Box as="label" htmlFor={id}>
+            <Label htmlFor={id} invalid={!valid}>
               {schema.title}
-            </Box>
+            </Label>
             <Flex width="100%">
-              <Box flex="1" border={1} borderRadius="3px" borderColor={invalidColor || 'rgba(0,0,0,0)'}>
+              <Box flex="1">
                 <Select
                   key={JSON.stringify(value) + JSON.stringify(schema.options)}
                   styles={{
@@ -130,6 +131,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   }
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
+                  invalid={!valid}
                 />
               </Box>
               {CustomWidget && (

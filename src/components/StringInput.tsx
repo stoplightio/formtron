@@ -4,15 +4,15 @@ import { Box, Flex, Input, Text } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-import { useInvalidColor } from '../hooks';
+
+import { useInvalidFg } from './hooks';
 
 export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange, valid }) => {
-  const invalidColor = useInvalidColor(valid);
-
+  const fg = useInvalidFg(valid);
   return (
-    <Flex width="100%">
+    <Flex width="100%" alignItems="center">
       <Box flex="1">
-        <Text as="label" htmlFor={id}>
+        <Text as="label" htmlFor={id} color={fg}>
           {schema.title}
         </Text>
       </Box>
@@ -26,7 +26,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           maxLength={schema.maxLength}
           required={schema.required}
           flex="1"
-          borderColor={invalidColor}
+          invalid={!valid}
         />
       </Flex>
     </Flex>

@@ -1,10 +1,11 @@
 /* @jsx jsx */
 import { jsx } from '@emotion/core';
-import { Box, Flex, Input, Text } from '@stoplight/ui-kit';
+import { Box, Flex, Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-import { useInvalidColor } from '../hooks';
+
+import { Label } from './Label';
 
 export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -16,15 +17,14 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   valid,
   validationMessages,
 }) => {
-  const invalidColor = useInvalidColor(valid);
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
 
   return (
-    <Flex width="100%">
+    <Flex width="100%" alignItems="center">
       <Box flex="1">
-        <Text as="label" htmlFor={id}>
+        <Label htmlFor={id} invalid={!valid}>
           {schema.title}
-        </Text>
+        </Label>
       </Box>
       <Flex flex="1" width="100%">
         <Input
@@ -34,7 +34,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           step="1.0"
           value={value}
           onChange={e => onChange(Number(e.currentTarget.value))}
-          borderColor={invalidColor}
+          invalid={!valid}
         />
         {CustomWidget && (
           <CustomWidget

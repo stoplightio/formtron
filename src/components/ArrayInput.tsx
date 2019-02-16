@@ -5,8 +5,8 @@ import * as React from 'react';
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
-import { useInvalidColor } from '../hooks';
 
+import { FieldSet } from './FieldSet';
 import { EasyArray } from './utils/EasyArray';
 
 export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
@@ -18,13 +18,11 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   selection,
   valid,
 }) => {
-  const invalidColor = useInvalidColor(valid);
   const easyArray = new EasyArray(value, schema.default);
   const Widget = fieldComponents[schema.items.type];
 
   return (
-    <Box as="fieldset" position="relative" borderColor={invalidColor}>
-      <legend>{schema.title}</legend>
+    <FieldSet position="relative" invalid={!valid} legend={schema.title}>
       {easyArray.items.map((val: any, index: number) => {
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
@@ -55,6 +53,6 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
       <Button type="button" title="Append item" onClick={() => onChange(easyArray.append())}>
         <Text color="green">+</Text>
       </Button>
-    </Box>
+    </FieldSet>
   );
 };

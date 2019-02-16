@@ -5,8 +5,8 @@ import * as React from 'react';
 import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
-import { useInvalidColor } from '../hooks';
 
+import { FieldSet } from './FieldSet';
 import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
 
@@ -19,7 +19,6 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   selection,
   valid,
 }) => {
-  const invalidColor = useInvalidColor(valid);
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
   const KeyWidget = fieldComponents[schema.keys.type];
@@ -28,8 +27,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const noConflict = (key: any) => !(key in value);
 
   return (
-    <Box as="fieldset" position="relative" borderColor={invalidColor}>
-      <legend>{schema.title}</legend>
+    <FieldSet position="relative" invalid={!valid} legend={schema.title}>
       {easyObject.items.map((entry, index) => {
         const [key, val] = entry;
         const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
@@ -81,6 +79,6 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
       <Button type="button" title="Append item" onClick={() => onChange(easyObject.append())}>
         <Text color="green">+</Text>
       </Button>
-    </Box>
+    </FieldSet>
   );
 };
