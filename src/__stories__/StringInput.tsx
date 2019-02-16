@@ -14,7 +14,7 @@ storiesOf('Inputs', module)
   .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
   .add('StringInput', () => {
     return (
-      <Box width="300px">
+      <Box width="300px" m={3}>
         <StringInput
           value={text('value', 'some text')}
           selection="/#"
@@ -27,7 +27,7 @@ storiesOf('Inputs', module)
           onChange={action('onChange')}
           fieldComponents={{}}
           valid={boolean('valid', true)}
-          validationMessages={[]}
+          validationMessages={[text('validationMessages', '')]}
         />
       </Box>
     );
