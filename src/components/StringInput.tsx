@@ -30,7 +30,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
             type="text"
             id={id}
             value={value}
-            onChange={e => onChange(e.currentTarget.value)}
+            onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(e.currentTarget.value)}
             minLength={schema.minLength}
             maxLength={schema.maxLength}
             required={schema.required}

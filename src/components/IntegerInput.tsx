@@ -33,7 +33,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           id={id}
           step="1.0"
           value={value}
-          onChange={e => onChange(Number(e.currentTarget.value))}
+          onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
           invalid={!valid}
         />
         {CustomWidget && (

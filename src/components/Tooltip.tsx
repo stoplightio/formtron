@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import * as React from 'react';
 
-import { Popup } from '@stoplight/ui-kit';
+import { Box, Popup } from '@stoplight/ui-kit';
 
 import { Callout } from './Callout';
 
@@ -21,7 +21,9 @@ export const Tooltip: React.FunctionComponent<ITooltip> = ({ invalid, message, c
       posY="top"
       padding={3}
       renderContent={() => <Callout invalid={invalid}>{message}</Callout>}
-      renderTrigger={() => children as React.ReactElement<any>}
+      renderTrigger={() => <Box>{children}</Box>}
     />
   );
 };
+
+Tooltip.displayName = 'Tooltip';
