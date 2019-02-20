@@ -6,18 +6,19 @@ import { Box, IBox } from '@stoplight/ui-kit';
 
 import { useTheme } from '../theme';
 
-import { useInvalidBorder } from './hooks';
+import { FormtronComponentVariant } from '../types';
+import { useBorder } from './hooks';
 
 interface ICallout extends IBox<HTMLDivElement> {
-  invalid: boolean;
+  variant?: FormtronComponentVariant;
 }
 
-export const Callout: React.FunctionComponent<ICallout> = ({ invalid, children }) => {
+export const Callout: React.FunctionComponent<ICallout> = ({ variant, children }) => {
   const { canvas } = useTheme();
-  const invalidColor = useInvalidBorder(!invalid);
+  const borderColor = useBorder(variant);
   return (
     <Box
-      border={`1px solid ${invalidColor || 'currentColor'}`}
+      border={`1px solid ${borderColor || 'currentColor'}`}
       borderRadius="10px"
       backgroundColor={canvas && canvas.bg}
       p={2}

@@ -6,12 +6,15 @@ import { Box, Popup } from '@stoplight/ui-kit';
 
 import { Callout } from './Callout';
 
-interface ITooltip {
-  message: React.ReactNode;
-  invalid: boolean;
+import { FormtronComponentVariant } from '../types';
+
+interface IMessages {
+  messages?: string[];
+  variant?: FormtronComponentVariant;
 }
 
-export const Tooltip: React.FunctionComponent<ITooltip> = ({ invalid, message, children }) => {
+export const Messages: React.FunctionComponent<IMessages> = ({ variant, messages = [], children }) => {
+  const message = messages.join('');
   if (message == null || message === '') {
     return <React.Fragment>{children}</React.Fragment>;
   }
@@ -20,10 +23,10 @@ export const Tooltip: React.FunctionComponent<ITooltip> = ({ invalid, message, c
       posX="center"
       posY="top"
       padding={3}
-      renderContent={() => <Callout invalid={invalid}>{message}</Callout>}
+      renderContent={() => <Callout variant={variant}>{message}</Callout>}
       renderTrigger={() => <Box>{children}</Box>}
     />
   );
 };
 
-Tooltip.displayName = 'Tooltip';
+Messages.displayName = 'Messages';

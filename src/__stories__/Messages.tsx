@@ -1,21 +1,24 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { withKnobs } from '@storybook/addon-knobs';
-import { boolean, text } from '@storybook/addon-knobs/react';
+import { select, withKnobs } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs/react';
 
 import { Flex } from '@stoplight/ui-kit';
 import { IntegerInput } from '../components/IntegerInput';
-import { Tooltip } from '../components/Tooltip';
+import { Messages } from '../components/Messages';
 import { ThemeZone } from '../theme';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
   .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
-  .add('Tooltip', () => {
+  .add('Messages', () => {
     return (
       <Flex flexDirection="column" width="300px" m={3}>
-        <Tooltip invalid={boolean('invalid', false)} message={text('message', 'This is an error message description.')}>
+        <Messages
+          variant={select('variant', ['invalid', ''], '')}
+          messages={[text('message', 'This is an error message description.')]}
+        >
           <IntegerInput
             value={42}
             selection="/#"
@@ -25,12 +28,15 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
-            valid={!boolean('invalid', false)}
-            validationMessages={[]}
+            variant={select('variant', ['invalid', ''], '')}
+            messages={[]}
           />
-        </Tooltip>
+        </Messages>
 
-        <Tooltip invalid={boolean('invalid', false)} message={text('message', 'This is an error message description.')}>
+        <Messages
+          variant={select('variant', ['invalid', ''], '')}
+          messages={[text('message', 'This is an error message description.')]}
+        >
           <IntegerInput
             value={42}
             selection="/#"
@@ -40,10 +46,10 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
-            valid={!boolean('invalid', false)}
-            validationMessages={[]}
+            variant={select('variant', ['invalid', ''], '')}
+            messages={[]}
           />
-        </Tooltip>
+        </Messages>
       </Flex>
     );
   });

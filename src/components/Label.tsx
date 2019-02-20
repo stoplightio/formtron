@@ -4,14 +4,15 @@ import * as React from 'react';
 
 import { IText, Text } from '@stoplight/ui-kit';
 
-import { useInvalidFg } from './hooks';
+import { FormtronComponentVariant } from '../types';
+import { useFg } from './hooks';
 
 interface ILabel extends IText<HTMLLabelElement> {
-  invalid: boolean;
+  variant?: FormtronComponentVariant;
 }
 
-export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, invalid, children }) => {
-  const fg = useInvalidFg(!invalid);
+export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, variant, children }) => {
+  const fg = useFg(variant);
   return (
     <Text as="label" htmlFor={htmlFor} color={fg}>
       {children}

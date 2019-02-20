@@ -107,8 +107,6 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                 onInternalChange={(form: any) => {
                   this.setState(state => ({ ...state, form }));
                 }}
-                valid={true}
-                validationMessages={[]}
               />
               <Button
                 type="button"

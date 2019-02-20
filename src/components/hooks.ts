@@ -1,22 +1,16 @@
 import { useTheme } from '../theme';
+import { FormtronComponentVariant } from '../types';
+const capitalize = require('lodash/capitalize');
 
-export const useInvalidBorder = (valid: boolean) => {
+const useProp = (prop: string) => (variant?: FormtronComponentVariant) => {
   const theme = useTheme();
-  if (valid) return;
-  if (!theme.input || !theme.input.invalidBorder) return;
-  return theme.input.invalidBorder;
+  const _prop = variant ? (variant as string) + capitalize(prop) : prop;
+  if (!theme.input || !theme.input[_prop]) return;
+  return theme.input[_prop];
 };
 
-export const useInvalidFg = (valid: boolean) => {
-  const theme = useTheme();
-  if (valid) return;
-  if (!theme.input || !theme.input.invalidFg) return;
-  return theme.input.invalidFg;
-};
+export const useBorder = useProp('border');
 
-export const useInvalidBg = (valid: boolean) => {
-  const theme = useTheme();
-  if (valid) return;
-  if (!theme.input || !theme.input.invalidBg) return;
-  return theme.input.invalidBg;
-};
+export const useFg = useProp('fg');
+
+export const useBg = useProp('bg');

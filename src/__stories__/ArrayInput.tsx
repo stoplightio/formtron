@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-import { boolean } from '@storybook/addon-knobs/react';
+import { select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { fieldComponents } from '../components';
@@ -29,8 +29,8 @@ storiesOf('Inputs', module)
           }}
           onChange={action('onChange')}
           fieldComponents={fieldComponents}
-          valid={boolean('valid', true)}
-          validationMessages={[]}
+          variant={select('variant', ['invalid', ''], '')}
+          messages={[text('messages', '')]}
         />
       </Box>
     );

@@ -5,20 +5,20 @@ import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
-import { useInvalidFg } from './hooks';
-import { Tooltip } from './Tooltip';
+import { useFg } from './hooks';
+import { Messages } from './Messages';
 
 export const StringInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value = '',
   schema,
   onChange,
-  valid,
-  validationMessages,
+  variant,
+  messages,
 }) => {
-  const fg = useInvalidFg(valid);
+  const fg = useFg(variant);
   return (
-    <Tooltip invalid={!valid} message={validationMessages.join('\n')}>
+    <Messages variant={variant} messages={messages}>
       <Flex width="100%" alignItems="center">
         <Box flex="1">
           <Text as="label" htmlFor={id} color={fg}>
@@ -35,10 +35,10 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
             maxLength={schema.maxLength}
             required={schema.required}
             flex="1"
-            invalid={!valid}
+            invalid={(variant as string) === ('invalid' as string)}
           />
         </Flex>
       </Flex>
-    </Tooltip>
+    </Messages>
   );
 };

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-import { boolean, text } from '@storybook/addon-knobs/react';
+import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { MarkdownInput } from '../components/MarkdownInput';
@@ -31,8 +31,8 @@ It is a long established fact that a reader will be distracted by the readable c
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
-          valid={boolean('valid', true)}
-          validationMessages={[]}
+          variant={select('variant', ['invalid', ''], '')}
+          messages={[text('messages', '')]}
         />
       </Box>
     );

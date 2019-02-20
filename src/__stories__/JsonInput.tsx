@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
-import { boolean, object, text } from '@storybook/addon-knobs/react';
+import { boolean, object, select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit';
 import { JsonInput } from '../components/JsonInput';
@@ -37,8 +37,8 @@ storiesOf('Inputs', module)
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
-          valid={boolean('valid', true)}
-          validationMessages={[]}
+          variant={select('variant', ['invalid', ''], '')}
+          messages={[text('messages', '')]}
         />
       </Box>
     );

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
+export type FormtronComponentVariant = '' | 'invalid';
+
 export interface IFormtronControl {
   id?: string;
   value: any;
@@ -11,8 +13,8 @@ export interface IFormtronControl {
   selection: string;
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
 
-  valid: boolean;
-  validationMessages: string[];
+  variant?: FormtronComponentVariant;
+  messages?: string[];
 }
 
 export interface IFormtron extends IFormtronControl {

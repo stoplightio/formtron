@@ -6,18 +6,28 @@ import * as React from 'react';
 import { IFormtronControl } from '..';
 
 import { Label } from './Label';
+import { Messages } from './Messages';
 
-export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema, valid }) => {
+export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
+  id,
+  value,
+  onChange,
+  schema,
+  variant,
+  messages,
+}) => {
   return (
-    <Flex width="100%" alignItems="center">
-      <Box flex="1">
-        <Label htmlFor={id} invalid={!valid}>
-          {schema.title}
-        </Label>
-      </Box>
-      <Flex flex="1" width="100%">
-        <Checkbox id={id} checked={value} disabled={false} onChange={onChange} invalid={!valid} />
+    <Messages variant={variant} messages={messages}>
+      <Flex width="100%" alignItems="center">
+        <Box flex="1">
+          <Label htmlFor={id} variant={variant}>
+            {schema.title}
+          </Label>
+        </Box>
+        <Flex flex="1" width="100%">
+          <Checkbox id={id} checked={value} disabled={false} onChange={onChange} invalid={(variant as string) === 'invalid'} />
+        </Flex>
       </Flex>
-    </Flex>
+    </Messages>
   );
 };

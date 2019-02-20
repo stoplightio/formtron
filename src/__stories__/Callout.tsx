@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { withKnobs } from '@storybook/addon-knobs';
-import { boolean, text } from '@storybook/addon-knobs/react';
+import { select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { Callout } from '../components/Callout';
@@ -14,7 +14,7 @@ storiesOf('Inputs', module)
   .add('Callout', () => {
     return (
       <Box width="300px" height="100px" backgroundColor="blue">
-        <Callout invalid={boolean('invalid', false)}>
+        <Callout variant={select('variant', ['invalid', ''], '')}>
           {text('children', 'This is an error message description.')}
         </Callout>
       </Box>
