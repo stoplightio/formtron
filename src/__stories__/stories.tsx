@@ -7,6 +7,8 @@ import { withKnobs } from '@storybook/addon-knobs';
 // @ts-ignore
 import { boolean, select, text } from '@storybook/addon-knobs/react';
 
+import { PathTooltips } from './decorators';
+
 import { FormtronDebugger } from './FormtronDebugger';
 
 const simpleData = require('../__tests__/examples/simple/data.json');
@@ -48,6 +50,7 @@ IconLibrary.add(faCheck);
 
 storiesOf('formtron', module)
   .addDecorator(withKnobs)
+  .addDecorator(PathTooltips)
   .add('simple', () => {
     return <FormtronDebugger input={simpleData} schema={simpleSchema} selection={simpleData._selection} />;
   })

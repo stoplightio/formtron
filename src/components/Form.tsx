@@ -13,9 +13,17 @@ import { Messages } from './Messages';
 
 const substitute = (path: string, selection: string[]) => {
   const _path = path.split('.');
-  return _path
-    .map((part, index) => (part === '*' || part === '?' ? selection[index] : part))
-    .filter(part => part !== '?');
+  const newpath = [];
+  for (let i = 0; i < _path.length; i++) {
+    const part = _path[i];
+    if (part === '*' || part === '?') {
+      newpath.push(selection[i]);
+    } else {
+      newpath.push(part);
+    }
+    if (part === '?') break;
+  }
+  return newpath;
 };
 
 export const Form: React.FunctionComponent<IFormtronControl> = ({

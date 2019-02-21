@@ -7,7 +7,7 @@
       "type": "string",
       "title": "Tag"
     },
-    "paths.?": {
+    "paths.?.*": {
       "type": "string",
       "title": "path",
       "required": true
