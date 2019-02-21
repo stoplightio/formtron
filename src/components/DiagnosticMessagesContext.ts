@@ -3,7 +3,8 @@ import * as React from 'react';
 export interface IDiagnosticMessage {
   severity: number;
   severityLabel: string;
-  summary: string;
+  summary?: string;
+  message?: string;
 }
 
 export type IDiagnosticMessagesProvider = (path: string[]) => IDiagnosticMessage[];

@@ -13,7 +13,7 @@ interface IMessages {
 
 export const Messages: React.FunctionComponent<IMessages> = ({ path, children }) => {
   const { messages, variant } = useDiagnostics(path);
-  const message = messages.map(m => m.summary).join(' | ');
+  const message = messages.map(m => m.summary || m.message).join(' | ');
   if (message == null || message === '') {
     return <React.Fragment>{children}</React.Fragment>;
   }
