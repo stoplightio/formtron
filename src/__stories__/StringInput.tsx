@@ -7,11 +7,12 @@ import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { StringInput } from '../components/StringInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('StringInput', () => {
     return (
       <Box width="300px" m={3}>
@@ -27,7 +28,6 @@ storiesOf('Inputs', module)
           onChange={action('onChange')}
           fieldComponents={{}}
           variant={select('variant', ['invalid', ''], '')}
-          messages={[text('messages', '')]}
         />
       </Box>
     );

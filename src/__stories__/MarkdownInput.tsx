@@ -7,11 +7,12 @@ import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { MarkdownInput } from '../components/MarkdownInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('MarkdownInput', () => {
     return (
       <Box width="500px">
@@ -32,7 +33,6 @@ It is a long established fact that a reader will be distracted by the readable c
           onChange={action('onChange')}
           fieldComponents={{}}
           variant={select('variant', ['invalid', ''], '')}
-          messages={[text('messages', '')]}
         />
       </Box>
     );

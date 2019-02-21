@@ -7,11 +7,12 @@ import { text } from '@storybook/addon-knobs/react';
 import { Flex } from '@stoplight/ui-kit';
 import { IntegerInput } from '../components/IntegerInput';
 import { Messages } from '../components/Messages';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('Messages', () => {
     return (
       <Flex flexDirection="column" width="300px" m={3}>
@@ -29,7 +30,6 @@ storiesOf('Inputs', module)
             onChange={() => void 0}
             fieldComponents={{}}
             variant={select('variant', ['invalid', ''], '')}
-            messages={[]}
           />
         </Messages>
 
@@ -47,7 +47,6 @@ storiesOf('Inputs', module)
             onChange={() => void 0}
             fieldComponents={{}}
             variant={select('variant', ['invalid', ''], '')}
-            messages={[]}
           />
         </Messages>
       </Flex>

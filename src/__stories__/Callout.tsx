@@ -6,11 +6,11 @@ import { select, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { Callout } from '../components/Callout';
-import { ThemeZone } from '../theme';
+import { Theme } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
   .add('Callout', () => {
     return (
       <Box width="300px" height="100px" backgroundColor="blue">
