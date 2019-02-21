@@ -14,15 +14,13 @@ interface IMessages {
 export const Messages: React.FunctionComponent<IMessages> = ({ path, children }) => {
   const { messages, variant } = useDiagnostics(path);
   const message = messages.map(m => m.summary || m.message).join(' | ');
-  if (message == null || message === '') {
-    return <React.Fragment>{children}</React.Fragment>;
-  }
+  const showTooltip = message != null && message !== '';
   return (
     <Popup
       posX="center"
       posY="top"
       padding={3}
-      renderContent={() => <Callout variant={variant}>{message}</Callout>}
+      renderContent={() => showTooltip && <Callout variant={variant}>{message}</Callout>}
       renderTrigger={() => <Box>{children}</Box>}
     />
   );
