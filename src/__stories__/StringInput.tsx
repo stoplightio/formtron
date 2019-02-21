@@ -17,7 +17,7 @@ storiesOf('Inputs', module)
       <Box width="300px" m={3}>
         <StringInput
           value={text('value', 'some text')}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

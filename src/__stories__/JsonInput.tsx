@@ -30,7 +30,7 @@ storiesOf('Inputs', module)
               last: 'Barton',
             },
           })}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

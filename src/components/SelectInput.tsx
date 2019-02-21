@@ -16,7 +16,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   value,
   schema,
   onChange,
-  selection,
+  path,
   fieldComponents,
   variant,
   messages,
@@ -67,7 +67,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         <CustomWidget
                           value={value}
                           schema={schema}
-                          selection={selection}
+                          path={path}
                           onChange={onChange}
                           fieldComponents={fieldComponents}
                           variant={variant}
@@ -92,7 +92,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   schema,
   onChange,
   fieldComponents,
-  selection,
+  path,
   variant,
   messages,
 }) => {
@@ -144,7 +144,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   <CustomWidget
                     value={value}
                     schema={schema}
-                    selection={selection}
+                    path={path}
                     onChange={onChange}
                     fieldComponents={fieldComponents}
                   />

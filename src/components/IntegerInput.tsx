@@ -11,9 +11,9 @@ import { Messages } from './Messages';
 export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
-  selection,
-  onChange,
   schema,
+  onChange,
+  path,
   fieldComponents,
   variant,
   messages,
@@ -42,8 +42,8 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
             <CustomWidget
               value={value}
               schema={schema}
-              selection={selection}
               onChange={onChange}
+              path={path}
               fieldComponents={fieldComponents}
               variant={variant}
               messages={messages}

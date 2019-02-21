@@ -21,7 +21,7 @@ storiesOf('Inputs', module)
         >
           <IntegerInput
             value={42}
-            selection="/#"
+            path={[]}
             schema={{
               title: 'Title',
               required: false,
@@ -39,7 +39,7 @@ storiesOf('Inputs', module)
         >
           <IntegerInput
             value={42}
-            selection="/#"
+            path={[]}
             schema={{
               title: 'Title',
               required: false,

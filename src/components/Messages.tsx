@@ -14,7 +14,7 @@ interface IMessages {
 }
 
 export const Messages: React.FunctionComponent<IMessages> = ({ variant, messages = [], children }) => {
-  const message = messages.join('');
+  const message = messages.join(' | ');
   if (message == null || message === '') {
     return <React.Fragment>{children}</React.Fragment>;
   }

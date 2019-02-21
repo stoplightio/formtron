@@ -10,12 +10,19 @@ import { IFormtronControl } from '..';
 import { evaluate } from './evaluate';
 import { Messages } from './Messages';
 
+const substitute = (path: string, selection: string[]) => {
+  const _path = path.split('.');
+  return _path
+    .map((part, index) => (part === '*' || part === '?' ? selection[index] : part))
+    .filter(part => part !== '?');
+};
+
 export const Form: React.FunctionComponent<IFormtronControl> = ({
   value = {},
   schema,
   onChange,
   fieldComponents,
-  selection,
+  path,
   variant,
   messages,
 }) => {
@@ -50,7 +57,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 id={formId}
                 value={value[name]}
                 schema={propSchema}
-                selection={selection}
+                path={substitute(name, path)}
                 onChange={(val: any) => {
                   const v = { ...value, [name]: val };
                   onChange(v);

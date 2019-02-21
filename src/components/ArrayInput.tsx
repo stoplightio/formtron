@@ -16,7 +16,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   schema,
   onChange,
   fieldComponents,
-  selection,
+  path,
   variant,
   messages,
 }) => {
@@ -27,7 +27,6 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
     <Messages variant={variant} messages={messages}>
       <FieldSet position="relative" variant={variant} legend={schema.title}>
         {easyArray.items.map((val: any, index: number) => {
-          const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
           return (
             <Flex key={`${index}-${value.length}`}>
               <Flex flexDirection="column">
@@ -43,7 +42,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   id={(id && `${id}-${index}`) || undefined}
                   value={val}
                   schema={schema.items}
-                  selection={_selection}
+                  path={[...path, String(index)]}
                   fieldComponents={fieldComponents}
                   onChange={_val => onChange(easyArray.update(index, _val))}
                   variant={variant}

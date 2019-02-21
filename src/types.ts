@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dictionary } from 'ts-essentials';
+import { Dictionary, Omit } from 'ts-essentials';
 import { themeTypes } from './theme';
 
 export type FormtronComponentVariant = '' | 'invalid';
@@ -10,14 +10,15 @@ export interface IFormtronControl {
   onChange: (value: any) => void;
 
   schema: any;
-  selection: string;
+  path: string[];
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
 
   variant?: FormtronComponentVariant;
   messages?: string[];
 }
 
-export interface IFormtron extends IFormtronControl {
+export interface IFormtron extends Omit<IFormtronControl, 'path'> {
+  selection: string;
   onInternalChange?: Function;
   themeName?: themeTypes;
 }

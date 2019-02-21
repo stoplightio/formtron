@@ -18,7 +18,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <ObjectInput
           value={{ first: 42, second: 23, third: 97 }}
-          selection="."
+          path={[]}
           schema={{
             type: 'object',
             title: 'Object',

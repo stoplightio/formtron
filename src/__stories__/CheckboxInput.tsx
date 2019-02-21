@@ -16,7 +16,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <CheckboxInput
           value={boolean('value', true)}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

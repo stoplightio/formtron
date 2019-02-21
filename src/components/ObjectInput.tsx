@@ -17,7 +17,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   schema,
   onChange,
   fieldComponents,
-  selection,
+  path,
   variant,
   messages,
 }) => {
@@ -32,7 +32,6 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
     <FieldSet position="relative" invalid={(variant as string) === 'invalid'} legend={schema.title}>
       {easyObject.items.map((entry, index) => {
         const [key, val] = entry;
-        const _selection = selection === '' || selection === '.' ? `${index}` : `${selection}.${index}`;
         return (
           <Messages variant={variant} messages={messages}>
             <Flex key={`${index}-${easyObject.items.length}`}>
@@ -56,7 +55,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                           id={(id && `${id}-${index}`) || undefined}
                           value={value}
                           schema={schema.keys}
-                          selection={_selection}
+                          path={[...path, key]}
                           fieldComponents={fieldComponents}
                           onChange={_key => onChange(_key)}
                         />
@@ -70,9 +69,9 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   id={(id && `${id}-${index}`) || undefined}
                   value={val}
                   schema={schema.values}
-                  selection={_selection}
-                  fieldComponents={fieldComponents}
                   onChange={_val => onChange(easyObject.updateVal(index, _val))}
+                  path={[...path, key]}
+                  fieldComponents={fieldComponents}
                 />
               </Box>
             </Flex>

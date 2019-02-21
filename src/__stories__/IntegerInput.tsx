@@ -17,7 +17,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <IntegerInput
           value={number('value', 42)}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

@@ -18,7 +18,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <MultiselectInput
           value={array('value', ['choice a'])}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             options,

@@ -7,7 +7,7 @@
       "type": "string",
       "title": "Method"
     },
-    "paths.?.*": {
+    "paths.?": {
       "type": "string",
       "title": "path",
       "required": true

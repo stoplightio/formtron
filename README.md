@@ -99,7 +99,7 @@ export interface IFormtronControl<T> {
   value: T;
   onChange: (value: T) => void;
   schema: any;
-  selection: string;
+  path: string;
   fieldComponents: Dictionary<React.StatelessComponent<IFormtronControl>>;
 }
 ```
@@ -109,6 +109,8 @@ The `id` prop is a suggested value for your component's `id` prop, for accessibi
 The use of `value` and `onChange` is mandatory. Generally field components are [controlled components](https://reactjs.org/docs/forms.html#controlled-components).
 
 You can use the `schema` that is provided to make use of additional properties such as `schema.required` and `schema.maxLength` or `schema.custom.widget`.
+
+`path` is a read-only `.` separated path indicating where the field component's `value` is with respect to the top-level Formtron value.
 
 You need not use `fieldControls` yourself but it is provided in case you are implementing a component that nests other field components.
 

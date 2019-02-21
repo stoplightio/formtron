@@ -13,12 +13,13 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
   value = '',
   schema,
   onChange,
+  path,
   variant,
-  messages,
+  // messages,
 }) => {
   const fg = useFg(variant);
   return (
-    <Messages variant={variant} messages={messages}>
+    <Messages variant={variant} messages={[path.join(' > ')]}>
       <Flex width="100%" alignItems="center">
         <Box flex="1">
           <Text as="label" htmlFor={id} color={fg}>

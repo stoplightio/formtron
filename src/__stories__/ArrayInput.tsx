@@ -18,7 +18,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <ArrayInput
           value={[42, 23, 97]}
-          selection="."
+          path={[]}
           schema={{
             type: 'array',
             title: 'Array',

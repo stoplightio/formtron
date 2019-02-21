@@ -18,7 +18,7 @@ storiesOf('Inputs', module)
       <Box width="300px">
         <SelectInput
           value={select('value', options, 'choice a')}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             options,
