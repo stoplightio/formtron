@@ -7,7 +7,7 @@ import * as React from 'react';
 import { IFormtronControl } from '..';
 
 import { AutocompletionContext } from './AutocompletionContext';
-import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
+import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { DraftValue } from './utils/DraftValue';
@@ -19,9 +19,9 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   path,
   fieldComponents,
-  variant,
 }) => {
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+  const { variant } = useDiagnostics(path);
+
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -33,7 +33,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Messages variant={variant} messages={getMessages(path)}>
+          <Messages path={path}>
             <Flex width="100%" alignItems="center">
               <Box flex="1">
                 <Label htmlFor={id} variant={variant}>
@@ -71,7 +71,6 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                           path={path}
                           onChange={onChange}
                           fieldComponents={fieldComponents}
-                          variant={variant}
                         />
                       )}
                     </Flex>
@@ -93,12 +92,12 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
-  variant,
 }) => {
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
   }
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+  const { variant } = useDiagnostics(path);
+
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -110,7 +109,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Messages variant={variant} messages={getMessages(path)}>
+          <Messages path={path}>
             <Box>
               <Label htmlFor={id} variant={variant}>
                 {schema.title}

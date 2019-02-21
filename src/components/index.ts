@@ -22,3 +22,4 @@ export const fieldComponents = {
 };
 
 export * from './AutocompletionContext';
+export * from './DiagnosticMessagesContext';

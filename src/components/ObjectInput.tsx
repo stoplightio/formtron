@@ -6,8 +6,8 @@ import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
-import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { FieldSet } from './FieldSet';
+import { useDiagnostics } from './hooks';
 import { Messages } from './Messages';
 import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
@@ -19,9 +19,8 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
-  variant,
 }) => {
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+  const { variant } = useDiagnostics(path);
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
   const KeyWidget = fieldComponents[schema.keys.type];
@@ -30,7 +29,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const noConflict = (key: any) => !(key in value);
 
   return (
-    <Messages variant={variant} messages={getMessages(path)}>
+    <Messages path={path}>
       <FieldSet position="relative" invalid={(variant as string) === 'invalid'} legend={schema.title}>
         {easyObject.items.map((entry, index) => {
           const [key, val] = entry;

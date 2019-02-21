@@ -88,9 +88,3 @@ storiesOf('formtron', module)
       <FormtronDebugger input={evalOptionsData} schema={evalOptionsSchema} selection={evalOptionsData._selection} />
     );
   });
-
-// const diagnostics = {
-//   '': ['Validate structure of OpenAPIv2 specification.'],
-//   description: ['Operation `description` must be present and non-empty string.'],
-//   contact: ['Info object should contain `contact` object.'],
-// };

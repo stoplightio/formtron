@@ -4,16 +4,15 @@ import * as React from 'react';
 
 import { Box, Popup } from '@stoplight/ui-kit';
 
-import { FormtronComponentVariant } from '../types';
 import { Callout } from './Callout';
-import { IDiagnosticMessage } from './DiagnosticMessagesContext';
+import { useDiagnostics } from './hooks';
 
 interface IMessages {
-  messages?: IDiagnosticMessage[];
-  variant?: FormtronComponentVariant;
+  path: string[];
 }
 
-export const Messages: React.FunctionComponent<IMessages> = ({ variant, messages = [], children }) => {
+export const Messages: React.FunctionComponent<IMessages> = ({ path, children }) => {
+  const { messages, variant } = useDiagnostics(path);
   const message = messages.map(m => m.summary).join(' | ');
   if (message == null || message === '') {
     return <React.Fragment>{children}</React.Fragment>;

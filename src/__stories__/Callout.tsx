@@ -13,7 +13,7 @@ storiesOf('Inputs', module)
   .addDecorator(Theme)
   .add('Callout', () => {
     return (
-      <Box width="300px" height="100px" backgroundColor="blue">
+      <Box width="300px" height="100px" backgroundColor="#EEE">
         <Callout variant={select('variant', ['invalid', ''], '')}>
           {text('children', 'This is an error message description.')}
         </Callout>

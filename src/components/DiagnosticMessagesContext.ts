@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 export interface IDiagnosticMessage {
+  severity: number;
+  severityLabel: string;
   summary: string;
 }
 

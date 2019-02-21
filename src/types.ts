@@ -12,8 +12,6 @@ export interface IFormtronControl {
   schema: any;
   path: string[];
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
-
-  variant?: FormtronComponentVariant;
 }
 
 export interface IFormtron extends Omit<IFormtronControl, 'path'> {

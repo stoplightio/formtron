@@ -6,8 +6,8 @@ import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
-import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { FieldSet } from './FieldSet';
+import { useDiagnostics } from './hooks';
 import { Messages } from './Messages';
 import { EasyArray } from './utils/EasyArray';
 
@@ -18,14 +18,13 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
-  variant,
 }) => {
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+  const { variant } = useDiagnostics(path);
   const easyArray = new EasyArray(value, schema.default);
   const Widget = fieldComponents[schema.items.type];
 
   return (
-    <Messages variant={variant} messages={getMessages(path)}>
+    <Messages path={path}>
       <FieldSet position="relative" variant={variant} legend={schema.title}>
         {easyArray.items.map((val: any, index: number) => {
           return (
@@ -46,7 +45,6 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   path={[...path, String(index)]}
                   fieldComponents={fieldComponents}
                   onChange={_val => onChange(easyArray.update(index, _val))}
-                  variant={variant}
                 />
               </Box>
             </Flex>

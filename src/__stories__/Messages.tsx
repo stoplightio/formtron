@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { select, withKnobs } from '@storybook/addon-knobs';
-import { text } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs';
 
 import { Flex } from '@stoplight/ui-kit';
 import { IntegerInput } from '../components/IntegerInput';
@@ -16,10 +15,7 @@ storiesOf('Inputs', module)
   .add('Messages', () => {
     return (
       <Flex flexDirection="column" width="300px" m={3}>
-        <Messages
-          variant={select('variant', ['invalid', ''], '')}
-          messages={[{ summary: text('message', 'This is an error message description.') }]}
-        >
+        <Messages path={[]}>
           <IntegerInput
             value={42}
             path={[]}
@@ -29,14 +25,10 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
-            variant={select('variant', ['invalid', ''], '')}
           />
         </Messages>
 
-        <Messages
-          variant={select('variant', ['invalid', ''], '')}
-          messages={[{ summary: text('message', 'This is an error message description.') }]}
-        >
+        <Messages path={[]}>
           <IntegerInput
             value={42}
             path={[]}
@@ -46,7 +38,6 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
-            variant={select('variant', ['invalid', ''], '')}
           />
         </Messages>
       </Flex>

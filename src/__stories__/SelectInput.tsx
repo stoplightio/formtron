@@ -28,7 +28,6 @@ storiesOf('Inputs', module)
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
-          variant={select('variant', ['invalid', ''], '')}
         />
       </Box>
     );

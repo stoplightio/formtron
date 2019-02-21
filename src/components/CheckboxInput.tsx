@@ -5,21 +5,14 @@ import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
-import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
+import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
 
-export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
-  id,
-  value,
-  onChange,
-  schema,
-  path,
-  variant,
-}) => {
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema, path }) => {
+  const { variant } = useDiagnostics(path);
   return (
-    <Messages variant={variant} messages={getMessages(path)}>
+    <Messages path={path}>
       <Flex width="100%" alignItems="center">
         <Box flex="1">
           <Label htmlFor={id} variant={variant}>

@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
-import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
+import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
 
@@ -16,13 +16,12 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   path,
   fieldComponents,
-  variant,
 }) => {
-  const getMessages = React.useContext(DiagnosticMessagesContext);
+  const { variant } = useDiagnostics(path);
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
 
   return (
-    <Messages variant={variant} messages={getMessages(path)}>
+    <Messages path={path}>
       <Flex width="100%" alignItems="center">
         <Box flex="1">
           <Label htmlFor={id} variant={variant}>
@@ -46,7 +45,6 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
               onChange={onChange}
               path={path}
               fieldComponents={fieldComponents}
-              variant={variant}
             />
           )}
         </Flex>

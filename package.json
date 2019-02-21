@@ -25,6 +25,7 @@
     "commit": "git-cz",
     "lint": "sl-scripts lint",
     "lint.fix": "yarn lint --fix",
+    "push": "yarn build && cd dist && yalc push",
     "release": "sl-scripts release",
     "release.docs": "sl-scripts release:docs",
     "release.dryRun": "sl-scripts release --dry-run --debug",
