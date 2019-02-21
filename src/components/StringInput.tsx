@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
+import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { useFg } from './hooks';
 import { Messages } from './Messages';
 
@@ -18,8 +19,9 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
   // messages,
 }) => {
   const fg = useFg(variant);
+  const getMessages = React.useContext(DiagnosticMessagesContext);
   return (
-    <Messages variant={variant} messages={[path.join(' > ')]}>
+    <Messages variant={variant} messages={getMessages(path)}>
       <Flex width="100%" alignItems="center">
         <Box flex="1">
           <Text as="label" htmlFor={id} color={fg}>

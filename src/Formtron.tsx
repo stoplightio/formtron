@@ -33,7 +33,6 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
             onChange={onChange}
             path={selection.split('.')}
             fieldComponents={fieldComponents}
-            messages={[]}
           />
         );
       }}

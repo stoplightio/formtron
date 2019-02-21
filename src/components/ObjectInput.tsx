@@ -6,6 +6,7 @@ import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
+import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { FieldSet } from './FieldSet';
 import { Messages } from './Messages';
 import { DraftValue } from './utils/DraftValue';
@@ -19,8 +20,8 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   path,
   variant,
-  messages,
 }) => {
+  const getMessages = React.useContext(DiagnosticMessagesContext);
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
   const KeyWidget = fieldComponents[schema.keys.type];
@@ -29,11 +30,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const noConflict = (key: any) => !(key in value);
 
   return (
-    <FieldSet position="relative" invalid={(variant as string) === 'invalid'} legend={schema.title}>
-      {easyObject.items.map((entry, index) => {
-        const [key, val] = entry;
-        return (
-          <Messages variant={variant} messages={messages}>
+    <Messages variant={variant} messages={getMessages(path)}>
+      <FieldSet position="relative" invalid={(variant as string) === 'invalid'} legend={schema.title}>
+        {easyObject.items.map((entry, index) => {
+          const [key, val] = entry;
+          return (
             <Flex key={`${index}-${easyObject.items.length}`}>
               <Flex flexDirection="column">
                 <Button type="button" title="Insert item" onClick={() => onChange(easyObject.insert(index))}>
@@ -75,12 +76,12 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 />
               </Box>
             </Flex>
-          </Messages>
-        );
-      })}
-      <Button type="button" title="Append item" onClick={() => onChange(easyObject.append())}>
-        <Text color="green">+</Text>
-      </Button>
-    </FieldSet>
+          );
+        })}
+        <Button type="button" title="Append item" onClick={() => onChange(easyObject.append())}>
+          <Text color="green">+</Text>
+        </Button>
+      </FieldSet>
+    </Messages>
   );
 };

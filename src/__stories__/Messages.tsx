@@ -17,7 +17,7 @@ storiesOf('Inputs', module)
       <Flex flexDirection="column" width="300px" m={3}>
         <Messages
           variant={select('variant', ['invalid', ''], '')}
-          messages={[text('message', 'This is an error message description.')]}
+          messages={[{ summary: text('message', 'This is an error message description.') }]}
         >
           <IntegerInput
             value={42}
@@ -35,7 +35,7 @@ storiesOf('Inputs', module)
 
         <Messages
           variant={select('variant', ['invalid', ''], '')}
-          messages={[text('message', 'This is an error message description.')]}
+          messages={[{ summary: text('message', 'This is an error message description.') }]}
         >
           <IntegerInput
             value={42}

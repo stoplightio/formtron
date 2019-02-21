@@ -6,6 +6,7 @@ import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
+import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { ThrottleValue } from './utils/ThrottleValue';
@@ -15,13 +16,14 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({
   value,
   schema,
   onChange,
+  path,
   variant,
-  messages,
 }) => {
+  const getMessages = React.useContext(DiagnosticMessagesContext);
   return (
     <ThrottleValue ms={1000} value={value} onChange={onChange}>
       {({ value, onChange }) => (
-        <Messages variant={variant} messages={messages}>
+        <Messages variant={variant} messages={getMessages(path)}>
           <Flex width="100%" alignItems="center">
             <Box flex="1">
               <Label htmlFor={id} variant={variant}>

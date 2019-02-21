@@ -7,6 +7,7 @@ import { useTheme } from '../theme';
 
 import { IFormtronControl } from '..';
 
+import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { evaluate } from './evaluate';
 import { Messages } from './Messages';
 
@@ -24,11 +25,11 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   path,
   variant,
-  messages,
 }) => {
   const theme = useTheme();
+  const getMessages = React.useContext(DiagnosticMessagesContext);
   return (
-    <Messages variant={variant} messages={messages}>
+    <Messages variant={variant} messages={getMessages(path)}>
       <Box
         as="fieldset"
         position="relative"
@@ -63,7 +64,6 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                   onChange(v);
                 }}
                 fieldComponents={fieldComponents}
-                messages={[]}
               />
             </div>
           );

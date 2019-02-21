@@ -6,6 +6,7 @@ import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
+import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { DraftValue } from './utils/DraftValue';
@@ -15,11 +16,12 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({
   value,
   schema,
   onChange,
+  path,
   variant,
-  messages,
 }) => {
+  const getMessages = React.useContext(DiagnosticMessagesContext);
   return (
-    <Messages variant={variant} messages={messages}>
+    <Messages variant={variant} messages={getMessages(path)}>
       <DraftValue
         value={JSON.stringify(value, null, 2)}
         onChange={draft => {
