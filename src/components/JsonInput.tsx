@@ -42,7 +42,7 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
                 id={id}
                 value={value}
                 onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-                invalid={(variant as string) === 'invalid'}
+                invalid={variant === 'invalid'}
               />
             </Flex>
           </Flex>

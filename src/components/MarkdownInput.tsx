@@ -31,7 +31,7 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, v
               autosize={true}
               value={value}
               onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-              invalid={(variant as string) === 'invalid'}
+              invalid={variant === 'invalid'}
             />
           </Flex>
         </Flex>

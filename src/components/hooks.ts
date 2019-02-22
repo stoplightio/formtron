@@ -9,7 +9,7 @@ import { DiagnosticMessagesContext } from './DiagnosticMessagesContext';
 
 const useProp = (prop: string) => (variant?: FormtronComponentVariant) => {
   const theme = useTheme();
-  const _prop = variant ? (variant as string) + capitalize(prop) : prop;
+  const _prop = variant ? variant + capitalize(prop) : prop;
   if (!theme.input || !theme.input[_prop]) return;
   return theme.input[_prop];
 };

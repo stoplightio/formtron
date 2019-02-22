@@ -62,7 +62,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         menuPlacement="auto"
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
-                        invalid={(variant as string) === 'invalid'}
+                        invalid={variant === 'invalid'}
                       />
                     </Box>
                     {CustomWidget && (
@@ -137,7 +137,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   }
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
-                  invalid={(variant as string) === 'invalid'}
+                  invalid={variant === 'invalid'}
                 />
               </Box>
               {CustomWidget && (

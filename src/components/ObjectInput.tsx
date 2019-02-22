@@ -30,7 +30,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
 
   return (
     <Messages path={path}>
-      <FieldSet position="relative" invalid={(variant as string) === 'invalid'} legend={schema.title}>
+      <FieldSet position="relative" invalid={variant === 'invalid'} legend={schema.title}>
         {easyObject.items.map((entry, index) => {
           const [key, val] = entry;
           return (

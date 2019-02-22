@@ -21,13 +21,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, v
         </Messages>
       </Box>
       <Flex flex="1" width="100%">
-        <Checkbox
-          id={id}
-          checked={value}
-          disabled={false}
-          onChange={onChange}
-          invalid={(variant as string) === 'invalid'}
-        />
+        <Checkbox id={id} checked={value} disabled={false} onChange={onChange} invalid={variant === 'invalid'} />
       </Flex>
     </Flex>
   );

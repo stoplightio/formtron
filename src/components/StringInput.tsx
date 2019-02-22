@@ -31,7 +31,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           maxLength={schema.maxLength}
           required={schema.required}
           flex="1"
-          invalid={(variant as string) === ('invalid' as string)}
+          invalid={variant === ('invalid' as string)}
         />
       </Flex>
     </Flex>
