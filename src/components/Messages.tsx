@@ -3,8 +3,8 @@ import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Popup } from '@stoplight/ui-kit';
+import { Tooltip } from '@stoplight/ui-kit/Tooltip';
 
-import { Callout } from './Callout';
 import { useDiagnostics } from './hooks';
 
 interface IMessages {
@@ -17,10 +17,16 @@ export const Messages: React.FunctionComponent<IMessages> = ({ path, children })
   const showTooltip = message != null && message !== '';
   return (
     <Popup
-      posX="center"
+      posX="left"
       posY="top"
       padding={3}
-      renderContent={() => showTooltip && <Callout variant={variant}>{message}</Callout>}
+      renderContent={() =>
+        showTooltip && (
+          <Tooltip posX="left" invalid={variant === 'invalid'}>
+            {message}
+          </Tooltip>
+        )
+      }
       renderTrigger={() => <Box>{children}</Box>}
     />
   );

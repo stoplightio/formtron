@@ -1,6 +1,5 @@
 // NOTE: The ordering of these imports determines the ordering in Storybook
 import './ArrayInput';
-import './Callout';
 import './CheckboxInput';
 import './IntegerInput';
 import './JsonInput';

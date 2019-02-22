@@ -21,34 +21,34 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
 
   return (
-    <Messages path={path}>
-      <Flex width="100%" alignItems="center">
-        <Box flex="1">
+    <Flex width="100%" alignItems="center">
+      <Box flex="1">
+        <Messages path={path}>
           <Label htmlFor={id} variant={variant}>
             {schema.title}
           </Label>
-        </Box>
-        <Flex flex="1" width="100%">
-          <Input
-            flex="1"
-            type="number"
-            id={id}
-            step="1.0"
+        </Messages>
+      </Box>
+      <Flex flex="1" width="100%">
+        <Input
+          flex="1"
+          type="number"
+          id={id}
+          step="1.0"
+          value={value}
+          onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
+          invalid={(variant as string) === 'invalid'}
+        />
+        {CustomWidget && (
+          <CustomWidget
             value={value}
-            onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
-            invalid={(variant as string) === 'invalid'}
+            schema={schema}
+            onChange={onChange}
+            path={path}
+            fieldComponents={fieldComponents}
           />
-          {CustomWidget && (
-            <CustomWidget
-              value={value}
-              schema={schema}
-              onChange={onChange}
-              path={path}
-              fieldComponents={fieldComponents}
-            />
-          )}
-        </Flex>
+        )}
       </Flex>
-    </Messages>
+    </Flex>
   );
 };

@@ -36,7 +36,7 @@
     "test.watch": "yarn test --watch"
   },
   "peerDependencies": {
-    "@stoplight/ui-kit": "^1.34.4",
+    "@stoplight/ui-kit": "^1.35.2",
     "react": "16.x.x"
   },
   "dependencies": {
@@ -47,12 +47,12 @@
     "@fortawesome/free-solid-svg-icons": "^5.6.1",
     "@stoplight/scripts": "4.0.0",
     "@stoplight/storybook-config": "1.1.1",
-    "@stoplight/ui-kit": "1.34.4",
-    "@types/react": "16.x.x",
-    "@types/react-dom": "16.x.x",
+    "@stoplight/ui-kit": "^1.38.0",
+    "@types/react": "16.8.x",
+    "@types/react-dom": "16.8.x",
     "filer": "0.0.44",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-object-inspector": "0.2.x",
     "ts-essentials": "1.0.x",
     "typescript": "3.2.2",

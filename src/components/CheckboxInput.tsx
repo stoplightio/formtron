@@ -12,23 +12,23 @@ import { Messages } from './Messages';
 export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema, path }) => {
   const { variant } = useDiagnostics(path);
   return (
-    <Messages path={path}>
-      <Flex width="100%" alignItems="center">
-        <Box flex="1">
+    <Flex width="100%" alignItems="center">
+      <Box flex="1">
+        <Messages path={path}>
           <Label htmlFor={id} variant={variant}>
             {schema.title}
           </Label>
-        </Box>
-        <Flex flex="1" width="100%">
-          <Checkbox
-            id={id}
-            checked={value}
-            disabled={false}
-            onChange={onChange}
-            invalid={(variant as string) === 'invalid'}
-          />
-        </Flex>
+        </Messages>
+      </Box>
+      <Flex flex="1" width="100%">
+        <Checkbox
+          id={id}
+          checked={value}
+          disabled={false}
+          onChange={onChange}
+          invalid={(variant as string) === 'invalid'}
+        />
       </Flex>
-    </Messages>
+    </Flex>
   );
 };

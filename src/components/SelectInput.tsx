@@ -33,52 +33,52 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Messages path={path}>
-            <Flex width="100%" alignItems="center">
-              <Box flex="1">
+          <Flex width="100%" alignItems="center">
+            <Box flex="1">
+              <Messages path={path}>
                 <Label htmlFor={id} variant={variant}>
                   {schema.title}
                 </Label>
-              </Box>
-              <Flex flex="1" width="100%">
-                <DraftValue value={value} onChange={onChange}>
-                  {({ value, onChange }) => (
-                    <Flex width="100%">
-                      <Box flex="1">
-                        <Select
-                          key={JSON.stringify(schema.options)}
-                          value={{ value, label: value }}
-                          defaultValue={{ value, label: value }}
-                          defaultOptions
-                          loadOptions={loadOptions}
-                          onChange={(value: any) => {
-                            if (value === null) {
-                              onChange(value);
-                            } else {
-                              onChange(value.value);
-                            }
-                          }}
-                          menuPlacement="auto"
-                          clearable={!schema.required}
-                          allowCreate={!schema.strict}
-                          invalid={(variant as string) === 'invalid'}
-                        />
-                      </Box>
-                      {CustomWidget && (
-                        <CustomWidget
-                          value={value}
-                          schema={schema}
-                          path={path}
-                          onChange={onChange}
-                          fieldComponents={fieldComponents}
-                        />
-                      )}
-                    </Flex>
-                  )}
-                </DraftValue>
-              </Flex>
+              </Messages>
+            </Box>
+            <Flex flex="1" width="100%">
+              <DraftValue value={value} onChange={onChange}>
+                {({ value, onChange }) => (
+                  <Flex width="100%">
+                    <Box flex="1">
+                      <Select
+                        key={JSON.stringify(schema.options)}
+                        value={{ value, label: value }}
+                        defaultValue={{ value, label: value }}
+                        defaultOptions
+                        loadOptions={loadOptions}
+                        onChange={(value: any) => {
+                          if (value === null) {
+                            onChange(value);
+                          } else {
+                            onChange(value.value);
+                          }
+                        }}
+                        menuPlacement="auto"
+                        clearable={!schema.required}
+                        allowCreate={!schema.strict}
+                        invalid={(variant as string) === 'invalid'}
+                      />
+                    </Box>
+                    {CustomWidget && (
+                      <CustomWidget
+                        value={value}
+                        schema={schema}
+                        path={path}
+                        onChange={onChange}
+                        fieldComponents={fieldComponents}
+                      />
+                    )}
+                  </Flex>
+                )}
+              </DraftValue>
             </Flex>
-          </Messages>
+          </Flex>
         );
       }}
     </AutocompletionContext.Consumer>
@@ -109,48 +109,48 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Messages path={path}>
-            <Box>
+          <Box>
+            <Messages path={path}>
               <Label htmlFor={id} variant={variant}>
                 {schema.title}
               </Label>
-              <Flex width="100%">
-                <Box flex="1">
-                  <Select
-                    key={JSON.stringify(value) + JSON.stringify(schema.options)}
-                    styles={{
-                      container: (base: any) => ({
-                        ...base,
-                        display: 'inline-block',
-                        minWidth: 200,
-                      }),
-                    }}
-                    defaultValue={value.map(_value => ({ value: _value, label: _value }))}
-                    isMulti
-                    loadOptions={loadOptions}
-                    defaultOptions
-                    onChange={(values: any) =>
-                      values && Array.isArray(values)
-                        ? onChange(values.map(v => v.value))
-                        : values && onChange(values.value)
-                    }
-                    menuPlacement="auto"
-                    allowCreate={!schema.strict}
-                    invalid={(variant as string) === 'invalid'}
-                  />
-                </Box>
-                {CustomWidget && (
-                  <CustomWidget
-                    value={value}
-                    schema={schema}
-                    path={path}
-                    onChange={onChange}
-                    fieldComponents={fieldComponents}
-                  />
-                )}
-              </Flex>
-            </Box>
-          </Messages>
+            </Messages>
+            <Flex width="100%">
+              <Box flex="1">
+                <Select
+                  key={JSON.stringify(value) + JSON.stringify(schema.options)}
+                  styles={{
+                    container: (base: any) => ({
+                      ...base,
+                      display: 'inline-block',
+                      minWidth: 200,
+                    }),
+                  }}
+                  defaultValue={value.map(_value => ({ value: _value, label: _value }))}
+                  isMulti
+                  loadOptions={loadOptions}
+                  defaultOptions
+                  onChange={(values: any) =>
+                    values && Array.isArray(values)
+                      ? onChange(values.map(v => v.value))
+                      : values && onChange(values.value)
+                  }
+                  menuPlacement="auto"
+                  allowCreate={!schema.strict}
+                  invalid={(variant as string) === 'invalid'}
+                />
+              </Box>
+              {CustomWidget && (
+                <CustomWidget
+                  value={value}
+                  schema={schema}
+                  path={path}
+                  onChange={onChange}
+                  fieldComponents={fieldComponents}
+                />
+              )}
+            </Flex>
+          </Box>
         );
       }}
     </AutocompletionContext.Consumer>
