@@ -9,6 +9,7 @@ import { IFormtronControl } from '..';
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
 import { Messages } from './Messages';
+import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
 
@@ -30,7 +31,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
 
   return (
     <Messages path={path}>
-      <FieldSet position="relative" invalid={variant === 'invalid'} legend={schema.title}>
+      <FieldSet position="relative" invalid={variant === Variant.invalid} legend={schema.title}>
         {easyObject.items.map((entry, index) => {
           const [key, val] = entry;
           return (

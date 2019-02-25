@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 
-import { FormtronComponentVariant } from '../../types';
-
 import { DiagnosticMessagesContext } from '../DiagnosticMessagesContext';
+import { Variant } from '../types';
 
 export const useDiagnostics = (path: string[]) => {
   const getMessages = useContext(DiagnosticMessagesContext);
@@ -15,9 +14,9 @@ export const useDiagnostics = (path: string[]) => {
       severityLabel = message.severityLabel;
     }
   }
-  let variant: FormtronComponentVariant = '';
+  let variant: Variant = Variant.normal;
   if (severityLabel === 'warn') {
-    variant = 'invalid';
+    variant = Variant.invalid;
   }
   return { variant, messages };
 };

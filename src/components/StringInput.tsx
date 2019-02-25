@@ -8,6 +8,7 @@ import { IFormtronControl } from '..';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
+import { Variant } from './types';
 
 export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange, path }) => {
   const { variant } = useDiagnostics(path);
@@ -31,7 +32,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           maxLength={schema.maxLength}
           required={schema.required}
           flex="1"
-          invalid={variant === 'invalid'}
+          invalid={variant === Variant.invalid}
         />
       </Flex>
     </Flex>

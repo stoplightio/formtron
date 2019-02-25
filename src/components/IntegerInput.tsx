@@ -8,6 +8,7 @@ import { IFormtronControl } from '..';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
+import { Variant } from './types';
 
 export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -37,7 +38,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           step="1.0"
           value={value}
           onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
-          invalid={variant === 'invalid'}
+          invalid={variant === Variant.invalid}
         />
         {CustomWidget && (
           <CustomWidget

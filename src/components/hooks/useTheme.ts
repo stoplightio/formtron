@@ -1,9 +1,9 @@
 const capitalize = require('lodash/capitalize');
 
 import { useTheme } from '../../theme';
-import { FormtronComponentVariant } from '../../types';
+import { Variant } from '../types';
 
-const useProp = (prop: string) => (variant?: FormtronComponentVariant) => {
+const useProp = (prop: string) => (variant?: Variant) => {
   const theme = useTheme();
   const _prop = variant ? variant + capitalize(prop) : prop;
   if (!theme.input || !theme.input[_prop]) return;

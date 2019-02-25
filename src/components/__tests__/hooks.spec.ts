@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDiagnostics } from '../hooks/useDiagnostics';
+import { Variant } from '../types';
 
 jest.mock('react');
 jest.mock('../DiagnosticMessagesContext');
@@ -19,7 +20,7 @@ describe('useDiagnostics', () => {
   it('should determine variant', () => {
     const { variant, messages } = useDiagnostics(['foo', 'bar']);
     expect(getMessages).toBeCalledWith(['foo', 'bar']);
-    expect(variant).toBe('invalid');
+    expect(variant).toBe(Variant.invalid);
     expect(messages).toEqual([
       {
         severity: 10,

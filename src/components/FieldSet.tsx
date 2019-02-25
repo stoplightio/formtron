@@ -4,12 +4,12 @@ import * as React from 'react';
 
 import { Box, IBox } from '@stoplight/ui-kit';
 
-import { FormtronComponentVariant } from '../types';
 import { useBorder } from './hooks';
+import { Variant } from './types';
 
 interface IFieldSet extends IBox<HTMLFieldSetElement> {
   legend: HTMLElement | string;
-  variant?: FormtronComponentVariant;
+  variant?: Variant;
 }
 
 export const FieldSet: React.FunctionComponent<IFieldSet> = ({ legend, variant, children }) => {

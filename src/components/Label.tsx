@@ -4,11 +4,11 @@ import * as React from 'react';
 
 import { IText, Text } from '@stoplight/ui-kit';
 
-import { FormtronComponentVariant } from '../types';
 import { useFg } from './hooks';
+import { Variant } from './types';
 
 interface ILabel extends IText<HTMLLabelElement> {
-  variant?: FormtronComponentVariant;
+  variant?: Variant;
 }
 
 export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, variant, children }) => {

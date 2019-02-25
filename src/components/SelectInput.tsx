@@ -10,6 +10,7 @@ import { AutocompletionContext } from './AutocompletionContext';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
+import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
 
 export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
@@ -62,7 +63,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         menuPlacement="auto"
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
-                        invalid={variant === 'invalid'}
+                        invalid={variant === Variant.invalid}
                       />
                     </Box>
                     {CustomWidget && (
@@ -137,7 +138,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   }
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
-                  invalid={variant === 'invalid'}
+                  invalid={variant === Variant.invalid}
                 />
               </Box>
               {CustomWidget && (

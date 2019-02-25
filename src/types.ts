@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Dictionary, Omit } from 'ts-essentials';
 import { themeTypes } from './theme';
 
-export type FormtronComponentVariant = '' | 'invalid';
-
 export interface IFormtronControl {
   id?: string;
   value: any;
