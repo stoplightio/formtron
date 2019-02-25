@@ -1,5 +1,3 @@
-/* @jsx jsx */
-import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Popup } from '@stoplight/ui-kit';

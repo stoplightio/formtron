@@ -1,5 +1,3 @@
-/* @jsx jsx */
-import { jsx } from '@emotion/core';
 import { Box, Checkbox, Flex } from '@stoplight/ui-kit';
 import * as React from 'react';
 
