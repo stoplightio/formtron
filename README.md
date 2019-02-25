@@ -99,7 +99,7 @@ export interface IFormtronControl<T> {
   value: T;
   onChange: (value: T) => void;
   schema: any;
-  path: string;
+  path: string[];
   fieldComponents: Dictionary<React.StatelessComponent<IFormtronControl>>;
 }
 ```
