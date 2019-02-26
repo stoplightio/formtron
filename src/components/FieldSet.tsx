@@ -11,7 +11,7 @@ interface IFieldSet extends IBox<HTMLFieldSetElement> {
 }
 
 export const FieldSet: React.FunctionComponent<IFieldSet> = ({ legend, variant, children }) => {
-  const borderColor = useBorder(variant);
+  const borderColor = useBorder(variant) || 'currentColor';
   return (
     <Box as="fieldset" border={`1px solid ${borderColor || 'currentColor'}`}>
       <Box as="legend" color={borderColor}>
