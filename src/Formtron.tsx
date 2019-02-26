@@ -29,9 +29,9 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
         return (
           <Widget
             value={value}
-            selection={selection}
-            onChange={onChange}
             schema={schema}
+            onChange={onChange}
+            path={selection.split('.')}
             fieldComponents={fieldComponents}
           />
         );

@@ -1,28 +1,27 @@
-/* @jsx jsx */
-import { jsx } from '@emotion/core';
 import * as React from 'react';
 
 import { Box, Flex, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
+import { useDiagnostics } from './hooks';
+import { Label } from './Label';
+import { Messages } from './Messages';
+import { Variant } from './types';
 import { ThrottleValue } from './utils/ThrottleValue';
 
-import { ValidityIndicator } from './ValidityIndicator';
-
-export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange }) => {
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLTextAreaElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
-
+export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange, path }) => {
+  const { variant } = useDiagnostics(path);
   return (
     <ThrottleValue ms={1000} value={value} onChange={onChange}>
       {({ value, onChange }) => (
-        <Flex width="100%">
-          <Box flex="1" as="label" htmlFor={id}>
-            {schema.title}
+        <Flex width="100%" alignItems="center">
+          <Box flex="1">
+            <Messages path={path}>
+              <Label htmlFor={id} variant={variant}>
+                {schema.title}
+              </Label>
+            </Messages>
           </Box>
           <Flex flex="1" width="100%">
             <Textarea
@@ -31,10 +30,8 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({ id, v
               autosize={true}
               value={value}
               onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-              onBlur={onBlur}
+              invalid={variant === Variant.invalid}
             />
-            <Box>{schema.required && ' *'}</Box>
-            <ValidityIndicator state={validityState} />
           </Flex>
         </Flex>
       )}
