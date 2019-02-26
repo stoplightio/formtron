@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { boolean, number, text } from '@storybook/addon-knobs/react';
+import { boolean, number, select, text } from '@storybook/addon-knobs/react';
 
 import { ThemeZone } from '../theme';
 
@@ -15,7 +15,7 @@ export const Tooltips = (storyFn: Function) => {
       {
         summary: text('message', ''),
         severity: number('severity', 40),
-        severityLabel: text('severityLabel', 'warn'),
+        severityLabel: select('severityLabel', ['warn', 'anything-other-than-warn'], 'warn'),
       },
     ];
   };
@@ -29,7 +29,7 @@ export const PathTooltips = (storyFn: Function) => {
           {
             summary: path.join(' > '),
             severity: number('severity', 0),
-            severityLabel: text('severityLabel', 'info'),
+            severityLabel: select('severityLabel', ['warn', 'anything-other-than-warn'], 'anything-other-than-warn'),
           },
         ]
       : [];
