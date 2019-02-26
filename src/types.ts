@@ -1,18 +1,21 @@
 import * as React from 'react';
-import { Dictionary, Omit } from 'ts-essentials';
+import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
-export interface IFormtronControl {
+export interface IFormtronCommon {
   id?: string;
   value: any;
   onChange: (value: any) => void;
 
   schema: any;
-  path: string[];
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
 }
 
-export interface IFormtron extends Omit<IFormtronControl, 'path'> {
+export interface IFormtronControl extends IFormtronCommon {
+  path: string[];
+}
+
+export interface IFormtron extends IFormtronCommon {
   selection: string;
   onInternalChange?: Function;
   themeName?: themeTypes;
