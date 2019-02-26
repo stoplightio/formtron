@@ -6,21 +6,7 @@ import { evaluate } from './evaluate';
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
 import { Messages } from './Messages';
-
-const substitute = (path: string, selection: string[]) => {
-  const _path = path.split('.');
-  const newpath = [];
-  for (let i = 0; i < _path.length; i++) {
-    const part = _path[i];
-    if (part === '*' || part === '?') {
-      newpath.push(selection[i]);
-    } else {
-      newpath.push(part);
-    }
-    if (part === '?') break;
-  }
-  return newpath;
-};
+import { replaceWildcards } from './utils/replaceWildcards';
 
 export const Form: React.FunctionComponent<IFormtronControl> = ({
   value = {},
@@ -55,7 +41,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 id={formId}
                 value={value[name]}
                 schema={propSchema}
-                path={substitute(name, path)}
+                path={replaceWildcards(name, path)}
                 onChange={(val: any) => {
                   const v = { ...value, [name]: val };
                   onChange(v);
