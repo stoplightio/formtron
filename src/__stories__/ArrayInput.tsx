@@ -7,17 +7,18 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Box } from '@stoplight/ui-kit/Box';
 import { fieldComponents } from '../components';
 import { ArrayInput } from '../components/ArrayInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('ArrayInput', () => {
     return (
       <Box width="300px">
         <ArrayInput
           value={[42, 23, 97]}
-          selection="."
+          path={[]}
           schema={{
             type: 'array',
             title: 'Array',

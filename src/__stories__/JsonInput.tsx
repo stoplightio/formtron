@@ -7,11 +7,12 @@ import { boolean, object, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit';
 import { JsonInput } from '../components/JsonInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('JsonInput', () => {
     return (
       <Box width="300px">
@@ -30,7 +31,7 @@ storiesOf('Inputs', module)
               last: 'Barton',
             },
           })}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

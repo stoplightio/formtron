@@ -1,22 +1,26 @@
-/* @jsx jsx */
-import { jsx } from '@emotion/core';
 import { Box, Flex } from '@stoplight/ui-kit';
 import { Select } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
-import { DraftValue } from './utils/DraftValue';
 
 import { AutocompletionContext } from './AutocompletionContext';
+import { useDiagnostics } from './hooks';
+import { Label } from './Label';
+import { Messages } from './Messages';
+import { Variant } from './types';
+import { DraftValue } from './utils/DraftValue';
 
 export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
   schema,
   onChange,
-  selection,
+  path,
   fieldComponents,
 }) => {
+  const { variant } = useDiagnostics(path);
+
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -28,9 +32,13 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Flex width="100%">
-            <Box flex="1" as="label" htmlFor={id}>
-              {schema.title}
+          <Flex width="100%" alignItems="center">
+            <Box flex="1">
+              <Messages path={path}>
+                <Label htmlFor={id} variant={variant}>
+                  {schema.title}
+                </Label>
+              </Messages>
             </Box>
             <Flex flex="1" width="100%">
               <DraftValue value={value} onChange={onChange}>
@@ -53,14 +61,14 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         menuPlacement="auto"
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
+                        invalid={variant === Variant.invalid}
                       />
                     </Box>
-                    {schema.required && ' *'}
                     {CustomWidget && (
                       <CustomWidget
                         value={value}
                         schema={schema}
-                        selection={selection}
+                        path={path}
                         onChange={onChange}
                         fieldComponents={fieldComponents}
                       />
@@ -82,11 +90,13 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   schema,
   onChange,
   fieldComponents,
-  selection,
+  path,
 }) => {
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
   }
+  const { variant } = useDiagnostics(path);
+
   return (
     <AutocompletionContext.Consumer>
       {autocompletionSources => {
@@ -99,9 +109,11 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
-            <Box as="label" htmlFor={id}>
-              {schema.title}
-            </Box>
+            <Messages path={path}>
+              <Label htmlFor={id} variant={variant}>
+                {schema.title}
+              </Label>
+            </Messages>
             <Flex width="100%">
               <Box flex="1">
                 <Select
@@ -124,14 +136,14 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   }
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
+                  invalid={variant === Variant.invalid}
                 />
               </Box>
-              {schema.required && ' *'}
               {CustomWidget && (
                 <CustomWidget
                   value={value}
                   schema={schema}
-                  selection={selection}
+                  path={path}
                   onChange={onChange}
                   fieldComponents={fieldComponents}
                 />

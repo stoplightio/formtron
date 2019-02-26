@@ -7,17 +7,18 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Box } from '@stoplight/ui-kit';
 import { fieldComponents } from '../components';
 import { ObjectInput } from '../components/ObjectInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('ObjectInput', () => {
     return (
       <Box width="300px">
         <ObjectInput
           value={{ first: 42, second: 23, third: 97 }}
-          selection="."
+          path={[]}
           schema={{
             type: 'object',
             title: 'Object',

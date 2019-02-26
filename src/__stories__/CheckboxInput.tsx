@@ -7,17 +7,18 @@ import { boolean, text } from '@storybook/addon-knobs/react';
 
 import { Box } from '@stoplight/ui-kit/Box';
 import { CheckboxInput } from '../components/CheckboxInput';
-import { ThemeZone } from '../theme';
+import { Theme, Tooltips } from './decorators';
 
 storiesOf('Inputs', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFn => <ThemeZone name="formtron">{storyFn()}</ThemeZone>)
+  .addDecorator(Theme)
+  .addDecorator(Tooltips)
   .add('CheckboxInput', () => {
     return (
       <Box width="300px">
         <CheckboxInput
           value={boolean('value', true)}
-          selection="/#"
+          path={[]}
           schema={{
             title: text('schema.title', 'Title'),
             required: boolean('schema.required', false),

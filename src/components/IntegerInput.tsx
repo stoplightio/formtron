@@ -1,33 +1,32 @@
-/* @jsx jsx */
-import { jsx } from '@emotion/core';
-import { Box, Flex, Input, Text } from '@stoplight/ui-kit';
+import { Box, Flex, Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
-import { ValidityIndicator } from './ValidityIndicator';
+import { useDiagnostics } from './hooks';
+import { Label } from './Label';
+import { Messages } from './Messages';
+import { Variant } from './types';
 
 export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
-  selection,
-  onChange,
   schema,
+  onChange,
+  path,
   fieldComponents,
 }) => {
+  const { variant } = useDiagnostics(path);
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
-  const [validityState, changeValidityState] = React.useState<boolean | null>(null);
-
-  const onBlur = React.useCallback((e: React.SyntheticEvent<HTMLInputElement>) => {
-    changeValidityState(e.currentTarget.checkValidity());
-  }, []);
 
   return (
-    <Flex width="100%">
+    <Flex width="100%" alignItems="center">
       <Box flex="1">
-        <Text as="label" htmlFor={id}>
-          {schema.title}
-        </Text>
+        <Messages path={path}>
+          <Label htmlFor={id} variant={variant}>
+            {schema.title}
+          </Label>
+        </Messages>
       </Box>
       <Flex flex="1" width="100%">
         <Input
@@ -36,18 +35,15 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           id={id}
           step="1.0"
           value={value}
-          onChange={e => onChange(Number(e.currentTarget.value))}
-          required={schema.required}
-          onBlur={onBlur}
+          onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
+          invalid={variant === Variant.invalid}
         />
-        <Box>{schema.required && ' *'}</Box>
-        <ValidityIndicator state={validityState} />
         {CustomWidget && (
           <CustomWidget
             value={value}
             schema={schema}
-            selection={selection}
             onChange={onChange}
+            path={path}
             fieldComponents={fieldComponents}
           />
         )}
