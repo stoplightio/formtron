@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as ObjectInspector from 'react-object-inspector';
 
 import { Button } from '@stoplight/ui-kit';
+import { boolean } from '@storybook/addon-knobs/react';
 
 import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../';
 import { AutocompletionContext, fieldComponents } from '../components';
@@ -107,6 +108,7 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                 onInternalChange={(form: any) => {
                   this.setState(state => ({ ...state, form }));
                 }}
+                disabled={boolean('disabled', false)}
               />
               <Button
                 type="button"

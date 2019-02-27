@@ -10,7 +10,7 @@ interface IFieldSet extends IBox<HTMLFieldSetElement> {
   variant?: Variant;
 }
 
-export const FieldSet: React.FunctionComponent<IFieldSet> = ({ legend, variant, children }) => {
+export const FieldSet: React.FunctionComponent<IFieldSet> = ({ legend, variant, children, disabled = false }) => {
   const borderColor = useBorder(variant) || 'currentColor';
   return (
     <Box as="fieldset" border={`1px solid ${borderColor}`}>

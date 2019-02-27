@@ -9,6 +9,7 @@ export interface IFormtronCommon {
 
   schema: any;
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
+  disabled?: boolean;
 }
 
 export interface IFormtronControl extends IFormtronCommon {

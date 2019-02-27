@@ -33,6 +33,7 @@ storiesOf('Inputs', module)
           }}
           onChange={action('onChange')}
           fieldComponents={{ string: StringInput }}
+          disabled={boolean('disabled', false)}
         />
       </Box>
     );

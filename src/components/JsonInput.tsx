@@ -10,7 +10,14 @@ import { Messages } from './Messages';
 import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
 
-export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value, schema, onChange, path }) => {
+export const JsonInput: React.FunctionComponent<IFormtronControl> = ({
+  id,
+  value,
+  schema,
+  onChange,
+  path,
+  disabled = false,
+}) => {
   const { variant } = useDiagnostics(path);
   return (
     <DraftValue
@@ -28,7 +35,7 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
           <Flex width="100%" alignItems="center">
             <Box flex="1">
               <Messages path={path}>
-                <Label htmlFor={id} variant={variant}>
+                <Label htmlFor={id} variant={variant} disabled={disabled}>
                   {schema.title}
                 </Label>
               </Messages>
@@ -42,6 +49,7 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({ id, value
                 value={value}
                 onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
                 invalid={variant === Variant.invalid}
+                disabled={disabled}
               />
             </Flex>
           </Flex>

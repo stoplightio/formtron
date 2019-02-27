@@ -32,6 +32,7 @@ It is a long established fact that a reader will be distracted by the readable c
           }}
           onChange={action('onChange')}
           fieldComponents={{}}
+          disabled={boolean('disabled', false)}
         />
       </Box>
     );

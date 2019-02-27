@@ -15,6 +15,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   schema,
   onChange,
   fieldComponents,
+  disabled = false,
   path,
 }) => {
   const { variant } = useDiagnostics(path);
@@ -28,10 +29,20 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
           return (
             <Flex key={`${index}-${value.length}`}>
               <Flex flexDirection="column">
-                <Button type="button" title="Insert item" onClick={() => onChange(easyArray.insert(index))}>
+                <Button
+                  type="button"
+                  title="Insert item"
+                  onClick={() => onChange(easyArray.insert(index))}
+                  disabled={disabled}
+                >
                   <Text color="green">+</Text>
                 </Button>
-                <Button type="button" title="Delete item" onClick={() => onChange(easyArray.remove(index))}>
+                <Button
+                  type="button"
+                  title="Delete item"
+                  onClick={() => onChange(easyArray.remove(index))}
+                  disabled={disabled}
+                >
                   <Text color="red">x</Text>
                 </Button>
               </Flex>
@@ -43,12 +54,13 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   path={[...path, String(index)]}
                   fieldComponents={fieldComponents}
                   onChange={_val => onChange(easyArray.update(index, _val))}
+                  disabled={disabled}
                 />
               </Box>
             </Flex>
           );
         })}
-        <Button type="button" title="Append item" onClick={() => onChange(easyArray.append())}>
+        <Button type="button" title="Append item" onClick={() => onChange(easyArray.append())} disabled={disabled}>
           <Text color="green">+</Text>
         </Button>
       </FieldSet>

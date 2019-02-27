@@ -15,6 +15,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   path,
   fieldComponents,
+  disabled = false,
 }) => {
   const { variant } = useDiagnostics(path);
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
@@ -23,7 +24,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
     <Flex width="100%" alignItems="center">
       <Box flex="1">
         <Messages path={path}>
-          <Label htmlFor={id} variant={variant}>
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {schema.title}
           </Label>
         </Messages>
@@ -37,6 +38,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           value={value}
           onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
           invalid={variant === Variant.invalid}
+          disabled={disabled}
         />
         {CustomWidget && (
           <CustomWidget
@@ -45,6 +47,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
             onChange={onChange}
             path={path}
             fieldComponents={fieldComponents}
+            disabled={disabled}
           />
         )}
       </Flex>

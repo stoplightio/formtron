@@ -18,6 +18,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
+  disabled = false,
 }) => {
   const { variant } = useDiagnostics(path);
   // Make this thing an array
@@ -35,10 +36,20 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
           return (
             <Flex key={`${index}-${easyObject.items.length}`}>
               <Flex flexDirection="column">
-                <Button type="button" title="Insert item" onClick={() => onChange(easyObject.insert(index))}>
+                <Button
+                  type="button"
+                  title="Insert item"
+                  disabled={disabled}
+                  onClick={() => onChange(easyObject.insert(index))}
+                >
                   <Text color="green">+</Text>
                 </Button>
-                <Button type="button" title="Delete item" onClick={() => onChange(easyObject.remove(index))}>
+                <Button
+                  type="button"
+                  title="Delete item"
+                  disabled={disabled}
+                  onClick={() => onChange(easyObject.remove(index))}
+                >
                   <Text color="red">x</Text>
                 </Button>
               </Flex>
@@ -57,6 +68,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                           path={[...path, key]}
                           fieldComponents={fieldComponents}
                           onChange={_key => onChange(_key)}
+                          disabled={disabled}
                         />
                       </Box>
                     </React.Fragment>
@@ -71,12 +83,13 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   onChange={_val => onChange(easyObject.updateVal(index, _val))}
                   path={[...path, key]}
                   fieldComponents={fieldComponents}
+                  disabled={disabled}
                 />
               </Box>
             </Flex>
           );
         })}
-        <Button type="button" title="Append item" onClick={() => onChange(easyObject.append())}>
+        <Button type="button" title="Append item" disabled={disabled} onClick={() => onChange(easyObject.append())}>
           <Text color="green">+</Text>
         </Button>
       </FieldSet>

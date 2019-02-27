@@ -18,6 +18,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   path,
   fieldComponents,
+  disabled = false,
 }) => {
   const { variant } = useDiagnostics(path);
 
@@ -35,7 +36,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
           <Flex width="100%" alignItems="center">
             <Box flex="1">
               <Messages path={path}>
-                <Label htmlFor={id} variant={variant}>
+                <Label htmlFor={id} variant={variant} disabled={disabled}>
                   {schema.title}
                 </Label>
               </Messages>
@@ -62,6 +63,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
                         invalid={variant === Variant.invalid}
+                        disabled={disabled}
                       />
                     </Box>
                     {CustomWidget && (
@@ -71,6 +73,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         path={path}
                         onChange={onChange}
                         fieldComponents={fieldComponents}
+                        disabled={disabled}
                       />
                     )}
                   </Flex>
@@ -91,6 +94,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
+  disabled = false,
 }) => {
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
@@ -110,7 +114,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
         return (
           <Box>
             <Messages path={path}>
-              <Label htmlFor={id} variant={variant}>
+              <Label htmlFor={id} variant={variant} disabled={disabled}>
                 {schema.title}
               </Label>
             </Messages>
@@ -137,6 +141,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
                   invalid={variant === Variant.invalid}
+                  disabled={disabled}
                 />
               </Box>
               {CustomWidget && (
@@ -146,6 +151,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   path={path}
                   onChange={onChange}
                   fieldComponents={fieldComponents}
+                  disabled={disabled}
                 />
               )}
             </Flex>
