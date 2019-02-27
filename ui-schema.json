@@ -20,7 +20,7 @@
     },
     "form": {
       "type": "object",
-      "required": ["title", "type", "fields"],
+      "required": ["type", "fields"],
       "properties": {
         "$schema": {
           "type": "string"
