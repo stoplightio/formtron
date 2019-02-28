@@ -16,9 +16,9 @@ export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, variant, child
         opacity: 0.6,
         cursor: 'not-allowed',
       }
-    : {};
+    : null;
   return (
-    <Text as="label" htmlFor={htmlFor} color={fg} style={{ ...disabledStyles }}>
+    <Text as="label" htmlFor={htmlFor} color={fg} css={{ ...disabledStyles }}>
       {children}
     </Text>
   );
