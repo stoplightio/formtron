@@ -8,14 +8,21 @@ import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
 
-export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, value = '', schema, onChange, path }) => {
+export const StringInput: React.FunctionComponent<IFormtronControl> = ({
+  id,
+  value = '',
+  schema,
+  onChange,
+  path,
+  disabled = false,
+}) => {
   const { variant } = useDiagnostics(path);
 
   return (
     <Flex width="100%" alignItems="center">
       <Box flex="1">
         <Messages path={path}>
-          <Label htmlFor={id} variant={variant}>
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {schema.title}
           </Label>
         </Messages>
@@ -31,6 +38,7 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({ id, val
           required={schema.required}
           flex="1"
           invalid={variant === Variant.invalid}
+          disabled={disabled}
         />
       </Flex>
     </Flex>

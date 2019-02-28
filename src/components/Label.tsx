@@ -9,10 +9,16 @@ interface ILabel extends IText<HTMLLabelElement> {
   variant?: Variant;
 }
 
-export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, variant, children }) => {
+export const Label: React.FunctionComponent<ILabel> = ({ htmlFor, variant, children, disabled = false }) => {
   const fg = useFg(variant);
+  const disabledStyles = disabled
+    ? {
+        opacity: 0.6,
+        cursor: 'not-allowed',
+      }
+    : null;
   return (
-    <Text as="label" htmlFor={htmlFor} color={fg}>
+    <Text as="label" htmlFor={htmlFor} color={fg} css={{ ...disabledStyles }}>
       {children}
     </Text>
   );

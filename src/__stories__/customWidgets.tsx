@@ -6,7 +6,13 @@ import { IFormtronControl } from '../types';
 
 export const customWidgets = {
   randomNumber: (props: IFormtronControl) => (
-    <Button type="button" ml={2} fontSize={4} onClick={() => props.onChange(String(Math.floor(Math.random() * 500)))}>
+    <Button
+      type="button"
+      ml={2}
+      fontSize={4}
+      disabled={props.disabled}
+      onClick={() => props.onChange(String(Math.floor(Math.random() * 500)))}
+    >
       🎲
     </Button>
   ),
@@ -15,6 +21,7 @@ export const customWidgets = {
       ml={2}
       fontSize={4}
       type="button"
+      disabled={props.disabled}
       onClick={() => props.onChange(props.schema.options[Math.floor(Math.random() * props.schema.options.length)])}
     >
       🎲
@@ -26,6 +33,7 @@ export const customWidgets = {
       ml={2}
       fontSize={4}
       type="button"
+      disabled={props.disabled}
       onClick={() => props.onChange([...props.value, 'awesome'])}
     >
       🔥

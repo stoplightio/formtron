@@ -8,19 +8,32 @@ import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
 
-export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({ id, value, onChange, schema, path }) => {
+export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
+  id,
+  value,
+  onChange,
+  schema,
+  path,
+  disabled = false,
+}) => {
   const { variant } = useDiagnostics(path);
   return (
     <Flex width="100%" alignItems="center">
       <Box flex="1">
         <Messages path={path}>
-          <Label htmlFor={id} variant={variant}>
+          <Label htmlFor={id} variant={variant} disabled={disabled}>
             {schema.title}
           </Label>
         </Messages>
       </Box>
       <Flex flex="1" width="100%">
-        <Checkbox id={id} checked={value} onChange={onChange} invalid={variant === Variant.invalid} />
+        <Checkbox
+          id={id}
+          checked={value}
+          onChange={onChange}
+          invalid={variant === Variant.invalid}
+          disabled={disabled}
+        />
       </Flex>
     </Flex>
   );

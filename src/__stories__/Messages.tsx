@@ -25,6 +25,7 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
+            disabled={false}
           />
         </Messages>
 
@@ -38,6 +39,7 @@ storiesOf('Inputs', module)
             }}
             onChange={() => void 0}
             fieldComponents={{}}
+            disabled={false}
           />
         </Messages>
       </Flex>

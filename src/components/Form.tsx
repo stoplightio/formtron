@@ -5,6 +5,7 @@ import { IFormtronControl } from '..';
 import { evaluate } from './evaluate';
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
+import { Label } from './Label';
 import { Messages } from './Messages';
 import { replaceWildcards } from './utils/replaceWildcards';
 
@@ -14,6 +15,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   onChange,
   fieldComponents,
   path,
+  disabled = false,
 }) => {
   const { variant } = useDiagnostics(path);
   const keys = Object.keys(schema.fields);
@@ -43,6 +45,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
             onChange(v);
           }}
           fieldComponents={fieldComponents}
+          disabled={disabled}
         />
       </div>
     );
@@ -50,8 +53,10 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   });
   // _optionally_ wrap in a FieldSet.
   const contents = schema.title ? (
-    <FieldSet legend={schema.title} variant={variant}>
-      <i>{schema.description}</i>
+    <FieldSet legend={schema.title} variant={variant} disabled={disabled}>
+      <Label disabled={disabled}>
+        <i>{schema.description}</i>
+      </Label>
       {guts}
     </FieldSet>
   ) : (
