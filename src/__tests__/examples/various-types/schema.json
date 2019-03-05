@@ -3,6 +3,17 @@
   "title": "Form (OASv2 Root Node)",
   "description": "Top-level properties of your OASv2 spec.",
   "type": "form",
+  "layout": "2",
+  "layouts": {
+    "2": [
+      "title version",
+      "description description",
+      "host schemes",
+      "consumes produces",
+      "contact contact",
+      "none license"
+    ]
+  },
   "fields": {
     "info.title": {
       "type": "string",
@@ -56,6 +67,7 @@
       }
     },
     "info.license.name": {
+      "area": "license",
       "type": "string",
       "title": "License"
     }

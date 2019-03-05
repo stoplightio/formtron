@@ -45,6 +45,18 @@
         "show": {
           "type": "string"
         },
+        "layout": {
+          "type": "string"
+        },
+        "layouts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type":  "string"
+            }
+          }
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -69,6 +81,9 @@
         "show": {
           "type": "string"
         },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -91,6 +106,9 @@
           "type": "boolean"
         },
         "show": {
+          "type": "string"
+        },
+        "area": {
           "type": "string"
         },
         "custom": {}
@@ -120,6 +138,9 @@
         "show": {
           "type": "string"
         },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -138,10 +159,13 @@
         "path": {
           "type": "string"
         },
+        "show": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
-      },
-      "show": {
-        "type": "string"
       },
       "additionalProperties": false
     },
@@ -169,6 +193,9 @@
           "type": "number"
         },
         "show": {
+          "type": "string"
+        },
+        "area": {
           "type": "string"
         },
         "custom": {}
@@ -207,6 +234,9 @@
         "show": {
           "type": "string"
         },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -243,6 +273,9 @@
         "show": {
           "type": "string"
         },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -264,6 +297,9 @@
         "default": {},
         "items": { "$ref": "#/definitions/field" },
         "show": {
+          "type": "string"
+        },
+        "area": {
           "type": "string"
         },
         "custom": {}
@@ -290,6 +326,9 @@
         "show": {
           "type": "string"
         },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": false
@@ -306,6 +345,9 @@
           "type": "string"
         },
         "show": {
+          "type": "string"
+        },
+        "area": {
           "type": "string"
         },
         "custom": {}

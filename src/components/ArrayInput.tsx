@@ -46,7 +46,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   <Text color="red">x</Text>
                 </Button>
               </Flex>
-              <Box flex={1}>
+              <Box flex={1} ml={2}>
                 <Widget
                   id={(id && `${id}-${index}`) || undefined}
                   value={val}

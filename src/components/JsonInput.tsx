@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Textarea } from '@stoplight/ui-kit';
+import { Box, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
@@ -32,15 +32,15 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({
     >
       {({ value, onChange, nonDraftValue }) => {
         return (
-          <Flex width="100%" alignItems="center">
-            <Box flex="1">
+          <Box>
+            <Box>
               <Messages path={path}>
                 <Label htmlFor={id} variant={variant} disabled={disabled}>
                   {schema.title}
                 </Label>
               </Messages>
             </Box>
-            <Flex flex="1" width="100%">
+            <Box>
               <Textarea
                 flex="1"
                 autosize={true}
@@ -50,9 +50,10 @@ export const JsonInput: React.FunctionComponent<IFormtronControl> = ({
                 onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
                 invalid={variant === Variant.invalid}
                 disabled={disabled}
+                width="100%"
               />
-            </Flex>
-          </Flex>
+            </Box>
+          </Box>
         );
       }}
     </DraftValue>

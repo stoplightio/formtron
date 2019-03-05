@@ -60,7 +60,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 {({ value, onChange }) => {
                   return (
                     <React.Fragment>
-                      <Box flex={1}>
+                      <Box flex={1} ml={2}>
                         <KeyWidget
                           id={(id && `${id}-${index}`) || undefined}
                           value={value}
@@ -75,7 +75,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   );
                 }}
               </DraftValue>
-              <Box flex={1}>
+              <Box flex={1} ml={2}>
                 <ValWidget
                   id={(id && `${id}-${index}`) || undefined}
                   value={val}

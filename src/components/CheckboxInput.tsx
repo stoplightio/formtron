@@ -18,7 +18,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
 }) => {
   const { variant } = useDiagnostics(path);
   return (
-    <Flex width="100%" alignItems="center">
+    <Flex width="100%" height="100%" alignItems="center">
       <Box flex="1">
         <Messages path={path}>
           <Label htmlFor={id} variant={variant} disabled={disabled}>
@@ -26,7 +26,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
           </Label>
         </Messages>
       </Box>
-      <Flex flex="1" width="100%">
+      <Box flex="1">
         <Checkbox
           id={id}
           checked={value}
@@ -34,7 +34,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
           invalid={variant === Variant.invalid}
           disabled={disabled}
         />
-      </Flex>
+      </Box>
     </Flex>
   );
 };

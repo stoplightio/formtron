@@ -21,15 +21,15 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
   const CustomWidget = fieldComponents[schema.custom && schema.custom.widget];
 
   return (
-    <Flex width="100%" alignItems="center">
-      <Box flex="1">
+    <Box>
+      <Box>
         <Messages path={path}>
           <Label htmlFor={id} variant={variant} disabled={disabled}>
             {schema.title}
           </Label>
         </Messages>
       </Box>
-      <Flex flex="1" width="100%">
+      <Flex>
         <Input
           flex="1"
           type="number"
@@ -39,6 +39,7 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           onChange={(e: React.SyntheticEvent<HTMLInputElement>) => onChange(Number(e.currentTarget.value))}
           invalid={variant === Variant.invalid}
           disabled={disabled}
+          width="100%"
         />
         {CustomWidget && (
           <CustomWidget
@@ -51,6 +52,6 @@ export const IntegerInput: React.FunctionComponent<IFormtronControl> = ({
           />
         )}
       </Flex>
-    </Flex>
+    </Box>
   );
 };
