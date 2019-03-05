@@ -45,9 +45,6 @@
         "show": {
           "type": "string"
         },
-        "layout": {
-          "type": "string"
-        },
         "layouts": {
           "type": "object",
           "additionalProperties": {

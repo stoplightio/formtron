@@ -3,7 +3,6 @@
   "type": "form",
   "title": "Simplest Ever Form",
   "description": "A string, an integer, and a checkbox walk into a form",
-  "layout": "2",
   "layouts": {
     "2": ["name age", "checked none"],
     "3": ["name age checked"]

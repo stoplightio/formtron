@@ -18,10 +18,11 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   path,
   disabled = false,
+  layout,
 }) => {
   const { variant } = useDiagnostics(path);
   const keys = Object.keys(schema.fields);
-  const grid = schema.layout && schema.layouts && schema.layouts[schema.layout];
+  const grid = layout && schema.layouts && schema.layouts[layout];
   const guts = (
     <div
       style={{

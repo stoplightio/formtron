@@ -47,9 +47,6 @@
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/field" }
         },
-        "layout": {
-          "type": "string"
-        },
         "layouts": {
           "type": "object",
           "additionalProperties": {
