@@ -4,6 +4,7 @@ import './CheckboxInput';
 import './Form';
 import './IntegerInput';
 import './JsonInput';
+import './Layouts';
 import './MarkdownInput';
 import './Messages';
 import './MultiselectInput';

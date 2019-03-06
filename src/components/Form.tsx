@@ -7,9 +7,9 @@ import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
+import { listAreas, toGridTemplateAreas } from './utils/gridHelpers';
 import { replaceWildcards } from './utils/replaceWildcards';
 import { shortName } from './utils/shortName';
-import { toGridTemplateAreas } from './utils/toGridTemplateAreas';
 
 export const Form: React.FunctionComponent<IFormtronControl> = ({
   value = {},
@@ -23,7 +23,8 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   const { variant } = useDiagnostics(path);
   const keys = Object.keys(schema.fields);
   const grid = layout && schema.layouts && schema.layouts[layout];
-  const guts = (
+  const gridKeys = grid && listAreas(grid);
+  const innerStuff = (
     <div
       style={{
         display: 'grid',
@@ -35,6 +36,9 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       {keys.map((name, index) => {
         const formId = `${name}-${index}`;
         const propSchema = schema.fields[name];
+        const gridArea = propSchema.area || shortName(name);
+        // skip fields that aren't part of this layout
+        if (grid && !gridKeys.has(gridArea)) return null;
         if (propSchema.show) {
           const show = evaluate(propSchema.show, value, name, true);
           if (!show) return null;
@@ -47,7 +51,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
           throw new Error(`No appropriate widget could be found for type "${propSchema.type}"`);
         }
         const el = (
-          <div key={formId} style={grid ? { gridArea: propSchema.area || shortName(name) } : {}}>
+          <div key={formId} style={grid ? { gridArea } : {}}>
             <Widget
               id={formId}
               value={value[name]}
@@ -72,10 +76,10 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       <Label disabled={disabled}>
         <i>{schema.description}</i>
       </Label>
-      {guts}
+      {innerStuff}
     </FieldSet>
   ) : (
-    guts
+    innerStuff
   );
   return <Messages path={path}>{contents}</Messages>;
 };

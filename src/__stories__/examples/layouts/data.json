@@ -1,0 +1,9 @@
+{
+  "_selection": ".",
+  "a": "Alpha",
+  "b": "Bravo",
+  "c": "Charlie\nCharlie\nCharlie\nCharlie\nCharlie",
+  "d": "Delta",
+  "e": "Echo",
+  "f": "Foxtrot\nFoxtrot\nFoxtrot\nFoxtrot\nFoxtrot"
+}
