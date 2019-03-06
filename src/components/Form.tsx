@@ -81,6 +81,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
               }}
               fieldComponents={fieldComponents}
               disabled={disabled}
+              layout={layout}
             />
           </Box>
         );

@@ -13,6 +13,9 @@ import { Theme, Tooltips } from './decorators';
 const data = require('./examples/layouts/data.json');
 const schema = require('./examples/layouts/schema.json');
 
+const dataNested = require('./examples/nested-layouts/data.json');
+const schemaNested = require('./examples/nested-layouts/schema.json');
+
 storiesOf('Layouts', module)
   .addDecorator(withKnobs)
   .addDecorator(Theme)
@@ -27,6 +30,20 @@ storiesOf('Layouts', module)
           selection="."
           onChange={action('onChange')}
           layout={select('layout', ['', '2-col', '3-col', 'hide-some', 'wild'], '')}
+        />
+      </Box>
+    );
+  })
+  .add('nested layouts', () => {
+    return (
+      <Box width="500px">
+        <Formtron
+          fieldComponents={fieldComponents}
+          value={dataNested}
+          schema={schemaNested}
+          selection="."
+          onChange={action('onChange')}
+          layout={select('layout', ['2-col', '4-col'], '2-col')}
         />
       </Box>
     );
