@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "type": "form",
+  "title": "Layout Examples",
+  "description": "Play with the layout prop in the knobs panel",
+  "layouts": {
+    "2-col": [
+      "a b",
+      "e d",
+      "c f"
+    ],
+    "3-col": [
+      "a b c",
+      "d e f"
+    ],
+    "hide-some": [
+      "a b",
+      "d e"
+    ],
+    "wild": [
+      "d d f",
+      "b b f",
+      "c c e",
+      "c c a"
+    ]
+  },
+  "fields": {
+    "a": {
+      "type": "string",
+      "title": "A"
+    },
+    "b": {
+      "type": "string",
+      "title": "B"
+    },
+    "c": {
+      "type": "markdown",
+      "title": "C"
+    },
+    "d": {
+      "type": "string",
+      "title": "D"
+    },
+    "e": {
+      "type": "string",
+      "title": "E"
+    },
+    "f": {
+      "type": "markdown",
+      "title": "F"
+    }
+  }
+}

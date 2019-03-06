@@ -56,6 +56,7 @@
       }
     },
     "info.license.name": {
+      "area": "license",
       "type": "string",
       "title": "License"
     }

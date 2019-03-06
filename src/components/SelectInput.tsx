@@ -33,15 +33,15 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
               : async (search: string) => [{ value: search, label: search }];
         return (
-          <Flex width="100%" alignItems="center">
-            <Box flex="1">
+          <Box>
+            <Box>
               <Messages path={path}>
                 <Label htmlFor={id} variant={variant} disabled={disabled}>
                   {schema.title}
                 </Label>
               </Messages>
             </Box>
-            <Flex flex="1" width="100%">
+            <Box>
               <DraftValue value={value} onChange={onChange}>
                 {({ value, onChange }) => (
                   <Flex width="100%">
@@ -79,8 +79,8 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                   </Flex>
                 )}
               </DraftValue>
-            </Flex>
-          </Flex>
+            </Box>
+          </Box>
         );
       }}
     </AutocompletionContext.Consumer>
@@ -118,7 +118,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                 {schema.title}
               </Label>
             </Messages>
-            <Flex width="100%">
+            <Flex>
               <Box flex="1">
                 <Select
                   key={JSON.stringify(value) + JSON.stringify(schema.options)}

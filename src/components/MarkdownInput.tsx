@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Textarea } from '@stoplight/ui-kit';
+import { Box, Textarea } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
@@ -22,15 +22,15 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({
   return (
     <ThrottleValue ms={1000} value={value} onChange={onChange}>
       {({ value, onChange }) => (
-        <Flex width="100%" alignItems="center">
-          <Box flex="1">
+        <Box>
+          <Box>
             <Messages path={path}>
               <Label htmlFor={id} variant={variant} disabled={disabled}>
                 {schema.title}
               </Label>
             </Messages>
           </Box>
-          <Flex flex="1" width="100%">
+          <Box>
             <Textarea
               width="100%"
               id={id}
@@ -40,8 +40,8 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({
               invalid={variant === Variant.invalid}
               disabled={disabled}
             />
-          </Flex>
-        </Flex>
+          </Box>
+        </Box>
       )}
     </ThrottleValue>
   );
