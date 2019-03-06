@@ -7,11 +7,13 @@
     "2-col": [
       "a b",
       "c d",
-      "e e"
+      "e e",
+      "j j"
     ],
     "4-col": [
       "a b c d",
-      "e e e e"
+      "e e e e",
+      "j j j j"
     ]
   },
   "fields": {
@@ -59,6 +61,51 @@
         "i": {
           "type": "string",
           "title": "I"
+        }
+      }
+    },
+    "j": {
+      "title": "J",
+      "type": "object",
+      "default": {
+        "f": "",
+        "g": "",
+        "h": "",
+        "i": ""
+      },
+      "keys": {
+        "title": "key",
+        "type": "string"
+      },
+      "values": {
+        "type": "form",
+        "title": "value",
+        "layouts": {
+          "2-col": [
+            "f", "g", "h", "i"
+          ],
+          "4-col": [
+            "f g",
+            "h i"
+          ]
+        },
+        "fields": {
+          "f": {
+            "type": "string",
+            "title": "F"
+          },
+          "g": {
+            "type": "string",
+            "title": "G"
+          },
+          "h": {
+            "type": "string",
+            "title": "H"
+          },
+          "i": {
+            "type": "string",
+            "title": "I"
+          }
         }
       }
     }
