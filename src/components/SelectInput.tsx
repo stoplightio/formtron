@@ -64,7 +64,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         allowCreate={!schema.strict}
                         invalid={variant === Variant.invalid}
                         disabled={disabled}
-                        {...schema.custom.props}
+                        {...schema.custom && schema.custom.props}
                       />
                     </Box>
                     {CustomWidget && (
@@ -143,7 +143,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   allowCreate={!schema.strict}
                   invalid={variant === Variant.invalid}
                   disabled={disabled}
-                  {...schema.custom.props}
+                  {...schema.custom && schema.custom.props}
                 />
               </Box>
               {CustomWidget && (
