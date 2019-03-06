@@ -1,0 +1,13 @@
+{
+  "_selection": ".",
+  "a": "Alpha",
+  "b": "Bravo",
+  "c": "Charlie",
+  "d": "Delta",
+  "e": {
+    "f": "Foxtrot",
+    "g": "Golf",
+    "h": "Hotel",
+    "i": "India"
+  }
+}
