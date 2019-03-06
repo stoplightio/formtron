@@ -1,4 +1,4 @@
-import { Box, Flex, Input } from '@stoplight/ui-kit';
+import { Box, Input } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
@@ -19,15 +19,15 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
   const { variant } = useDiagnostics(path);
 
   return (
-    <Flex width="100%" alignItems="center">
-      <Box flex="1">
+    <Box>
+      <Box>
         <Messages path={path}>
           <Label htmlFor={id} variant={variant} disabled={disabled}>
             {schema.title}
           </Label>
         </Messages>
       </Box>
-      <Flex flex="1" width="100%">
+      <Box>
         <Input
           type="text"
           id={id}
@@ -39,8 +39,9 @@ export const StringInput: React.FunctionComponent<IFormtronControl> = ({
           flex="1"
           invalid={variant === Variant.invalid}
           disabled={disabled}
+          width="100%"
         />
-      </Flex>
-    </Flex>
+      </Box>
+    </Box>
   );
 };

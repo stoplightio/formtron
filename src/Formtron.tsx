@@ -15,6 +15,7 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
   fieldComponents,
   onInternalChange,
   disabled = false,
+  layout,
 }) => (
   <ThemeZone name={themeName}>
     <DraftValue
@@ -35,6 +36,7 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
             path={selection.split('.')}
             fieldComponents={fieldComponents}
             disabled={disabled}
+            layout={layout}
           />
         );
       }}
