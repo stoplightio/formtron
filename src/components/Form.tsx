@@ -34,10 +34,9 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
 
   const grid = layout && schema.layouts && schema.layouts[layout];
   const rows = grid ? parseGridTemplateAreas(grid) : fallbackRows;
-  const innerStuff = [];
-  let index = -1;
+  const contentElms = [];
   for (const row of rows) {
-    const cells = [];
+    const cells: React.ReactElement[] = [];
     // preprocess row
     const flex = {};
     const cellNames = [];
@@ -49,14 +48,14 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         cellNames.push(gridArea);
       }
     }
-    for (const gridArea of cellNames) {
-      index++;
+
+    cellNames.forEach((gridArea, index) => {
       const name = gridAreaToName[gridArea];
       const formId = `${name}-${index}`;
       const propSchema = schema.fields[name];
       if (propSchema.show) {
         const show = evaluate(propSchema.show, value, name, true);
-        if (!show) continue;
+        if (!show) return;
       }
       if (propSchema.evalOptions) {
         propSchema.options = evaluate(propSchema.evalOptions, value, name, []);
@@ -66,7 +65,13 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         cells.push(<Box flex={flex[gridArea]}>No appropriate widget could be found for type "{propSchema.type}"</Box>);
       } else {
         cells.push(
-          <Box flex={flex[gridArea]} key={formId} m={1}>
+          <Box
+            flex={flex[gridArea]}
+            key={formId}
+            ml={index === 0 ? 0 : '10px'}
+            mr={index === cellNames.length - 1 ? 0 : '10px'}
+            my="12px"
+          >
             <Widget
               id={formId}
               value={value[name]}
@@ -83,12 +88,13 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
           </Box>
         );
       }
-    }
+    });
+
     if (cells.length > 0) {
-      innerStuff.push(<Flex>{cells}</Flex>);
+      contentElms.push(<Flex>{cells}</Flex>);
     }
   }
-  // const innerStuff = (
+  // const contentElms = (
   //   <div
   //     style={{
   //       display: 'grid',
@@ -140,10 +146,10 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       <Label disabled={disabled}>
         <i>{schema.description}</i>
       </Label>
-      {innerStuff}
+      {contentElms}
     </FieldSet>
   ) : (
-    innerStuff
+    contentElms
   );
   return <Messages path={path}>{contents}</Messages>;
 };
