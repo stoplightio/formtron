@@ -1,11 +1,14 @@
 import * as React from 'react';
 
-import { Box, Button, Flex, Text } from '@stoplight/ui-kit';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import { Box, Flex, Icon, Text } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
+import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
@@ -32,69 +35,87 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   return (
     <Messages path={path}>
       <FieldSet position="relative" invalid={variant === Variant.invalid} legend={schema.title}>
-        {easyObject.items.map((entry, index) => {
-          const [key, val] = entry;
-          return (
-            <Flex key={`${index}-${easyObject.items.length}`}>
-              <Flex flexDirection="column">
-                <Button
-                  type="button"
-                  title="Insert item"
-                  disabled={disabled}
-                  onClick={() => onChange(easyObject.insert(index))}
+        {easyObject.items.length === 0 ? (
+          <Text
+            fontWeight={800}
+            fontSize="11px"
+            cursor="pointer"
+            my={3}
+            mx={2}
+            color="rgb(118, 130, 143)"
+            display="inline-block"
+            onClick={() => onChange(easyObject.append())}
+          >
+            <Icon mr={2} icon={faPlus} /> Add Item
+          </Text>
+        ) : (
+          easyObject.items.map((entry, index) => {
+            const [key, val] = entry;
+            return (
+              <Flex my={3} mx={2} key={`${index}-${easyObject.items.length}`}>
+                <DraftValue
+                  value={key}
+                  onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}
                 >
-                  <Text color="green">+</Text>
-                </Button>
-                <Button
-                  type="button"
-                  title="Delete item"
-                  disabled={disabled}
-                  onClick={() => onChange(easyObject.remove(index))}
-                >
-                  <Text color="red">x</Text>
-                </Button>
+                  {({ value, onChange }) => {
+                    return (
+                      <React.Fragment>
+                        <Box flex={1} mr="10px">
+                          <KeyWidget
+                            id={(id && `${id}-${index}`) || undefined}
+                            value={value}
+                            schema={schema.keys}
+                            path={[...path, key]}
+                            fieldComponents={fieldComponents}
+                            onChange={_key => onChange(_key)}
+                            disabled={disabled}
+                            layout={layout}
+                          />
+                        </Box>
+                      </React.Fragment>
+                    );
+                  }}
+                </DraftValue>
+                <Box flex={1} mx="10px">
+                  <ValWidget
+                    id={(id && `${id}-${index}`) || undefined}
+                    value={val}
+                    schema={schema.values}
+                    onChange={_val => onChange(easyObject.updateVal(index, _val))}
+                    path={[...path, key]}
+                    fieldComponents={fieldComponents}
+                    disabled={disabled}
+                    layout={layout}
+                  />
+                </Box>
+
+                <Flex flexDirection="column" alignItems="center" mx="10px">
+                  <Label>Add</Label>
+
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
+                    <Icon
+                      icon={faPlus}
+                      color="rgb(118, 130, 143)"
+                      onClick={() => onChange(easyObject.insert(index + 1))}
+                    />
+                  </Flex>
+                </Flex>
+
+                <Flex flexDirection="column" alignItems="center" ml="10px">
+                  <Label>Remove</Label>
+
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
+                    <Icon
+                      icon={faTrash}
+                      color="rgb(118, 130, 143)"
+                      onClick={() => onChange(easyObject.remove(index))}
+                    />
+                  </Flex>
+                </Flex>
               </Flex>
-              <DraftValue
-                value={key}
-                onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}
-              >
-                {({ value, onChange }) => {
-                  return (
-                    <React.Fragment>
-                      <Box flex={1} ml={2}>
-                        <KeyWidget
-                          id={(id && `${id}-${index}`) || undefined}
-                          value={value}
-                          schema={schema.keys}
-                          path={[...path, key]}
-                          fieldComponents={fieldComponents}
-                          onChange={_key => onChange(_key)}
-                          disabled={disabled}
-                          layout={layout}
-                        />
-                      </Box>
-                    </React.Fragment>
-                  );
-                }}
-              </DraftValue>
-              <Box flex={1} ml={2}>
-                <ValWidget
-                  id={(id && `${id}-${index}`) || undefined}
-                  value={val}
-                  schema={schema.values}
-                  onChange={_val => onChange(easyObject.updateVal(index, _val))}
-                  path={[...path, key]}
-                  fieldComponents={fieldComponents}
-                  disabled={disabled}
-                  layout={layout}
-                />
-              </Box>
-            </Flex>
-          );
-        })}
-        <Button type="button" title="Append item" disabled={disabled} onClick={() => onChange(easyObject.append())}>
-          <Text color="green">+</Text>
-        </Button>
+            );
+          })
+        )}
       </FieldSet>
     </Messages>
   );
