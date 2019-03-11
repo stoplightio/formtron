@@ -33,14 +33,14 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
           <Text
             fontWeight={800}
             fontSize="11px"
-            cursor="pointer"
             my={3}
             mx={2}
             color="rgb(118, 130, 143)"
+            opacity={disabled ? 0.6 : 1}
             display="inline-block"
-            onClick={() => onChange(easyArray.append())}
+            onClick={() => !disabled && onChange(easyArray.append())}
           >
-            <Icon mr={2} icon={faPlus} /> Add Item
+            <Icon cursor={disabled ? 'not-allowed' : 'pointer'} mr={2} icon={faPlus} disabled={disabled} /> Add Item
           </Text>
         ) : (
           easyArray.items.map((val: any, index: number) => {
@@ -60,22 +60,30 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                 </Box>
 
                 <Flex flexDirection="column" alignItems="center" mx="10px">
-                  <Label>Add</Label>
+                  <Label disabled={disabled}>Add</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Icon
+                      cursor={disabled ? 'not-allowed' : 'pointer'}
+                      onClick={() => !disabled && onChange(easyArray.insert(index + 1))}
                       icon={faPlus}
                       color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyArray.insert(index + 1))}
+                      opacity={disabled ? 0.6 : 1}
                     />
                   </Flex>
                 </Flex>
 
                 <Flex flexDirection="column" alignItems="center" ml="10px">
-                  <Label>Remove</Label>
+                  <Label disabled={disabled}>Remove</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Icon icon={faTrash} color="rgb(118, 130, 143)" onClick={() => onChange(easyArray.remove(index))} />
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
+                    <Icon
+                      cursor={disabled ? 'not-allowed' : 'pointer'}
+                      icon={faTrash}
+                      color="rgb(118, 130, 143)"
+                      opacity={disabled ? 0.6 : 1}
+                      onClick={() => !disabled && onChange(easyArray.remove(index))}
+                    />
                   </Flex>
                 </Flex>
               </Flex>

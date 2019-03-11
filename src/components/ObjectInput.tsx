@@ -39,14 +39,14 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
           <Text
             fontWeight={800}
             fontSize="11px"
-            cursor="pointer"
             my={3}
             mx={2}
             color="rgb(118, 130, 143)"
+            opacity={disabled ? 0.6 : 1}
             display="inline-block"
-            onClick={() => onChange(easyObject.append())}
+            onClick={() => !disabled && onChange(easyObject.append())}
           >
-            <Icon mr={2} icon={faPlus} /> Add Item
+            <Icon cursor={disabled ? 'not-allowed' : 'pointer'} mr={2} icon={faPlus} /> Add Item
           </Text>
         ) : (
           easyObject.items.map((entry, index) => {
@@ -90,25 +90,29 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 </Box>
 
                 <Flex flexDirection="column" alignItems="center" mx="10px">
-                  <Label>Add</Label>
+                  <Label disabled={disabled}>Add</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Icon
+                      cursor={disabled ? 'not-allowed' : 'pointer'}
                       icon={faPlus}
                       color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyObject.insert(index + 1))}
+                      opacity={disabled ? 0.6 : 1}
+                      onClick={() => !disabled && onChange(easyObject.insert(index + 1))}
                     />
                   </Flex>
                 </Flex>
 
                 <Flex flexDirection="column" alignItems="center" ml="10px">
-                  <Label>Remove</Label>
+                  <Label disabled={disabled}>Remove</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Icon
+                      cursor={disabled ? 'not-allowed' : 'pointer'}
                       icon={faTrash}
                       color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyObject.remove(index))}
+                      opacity={disabled ? 0.6 : 1}
+                      onClick={() => !disabled && onChange(easyObject.remove(index))}
                     />
                   </Flex>
                 </Flex>
