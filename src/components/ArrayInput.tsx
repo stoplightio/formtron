@@ -17,6 +17,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   disabled = false,
   path,
+  layout,
 }) => {
   const { variant } = useDiagnostics(path);
   const easyArray = new EasyArray(value, schema.default);
@@ -55,6 +56,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   fieldComponents={fieldComponents}
                   onChange={_val => onChange(easyArray.update(index, _val))}
                   disabled={disabled}
+                  layout={layout}
                 />
               </Box>
             </Flex>

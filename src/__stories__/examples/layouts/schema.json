@@ -18,20 +18,26 @@
       "d e"
     ],
     "wild": [
-      "d d f",
-      "b b f",
-      "c c e",
-      "c c a"
+      "c c a",
+      "d b",
+      "f f f e"
     ]
   },
   "fields": {
     "a": {
-      "type": "string",
-      "title": "A"
+      "type": "select",
+      "title": "A",
+      "options": [
+        "show all",
+        "hide B",
+        "hide E and D"
+      ],
+      "strict": true
     },
     "b": {
       "type": "string",
-      "title": "B"
+      "title": "B",
+      "show": "a !== 'hide B'"
     },
     "c": {
       "type": "markdown",
@@ -39,11 +45,13 @@
     },
     "d": {
       "type": "string",
-      "title": "D"
+      "title": "D",
+      "show": "a !== 'hide E and D'"
     },
     "e": {
       "type": "string",
-      "title": "E"
+      "title": "E",
+      "show": "a !== 'hide E and D'"
     },
     "f": {
       "type": "markdown",

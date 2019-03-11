@@ -1,0 +1,39 @@
+{
+  "_selection": ".",
+  "a": "Alpha",
+  "b": "Bravo",
+  "c": "Charlie",
+  "d": "Delta",
+  "e": {
+    "f": "Foxtrot",
+    "g": "Golf",
+    "h": "Hotel",
+    "i": "India"
+  },
+  "j": {
+    "k": {
+      "f": "Foxtrot",
+      "g": "Golf",
+      "h": "Hotel",
+      "i": "India"
+    },
+    "l": {
+      "f": "Foxtrot",
+      "g": "Golf",
+      "h": "Hotel",
+      "i": "India"
+    },
+    "m": {
+      "f": "Foxtrot",
+      "g": "Golf",
+      "h": "Hotel",
+      "i": "India"
+    },
+    "n": {
+      "f": "Foxtrot",
+      "g": "Golf",
+      "h": "Hotel",
+      "i": "India"
+    }
+  }
+}

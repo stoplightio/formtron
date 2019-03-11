@@ -19,6 +19,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   fieldComponents,
   path,
   disabled = false,
+  layout,
 }) => {
   const { variant } = useDiagnostics(path);
   // Make this thing an array
@@ -69,6 +70,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                           fieldComponents={fieldComponents}
                           onChange={_key => onChange(_key)}
                           disabled={disabled}
+                          layout={layout}
                         />
                       </Box>
                     </React.Fragment>
@@ -84,6 +86,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   path={[...path, key]}
                   fieldComponents={fieldComponents}
                   disabled={disabled}
+                  layout={layout}
                 />
               </Box>
             </Flex>
