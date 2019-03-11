@@ -31,11 +31,9 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
     gridAreaToName[gridArea] = name;
     fallbackRows.push([gridArea]);
   }
-  console.log(gridAreaToName);
 
   const grid = layout && schema.layouts && schema.layouts[layout];
   const rows = grid ? parseGridTemplateAreas(grid) : fallbackRows;
-  console.log(rows);
   const innerStuff = [];
   let index = -1;
   for (const row of rows) {
@@ -54,7 +52,6 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
     for (const gridArea of cellNames) {
       index++;
       const name = gridAreaToName[gridArea];
-      console.log(name);
       const formId = `${name}-${index}`;
       const propSchema = schema.fields[name];
       if (propSchema.show) {
