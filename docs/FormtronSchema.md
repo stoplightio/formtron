@@ -1,4 +1,14 @@
-# Formtron UI Schema
+# Formtron UI Schema <!-- omit in toc -->
+
+- [Introduction](#introduction)
+- [Mapping form fields to Object keys](#mapping-form-fields-to-object-keys)
+- [Escaping literal '\*' and '?' in paths](#escaping-literal--and--in-paths)
+- [Conditional / Dynamic behavior](#conditional--dynamic-behavior)
+- [Primitive Field Types](#primitive-field-types)
+- [Complex Field Types](#complex-field-types)
+- [Layouts](#layouts)
+
+## Introduction
 
 The UI schema is defined using JSON schema in formtron/formtron-schema.json.
 (When you are authoring schemas, add a `"$schema":` line to enable VS Code's built-in JSON schema validation.)
@@ -158,7 +168,7 @@ then you can escape the value in the path with a double-backslash.
 
 ## Conditional / Dynamic behavior
 
-### Conditional showing / hiding of fields
+### Conditional showing / hiding of fields <!-- omit in toc -->
 
 Sometimes you want fields to only be visible if certain other fields have certain values.
 Formtron includes an expression interpreter that lets you add this conditional logic.
@@ -205,7 +215,7 @@ You can only reference a field that precedes the current field.
 (E.g. you cannot have a field's visibility depend on its own value, or the value of a field below it.)
 This ensures a nice top-to-bottom data dependency that keeps the form from becoming a nightmare to debug.
 
-### Dynamic `options` for selects
+### Dynamic `options` for selects <!-- omit in toc -->
 
 The ui-kit "select" and "multiselect" Formtron components allow specifying an `evalOptions` property.
 It is just like an `options` property except instead of an array, it is a string containing a JavaScript expression that should evaluate to an array.
@@ -233,7 +243,7 @@ Example:
 }
 ```
 
-### `strict` option for selects
+### `strict` option for selects <!-- omit in toc -->
 
 The ui-kit "select" and "multiselect" Formtron components allow specifying a `strict` boolean property.
 It defaults to `false`. If set to true, then users will not be allowed
@@ -367,3 +377,62 @@ Here's an example.
   }
 }
 ```
+
+## Layouts
+
+Forms support defining layouts using a syntax inspired by CSS Grids:
+
+```json
+{
+  "type": "form",
+  "title": "Layout Examples",
+  "layouts": {
+    "2-col": [
+      "a b",
+      "e d",
+      "c f"
+    ],
+    "3-col": [
+      "a b c",
+      "d e f"
+    ],
+  },
+...
+```
+
+> By default, none of these layouts will be active - fields will just be layout out vertically one after the other. To activate a layout, specify a layout prop in the Formtron component. (E.g. `<Formtron layout="main">`)
+
+Similarly to CSS Grids, you can control the relative width of fields within rows by repeating an area name. This layout makes `address` take up 2/3 width:
+
+```json
+"layouts": {
+  "main": [
+    "address address phone"
+  ]
+}
+```
+
+Typically the area names are inferred from the property names, however you can override this if necessary using the `area` property. For instance, here both `license.id` and `id` would get the same inferred name, so we have to override the infered name for one of them.
+
+```json
+{
+  "type": "form",
+  "title": "Layout Area Example",
+  "layouts": {
+    "main": ["id license"],
+  },
+  "fields": {
+    "id": {
+      "type": "string",
+      "title": "Id"
+    },
+    "info.license.id": {
+      "type": "string",
+      "title": "License",
+      "area": "license"
+    }
+  }
+}
+```
+
+See the [examples](https://stoplightio.github.io/formtron/?selectedKind=Layouts&selectedStory=examples&full=0&addons=1&stories=1&panelRight=1&addonPanel=storybooks%2Fstorybook-addon-knobs) for demos.

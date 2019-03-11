@@ -13,6 +13,12 @@
         "title": {
           "type": "string"
         },
+        "show": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string"
+        },
         "custom": {}
       },
       "additionalProperties": true
