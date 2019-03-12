@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { Box, Flex, Icon, Text } from '@stoplight/ui-kit';
+import { Box, Button, Flex, Icon } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
@@ -30,7 +30,7 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
     <Messages path={path}>
       <FieldSet position="relative" variant={variant} legend={schema.title}>
         {easyArray.items.length === 0 ? (
-          <Text
+          <Button
             fontWeight={800}
             fontSize="11px"
             cursor="pointer"
@@ -38,10 +38,11 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
             mx={2}
             color="rgb(118, 130, 143)"
             display="inline-block"
+            border="transparent"
             onClick={() => onChange(easyArray.append())}
           >
             <Icon mr={2} icon={faPlus} /> Add Item
-          </Text>
+          </Button>
         ) : (
           easyArray.items.map((val: any, index: number) => {
             return (
@@ -63,11 +64,9 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label>Add</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Icon
-                      icon={faPlus}
-                      color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyArray.insert(index + 1))}
-                    />
+                    <Button border="transparent" onClick={() => onChange(easyArray.insert(index + 1))}>
+                      <Icon icon={faPlus} color="rgb(118, 130, 143)" />
+                    </Button>
                   </Flex>
                 </Flex>
 
@@ -75,7 +74,9 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label>Remove</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Icon icon={faTrash} color="rgb(118, 130, 143)" onClick={() => onChange(easyArray.remove(index))} />
+                    <Button border="transparent" onClick={() => onChange(easyArray.remove(index))}>
+                      <Icon icon={faTrash} color="rgb(118, 130, 143)" />
+                    </Button>
                   </Flex>
                 </Flex>
               </Flex>

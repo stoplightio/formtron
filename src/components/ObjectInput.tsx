@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { Box, Flex, Icon, Text } from '@stoplight/ui-kit';
+import { Box, Button, Flex, Icon } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
@@ -36,7 +36,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
     <Messages path={path}>
       <FieldSet position="relative" invalid={variant === Variant.invalid} legend={schema.title}>
         {easyObject.items.length === 0 ? (
-          <Text
+          <Button
             fontWeight={800}
             fontSize="11px"
             cursor="pointer"
@@ -44,10 +44,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
             mx={2}
             color="rgb(118, 130, 143)"
             display="inline-block"
+            border="transparent"
             onClick={() => onChange(easyObject.append())}
           >
             <Icon mr={2} icon={faPlus} /> Add Item
-          </Text>
+          </Button>
         ) : (
           easyObject.items.map((entry, index) => {
             const [key, val] = entry;
@@ -93,11 +94,9 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label>Add</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Icon
-                      icon={faPlus}
-                      color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyObject.insert(index + 1))}
-                    />
+                    <Button border="transparent" onClick={() => onChange(easyObject.insert(index + 1))}>
+                      <Icon icon={faPlus} color="rgb(118, 130, 143)" />
+                    </Button>
                   </Flex>
                 </Flex>
 
@@ -105,11 +104,9 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label>Remove</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Icon
-                      icon={faTrash}
-                      color="rgb(118, 130, 143)"
-                      onClick={() => onChange(easyObject.remove(index))}
-                    />
+                    <Button border="transparent" onClick={() => onChange(easyObject.remove(index))}>
+                      <Icon icon={faTrash} color="rgb(118, 130, 143)" />
+                    </Button>
                   </Flex>
                 </Flex>
               </Flex>
