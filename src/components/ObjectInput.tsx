@@ -96,10 +96,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Button
                       border="transparent"
+                      height="100%"
                       disabled={disabled}
                       onClick={() => onChange(easyObject.insert(index + 1))}
                     >
-                      <Icon icon={faPlus} color="rgb(118, 130, 143)" />
+                      <Icon icon={faPlus} fontSize="15px" color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>
                 </Flex>
@@ -108,8 +109,13 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label disabled={disabled}>Remove</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
-                    <Button border="transparent" disabled={disabled} onClick={() => onChange(easyObject.remove(index))}>
-                      <Icon icon={faTrash} color="rgb(118, 130, 143)" />
+                    <Button
+                      border="transparent"
+                      height="100%"
+                      disabled={disabled}
+                      onClick={() => onChange(easyObject.remove(index))}
+                    >
+                      <Icon icon={faTrash} fontSize="15px" color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>
                 </Flex>

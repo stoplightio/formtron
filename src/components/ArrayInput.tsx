@@ -66,10 +66,11 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Button
                       border="transparent"
+                      height="100%"
                       onClick={() => onChange(easyArray.insert(index + 1))}
                       disabled={disabled}
                     >
-                      <Icon icon={faPlus} color="rgb(118, 130, 143)" />
+                      <Icon icon={faPlus} fontSize="15px" color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>
                 </Flex>
@@ -78,8 +79,8 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label disabled={disabled}>Remove</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center" disabled={disabled}>
-                    <Button border="transparent" onClick={() => onChange(easyArray.remove(index))}>
-                      <Icon icon={faTrash} color="rgb(118, 130, 143)" />
+                    <Button border="transparent" height="100%" onClick={() => onChange(easyArray.remove(index))}>
+                      <Icon icon={faTrash} fontSize="15px" color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>
                 </Flex>
