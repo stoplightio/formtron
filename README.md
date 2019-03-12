@@ -1,4 +1,4 @@
-# formtron 2.0 🎛
+# formtron 2.x 🎛
 
 <!-- BADGES -->
 
