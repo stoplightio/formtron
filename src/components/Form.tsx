@@ -21,6 +21,8 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   disabled = false,
   layout,
 }) => {
+  const { variant } = useDiagnostics(path);
+
   const { title, description, fields, layouts } = schema;
 
   const gridAreaToName = {};
@@ -104,8 +106,6 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   }
 
   if (title) {
-    const { variant } = useDiagnostics(path);
-
     contentElems = (
       <FieldSet legend={title} variant={variant} disabled={disabled}>
         <Label disabled={disabled}>
