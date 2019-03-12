@@ -30,8 +30,8 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
           schema.custom && schema.custom.source
             ? autocompletionSources[schema.custom.source]
             : schema.options
-              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async (search: string) => [{ value: search, label: search }];
+            ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+            : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
             <Box>
@@ -64,6 +64,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         allowCreate={!schema.strict}
                         invalid={variant === Variant.invalid}
                         disabled={disabled}
+                        searchable={false}
                         {...schema.custom && schema.custom.props}
                       />
                     </Box>
@@ -110,8 +111,8 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
           schema.custom && schema.custom.source
             ? autocompletionSources[schema.custom.source]
             : schema.options
-              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-              : async (search: string) => [{ value: search, label: search }];
+            ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+            : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
             <Messages path={path}>
@@ -143,6 +144,8 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   allowCreate={!schema.strict}
                   invalid={variant === Variant.invalid}
                   disabled={disabled}
+                  clearable={false}
+                  searchable={false}
                   {...schema.custom && schema.custom.props}
                 />
               </Box>

@@ -22,22 +22,26 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   layout,
 }) => {
   const { variant } = useDiagnostics(path);
-  const keys = Object.keys(schema.fields);
+
+  const { title, description, fields, layouts } = schema;
+
   const gridAreaToName = {};
   const fallbackRows = [];
-  for (const name of keys) {
-    const propSchema = schema.fields[name];
-    const gridArea = propSchema.area || shortName(name);
-    gridAreaToName[gridArea] = name;
+  let contentElems: React.ReactElement | React.ReactElement[] = [];
+
+  for (const fieldName in fields) {
+    const { area } = fields[fieldName];
+    const gridArea = area || shortName(fieldName);
+    gridAreaToName[gridArea] = fieldName;
     fallbackRows.push([gridArea]);
   }
 
-  const grid = layout && schema.layouts && schema.layouts[layout];
+  const grid = layout && layouts && layouts[layout];
   const rows = grid ? parseGridTemplateAreas(grid) : fallbackRows;
-  const innerStuff = [];
-  let index = -1;
+
   for (const row of rows) {
-    const cells = [];
+    const cells: React.ReactElement[] = [];
+
     // preprocess row
     const flex = {};
     const cellNames = [];
@@ -49,24 +53,35 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         cellNames.push(gridArea);
       }
     }
-    for (const gridArea of cellNames) {
-      index++;
+
+    cellNames.forEach((gridArea, index) => {
       const name = gridAreaToName[gridArea];
       const formId = `${name}-${index}`;
+
       const propSchema = schema.fields[name];
-      if (propSchema.show) {
-        const show = evaluate(propSchema.show, value, name, true);
-        if (!show) continue;
+      const { show, evalOptions, type } = propSchema;
+
+      // if evalutating show is false skip area
+      if (show && evaluate(show, value, name, true)) {
+        return;
       }
-      if (propSchema.evalOptions) {
-        propSchema.options = evaluate(propSchema.evalOptions, value, name, []);
+
+      if (evalOptions) {
+        propSchema.options = evaluate(evalOptions, value, name, []);
       }
-      const Widget = fieldComponents[propSchema.type];
+
+      const Widget = fieldComponents[type];
       if (Widget === undefined) {
-        cells.push(<Box flex={flex[gridArea]}>No appropriate widget could be found for type "{propSchema.type}"</Box>);
+        cells.push(<Box flex={flex[gridArea]}>No appropriate widget could be found for type "{type}"</Box>);
       } else {
         cells.push(
-          <Box flex={flex[gridArea]} key={formId} m={1}>
+          <Box
+            key={formId}
+            flex={flex[gridArea]}
+            ml={index === 0 ? 0 : '10px'}
+            mr={index === cellNames.length - 1 ? 0 : '10px'}
+            my="12px"
+          >
             <Widget
               id={formId}
               value={value[name]}
@@ -83,67 +98,23 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
           </Box>
         );
       }
-    }
+    });
+
     if (cells.length > 0) {
-      innerStuff.push(<Flex>{cells}</Flex>);
+      contentElems.push(<Flex>{cells}</Flex>);
     }
   }
-  // const innerStuff = (
-  //   <div
-  //     style={{
-  //       display: 'grid',
-  //       gridTemplateAreas: grid ? toGridTemplateAreas(grid) : undefined,
-  //       gridColumnGap: '10px',
-  //       gridRowGap: '10px',
-  //     }}
-  //   >
-  //     {keys.map((name, index) => {
-  //       const formId = `${name}-${index}`;
-  //       const propSchema = schema.fields[name];
-  //       const gridArea = propSchema.area || shortName(name);
-  //       // skip fields that aren't part of this layout
-  //       if (grid && !gridKeys.has(gridArea)) return null;
-  //       if (propSchema.show) {
-  //         const show = evaluate(propSchema.show, value, name, true);
-  //         if (!show) return null;
-  //       }
-  //       if (propSchema.evalOptions) {
-  //         propSchema.options = evaluate(propSchema.evalOptions, value, name, []);
-  //       }
-  //       const Widget = fieldComponents[propSchema.type];
-  //       if (Widget === undefined) {
-  //         throw new Error(`No appropriate widget could be found for type "${propSchema.type}"`);
-  //       }
-  //       const el = (
-  //         <div key={formId} style={grid ? { gridArea } : {}}>
-  //           <Widget
-  //             id={formId}
-  //             value={value[name]}
-  //             schema={propSchema}
-  //             path={replaceWildcards(name, path)}
-  //             onChange={(val: any) => {
-  //               const v = { ...value, [name]: val };
-  //               onChange(v);
-  //             }}
-  //             fieldComponents={fieldComponents}
-  //             disabled={disabled}
-  //           />
-  //         </div>
-  //       );
-  //       return el;
-  //     })}
-  //   </div>
-  // );
-  // _optionally_ wrap in a FieldSet.
-  const contents = schema.title ? (
-    <FieldSet legend={schema.title} variant={variant} disabled={disabled}>
-      <Label disabled={disabled}>
-        <i>{schema.description}</i>
-      </Label>
-      {innerStuff}
-    </FieldSet>
-  ) : (
-    innerStuff
-  );
-  return <Messages path={path}>{contents}</Messages>;
+
+  if (title) {
+    contentElems = (
+      <FieldSet legend={title} variant={variant} disabled={disabled}>
+        <Label disabled={disabled}>
+          <i>{description}</i>
+        </Label>
+        {contentElems}
+      </FieldSet>
+    );
+  }
+
+  return <Messages path={path}>{contentElems}</Messages>;
 };

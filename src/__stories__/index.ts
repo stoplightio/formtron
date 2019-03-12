@@ -12,3 +12,4 @@ import './ObjectInput';
 import './SelectInput';
 import './stories';
 import './StringInput';
+import './ToggleInput';

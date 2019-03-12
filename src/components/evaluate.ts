@@ -5,7 +5,7 @@ import { shortName } from './utils/shortName';
 // Compile expression or return cached compiled expression
 const compile = memoize(expr.compile);
 
-export function evaluate(str: string, context: any, currentProp: string, fallbackValue: any) {
+export function evaluate(str: string, context: any, currentProp: string, fallbackValue: any, debug: boolean = false) {
   // Transform `paths.*.*.responses.*.foo` into `foo`
   const _context = {};
   for (const prop in context) {
@@ -19,7 +19,9 @@ export function evaluate(str: string, context: any, currentProp: string, fallbac
   try {
     return compile(str)(_context);
   } catch (err) {
-    console.log(err, str, _context);
+    if (debug) {
+      console.log(err, str, _context);
+    }
     return fallbackValue;
   }
 }

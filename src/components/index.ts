@@ -7,6 +7,7 @@ import { MarkdownInput } from './MarkdownInput';
 import { ObjectInput } from './ObjectInput';
 import { MultiselectInput, SelectInput } from './SelectInput';
 import { StringInput } from './StringInput';
+import { ToggleInput } from './ToggleInput';
 
 export const fieldComponents = {
   array: ArrayInput,
@@ -19,6 +20,7 @@ export const fieldComponents = {
   multiselect: MultiselectInput,
   select: SelectInput,
   string: StringInput,
+  toggle: ToggleInput,
 };
 
 export * from './AutocompletionContext';

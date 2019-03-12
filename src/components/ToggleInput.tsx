@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex } from '@stoplight/ui-kit';
+import { Box, Flex, Toggle } from '@stoplight/ui-kit';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
@@ -8,7 +8,7 @@ import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
 
-export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
+export const ToggleInput: React.FunctionComponent<IFormtronControl> = ({
   id,
   value,
   onChange,
@@ -27,7 +27,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
         </Messages>
       </Box>
       <Flex alignItems="center" flex="1">
-        <Checkbox
+        <Toggle
           mr="auto"
           id={id}
           checked={value}
