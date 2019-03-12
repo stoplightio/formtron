@@ -8,6 +8,7 @@ import { IFormtronControl } from '..';
 
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
+import { IconButton } from './IconButton';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
@@ -39,12 +40,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
           <Button
             fontWeight={800}
             fontSize="11px"
-            my={3}
-            mx={2}
             color="rgb(118, 130, 143)"
             disabled={disabled}
             display="inline-block"
-            border="transparent"
+            borderColor="transparent"
+            backgroundColor="transparent"
             onClick={() => onChange(easyObject.append())}
           >
             <Icon mr={2} icon={faPlus} /> Add Item
@@ -94,14 +94,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label disabled={disabled}>Add</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
-                    <Button
-                      border="transparent"
-                      height="100%"
-                      disabled={disabled}
+                    <IconButton
+                      icon={faPlus}
                       onClick={() => onChange(easyObject.insert(index + 1))}
-                    >
-                      <Icon icon={faPlus} fontSize="15px" color="rgb(118, 130, 143)" />
-                    </Button>
+                      disabled={disabled}
+                    />
                   </Flex>
                 </Flex>
 
@@ -109,14 +106,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Label disabled={disabled}>Remove</Label>
 
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
-                    <Button
-                      border="transparent"
-                      height="100%"
-                      disabled={disabled}
-                      onClick={() => onChange(easyObject.remove(index))}
-                    >
-                      <Icon icon={faTrash} fontSize="15px" color="rgb(118, 130, 143)" />
-                    </Button>
+                    <IconButton icon={faTrash} onClick={() => onChange(easyObject.remove(index))} disabled={disabled} />
                   </Flex>
                 </Flex>
               </Flex>
