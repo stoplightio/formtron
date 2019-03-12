@@ -39,10 +39,10 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
           <Button
             fontWeight={800}
             fontSize="11px"
-            cursor="pointer"
             my={3}
             mx={2}
             color="rgb(118, 130, 143)"
+            disabled={disabled}
             display="inline-block"
             border="transparent"
             onClick={() => onChange(easyObject.append())}
@@ -91,20 +91,24 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                 </Box>
 
                 <Flex flexDirection="column" alignItems="center" mx="10px">
-                  <Label>Add</Label>
+                  <Label disabled={disabled}>Add</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Button border="transparent" onClick={() => onChange(easyObject.insert(index + 1))}>
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
+                    <Button
+                      border="transparent"
+                      disabled={disabled}
+                      onClick={() => onChange(easyObject.insert(index + 1))}
+                    >
                       <Icon icon={faPlus} color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>
                 </Flex>
 
                 <Flex flexDirection="column" alignItems="center" ml="10px">
-                  <Label>Remove</Label>
+                  <Label disabled={disabled}>Remove</Label>
 
-                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center" cursor="pointer">
-                    <Button border="transparent" onClick={() => onChange(easyObject.remove(index))}>
+                  <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
+                    <Button border="transparent" disabled={disabled} onClick={() => onChange(easyObject.remove(index))}>
                       <Icon icon={faTrash} color="rgb(118, 130, 143)" />
                     </Button>
                   </Flex>

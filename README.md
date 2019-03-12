@@ -44,6 +44,7 @@ The UI-Kit Field Components (`'formtron/components'`) exports:
   - multiselect
   - select
   - string
+  - toggle
 - auto-completion provider for `select` and `multiselect`
 - tooltips for every field to display diagnostic messages
 
