@@ -45,6 +45,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
             disabled={disabled}
             display="inline-block"
             border="transparent"
+            backgroundColor="transparent"
             onClick={() => onChange(easyObject.append())}
           >
             <Icon mr={2} icon={faPlus} /> Add Item
@@ -96,6 +97,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Button
                       border="transparent"
+                      backgroundColor="transparent"
                       height="100%"
                       disabled={disabled}
                       onClick={() => onChange(easyObject.insert(index + 1))}
@@ -111,6 +113,7 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
                   <Flex flex={1} width="100%" justifyContent="center" alignItems="center">
                     <Button
                       border="transparent"
+                      backgroundColor="transparent"
                       height="100%"
                       disabled={disabled}
                       onClick={() => onChange(easyObject.remove(index))}
