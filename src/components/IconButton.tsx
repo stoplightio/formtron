@@ -18,6 +18,7 @@ export const IconButton: React.FunctionComponent<IIconButton> = ({ disabled = fa
       height="100%"
       fontSize="15px"
       px={0}
+      py={0}
       onClick={onClick}
       disabled={disabled}
       color="rgb(118, 130, 143)"
