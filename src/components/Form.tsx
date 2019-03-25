@@ -62,7 +62,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       const { show, evalOptions, type } = propSchema;
 
       // if evalutating show is false skip area
-      if (show && evaluate(show, value, name, true)) {
+      if (show && !evaluate(show, value, name, true)) {
         return;
       }
 
