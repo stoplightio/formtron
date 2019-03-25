@@ -1,7 +1,6 @@
-import { DiagnosticSeverity, IRange } from '@stoplight/types';
 import * as React from 'react';
 
-import { boolean, number, text } from '@storybook/addon-knobs/react';
+import { boolean, select, text } from '@storybook/addon-knobs/react';
 
 import { ThemeZone } from '../theme';
 
@@ -15,8 +14,8 @@ export const Tooltips = (storyFn: Function) => {
     return [
       {
         message: text('message', ''),
-        severity: number('severity', DiagnosticSeverity.Warning),
-        range: {} as IRange,
+        // Will wanted it to be less TypeScript-ish hence numbers are listed
+        severity: select('severity', [0, 1, 2, 3], 1),
       },
     ];
   };
@@ -29,8 +28,8 @@ export const PathTooltips = (storyFn: Function) => {
       ? [
           {
             message: path.join(' > '),
-            severity: number('severity', DiagnosticSeverity.Warning),
-            range: {} as IRange,
+            // Will wanted it to be less TypeScript-ish hence numbers are listed
+            severity: select('severity', [0, 1, 2, 3], 1),
           },
         ]
       : [];
