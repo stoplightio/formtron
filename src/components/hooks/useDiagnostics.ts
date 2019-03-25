@@ -1,6 +1,7 @@
-import { DiagnosticSeverity, IDiagnostic, JsonPath } from '@stoplight/types';
+import { DiagnosticSeverity, JsonPath } from '@stoplight/types';
 import { useContext } from 'react';
 
+import { IFormtronDiagnostic } from '../../types';
 import { DiagnosticMessagesContext, IDiagnosticMessagesProvider } from '../DiagnosticMessagesContext';
 import { Variant } from '../types';
 
@@ -8,7 +9,7 @@ export type UseDiagnostics = (
   path: JsonPath
 ) => {
   variant: Variant;
-  messages: IDiagnostic[];
+  messages: IFormtronDiagnostic[];
 };
 
 export const useDiagnostics: UseDiagnostics = path => {
