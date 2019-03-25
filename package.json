@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@stoplight/memoize-one": "4.0.x",
+    "@stoplight/types": "^4.1.0",
     "expression-eval": "1.4.0"
   },
   "devDependencies": {

@@ -1,12 +1,6 @@
+import { IDiagnostic, JsonPath } from '@stoplight/types';
 import * as React from 'react';
 
-export interface IDiagnosticMessage {
-  severity: number;
-  severityLabel: string;
-  summary?: string;
-  message?: string;
-}
-
-export type IDiagnosticMessagesProvider = (path: string[]) => IDiagnosticMessage[];
+export type IDiagnosticMessagesProvider = (path: JsonPath) => IDiagnostic[];
 
 export const DiagnosticMessagesContext = React.createContext<IDiagnosticMessagesProvider>(() => []);
