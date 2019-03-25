@@ -1,21 +1,24 @@
+import { DiagnosticSeverity, JsonPath } from '@stoplight/types';
 import { useContext } from 'react';
 
-import { DiagnosticMessagesContext } from '../DiagnosticMessagesContext';
+import { IFormtronDiagnostic } from '../../types';
+import { DiagnosticMessagesContext, IDiagnosticMessagesProvider } from '../DiagnosticMessagesContext';
 import { Variant } from '../types';
 
-export const useDiagnostics = (path: string[]) => {
-  const getMessages = useContext(DiagnosticMessagesContext);
+export type UseDiagnostics = (
+  path: JsonPath
+) => {
+  variant: Variant;
+  messages: IFormtronDiagnostic[];
+};
+
+export const useDiagnostics: UseDiagnostics = path => {
+  const getMessages = useContext<IDiagnosticMessagesProvider>(DiagnosticMessagesContext);
   const messages = getMessages(path);
-  let severity = -1;
-  let severityLabel = '';
-  for (const message of messages) {
-    if (message.severity > severity) {
-      severity = message.severity;
-      severityLabel = message.severityLabel;
-    }
-  }
+  const severity = Math.min(...messages.map(({ severity }) => severity));
+
   let variant: Variant = Variant.normal;
-  if (severityLabel === 'warn') {
+  if (severity === DiagnosticSeverity.Error || severity === DiagnosticSeverity.Warning) {
     variant = Variant.invalid;
   }
   return { variant, messages };

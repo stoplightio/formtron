@@ -1,3 +1,4 @@
+import { IDiagnostic, IRange, Omit } from '@stoplight/types';
 import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
@@ -21,6 +22,11 @@ export interface IFormtron extends IFormtronCommon {
   selection: string;
   onInternalChange?: Function;
   themeName?: themeTypes;
+}
+
+export interface IFormtronDiagnostic extends Omit<IDiagnostic, 'range'> {
+  summary?: string;
+  range?: IRange;
 }
 
 export interface IAddOperation {
