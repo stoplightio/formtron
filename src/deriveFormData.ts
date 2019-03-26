@@ -50,7 +50,8 @@ export const deriveFormData = memoize((schema: any, data: any, selection: string
         if (origPath.includes('?')) {
           output[key] = vars[key];
         } else {
-          output[key] = get(data, path);
+          // There's one edge case where path = ""
+          output[key] = path === '' ? data : get(data, path);
         }
         unresolved.delete(key);
         break;

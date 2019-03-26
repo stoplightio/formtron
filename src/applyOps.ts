@@ -14,7 +14,15 @@ export const applyOps = (_data: any, ops: IOperation[]) =>
     for (const op of ops) {
       switch (op.op) {
         case 'add': {
-          set(data, op.path, op.value);
+          // There's one edge case where path = ""
+          if (op.path === '') {
+            for (const p in data) {
+              delete data[p];
+            }
+            Object.assign(data, op.value);
+          } else {
+            set(data, op.path, op.value);
+          }
           break;
         }
         case 'move': {
