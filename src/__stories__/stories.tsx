@@ -23,6 +23,9 @@ const dependentData = require('../__tests__/examples/dependent-variables/data.js
 const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
 const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
 
+const rootData = require('../__tests__/examples/root/data.json');
+const rootSchema = require('../__tests__/examples/root/schema.json');
+
 const customWidgetData = require('./examples/custom-widget/data.json');
 const customWidgetSchema = require('./examples/custom-widget/schema.json');
 
@@ -37,9 +40,6 @@ const showSchema = require('./examples/show/schema.json');
 
 const evalOptionsData = require('./examples/evalOptions/data.json');
 const evalOptionsSchema = require('./examples/evalOptions/schema.json');
-
-const rootData = require('./examples/root/data.json');
-const rootSchema = require('./examples/root/schema.json');
 
 // We need to load some Icons into the IconLibrary!
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
