@@ -145,4 +145,43 @@ describe('formtron/applyOps', () => {
       },
     });
   });
+  test('update root', () => {
+    const modifiedData = applyOps(
+      {
+        title: 'User',
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            description: "The user's full name.",
+          },
+          age: {
+            type: 'number',
+            minimum: 0,
+            maximum: 150,
+          },
+        },
+        required: ['name', 'age'],
+      },
+      [
+        {
+          op: 'add',
+          path: '',
+          value: {
+            title: 'bar',
+            foo: 'bar',
+          },
+        },
+        {
+          op: 'add',
+          path: 'title',
+          value: 'Hello',
+        },
+      ]
+    );
+    expect(modifiedData).toEqual({
+      title: 'Hello',
+      foo: 'bar',
+    });
+  });
 });

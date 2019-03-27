@@ -23,6 +23,9 @@ const dependentData = require('../__tests__/examples/dependent-variables/data.js
 const dependendSchema1 = require('../__tests__/examples/dependent-variables/schemaA.json');
 const dependentSchema2 = require('../__tests__/examples/dependent-variables/schemaB.json');
 
+const rootData = require('../__tests__/examples/root/data.json');
+const rootSchema = require('../__tests__/examples/root/schema.json');
+
 const customWidgetData = require('./examples/custom-widget/data.json');
 const customWidgetSchema = require('./examples/custom-widget/schema.json');
 
@@ -83,4 +86,7 @@ storiesOf('formtron', module)
     return (
       <FormtronDebugger input={evalOptionsData} schema={evalOptionsSchema} selection={evalOptionsData._selection} />
     );
+  })
+  .add('root data node', () => {
+    return <FormtronDebugger input={rootData} schema={rootSchema} selection="title" />;
   });

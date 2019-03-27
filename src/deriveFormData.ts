@@ -5,7 +5,7 @@ import { Dictionary } from 'ts-essentials';
 import memoize from '@stoplight/memoize-one';
 
 const substituteVariables = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
-  const _selection = selection.split('.');
+  const _selection = selection.split('.').filter(x => x !== '');
   const _path = path.split('.');
   return _path
     .map((part, index) => {
@@ -50,7 +50,8 @@ export const deriveFormData = memoize((schema: any, data: any, selection: string
         if (origPath.includes('?')) {
           output[key] = vars[key];
         } else {
-          output[key] = get(data, path);
+          // There's one edge case where path = ""
+          output[key] = path === '' ? data : get(data, path);
         }
         unresolved.delete(key);
         break;

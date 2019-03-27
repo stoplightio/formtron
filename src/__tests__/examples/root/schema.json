@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "type": "form",
+  "custom": {
+    "title": "Model",
+    "description": "A single definition"
+  },
+  "layouts": {
+    "default": ["title", "description", "schema"]
+  },
+  "fields": {
+    "": {
+      "type": "json",
+      "title": "Schema",
+      "area": "schema"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "description": {
+      "type": "markdown",
+      "title": "Description"
+    }
+  }
+}

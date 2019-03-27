@@ -16,4 +16,12 @@ describe('formtron/deriveFormData', () => {
       });
     }
   });
+  describe('update root', () => {
+    const schema = require(`./examples/root/schema.json`);
+    const data = require(`./examples/root/data.json`);
+    test('empty selection', () => {
+      const formdata = deriveFormData(schema, data, '');
+      expect(formdata['']).toEqual(data);
+    });
+  });
 });

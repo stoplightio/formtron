@@ -109,6 +109,7 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                   this.setState(state => ({ ...state, form }));
                 }}
                 disabled={boolean('disabled', false)}
+                layout="default"
               />
               <Button
                 type="button"
