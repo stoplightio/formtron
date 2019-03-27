@@ -8,7 +8,7 @@ export const customWidgets = {
   randomNumber: (props: IFormtronControl) => (
     <Button
       type="button"
-      ml={2}
+      ml={7}
       fontSize={4}
       disabled={props.disabled}
       onClick={() => props.onChange(String(Math.floor(Math.random() * 500)))}
@@ -18,7 +18,7 @@ export const customWidgets = {
   ),
   randomOption: (props: IFormtronControl) => (
     <Button
-      ml={2}
+      ml={7}
       fontSize={4}
       type="button"
       disabled={props.disabled}
@@ -30,7 +30,7 @@ export const customWidgets = {
   addMoreAwesomeness: (props: IFormtronControl) => (
     <Button
       title="Add more awesomeness"
-      ml={2}
+      ml={7}
       fontSize={4}
       type="button"
       disabled={props.disabled}

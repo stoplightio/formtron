@@ -15,7 +15,7 @@ storiesOf('Inputs', module)
   .addDecorator(Tooltips)
   .add('StringInput', () => {
     return (
-      <Box width="300px" m={3}>
+      <Box width="300px" m={11}>
         <StringInput
           value={text('value', 'some text')}
           path={[]}

@@ -14,7 +14,7 @@ storiesOf('Inputs', module)
   .addDecorator(Tooltips)
   .add('Messages', () => {
     return (
-      <Flex flexDirection="column" width="300px" m={3}>
+      <Flex flexDirection="column" width="300px" m={11}>
         <Messages path={[]}>
           <IntegerInput
             value={42}
