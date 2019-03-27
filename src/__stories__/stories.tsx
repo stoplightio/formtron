@@ -88,5 +88,5 @@ storiesOf('formtron', module)
     );
   })
   .add('root data node', () => {
-    return <FormtronDebugger input={rootData} schema={rootSchema} selection="" />;
+    return <FormtronDebugger input={rootData} schema={rootSchema} selection="title" />;
   });

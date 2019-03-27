@@ -5,7 +5,7 @@ import { Dictionary } from 'ts-essentials';
 import memoize from '@stoplight/memoize-one';
 
 const substituteVariables = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
-  const _selection = selection.split('.');
+  const _selection = selection.split('.').filter(x => x !== '');
   const _path = path.split('.');
   return _path
     .map((part, index) => {
