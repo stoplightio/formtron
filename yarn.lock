@@ -1679,10 +1679,10 @@
   resolved "https://registry.yarnpkg.com/@stoplight/types/-/types-4.1.0.tgz#23a4a987fe1344339e33ee81c4608340c842ab44"
   integrity sha512-2zcUn/jtD4tqonsBoX4QHNNKXE6llNMaS7V4PkRDFkssIIVPB0gZjLWLeR//dY/aaFriO7kdhNss1UAMTLNvcA==
 
-"@stoplight/ui-kit@^1.46.0":
-  version "1.46.0"
-  resolved "https://registry.yarnpkg.com/@stoplight/ui-kit/-/ui-kit-1.46.0.tgz#19424d1c6de60128b40afc503a1a2497d8209d2a"
-  integrity sha512-C3dTyvCJdW0BjPLwnXFFR4zCakAqHEvrou4+0zlYb5nS8oiVMZg5MlIShTJ2Bg00n7KPQvt8JAQoQjgBhClTBw==
+"@stoplight/ui-kit@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@stoplight/ui-kit/-/ui-kit-1.46.1.tgz#37175061b53cc9dff2a9e4056890470bb543bf25"
+  integrity sha512-bzsToWpC6Mt0pi9t7cVav0gxwr3b3OyJHIwCdd6xcz0e/Rb8Ueblhns7l3HicR0P6cXb3iPh+MeKJ4h3DbkUtA==
   dependencies:
     "@emotion/core" "10.0.7"
     "@emotion/is-prop-valid" "0.7.3"
@@ -1704,10 +1704,10 @@
     styled-system "4.0.1"
     use-resize-observer "3.1.0"
 
-"@stoplight/ui-kit@^1.46.1":
-  version "1.46.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/ui-kit/-/ui-kit-1.46.1.tgz#37175061b53cc9dff2a9e4056890470bb543bf25"
-  integrity sha512-bzsToWpC6Mt0pi9t7cVav0gxwr3b3OyJHIwCdd6xcz0e/Rb8Ueblhns7l3HicR0P6cXb3iPh+MeKJ4h3DbkUtA==
+"@stoplight/ui-kit@^1.48.0":
+  version "1.48.0"
+  resolved "https://registry.yarnpkg.com/@stoplight/ui-kit/-/ui-kit-1.48.0.tgz#e934ad958ae4d43d8e52f9bc9969b9c782d0a078"
+  integrity sha512-x79Z/DU6HskfBAADHAbYRfoR6Ryv9tYlSgwN83PsLm2QQ5+5Y8sM8pQIJSVsSKw7IeJ5ACo48hp3Q73SJvIlVg==
   dependencies:
     "@emotion/core" "10.0.7"
     "@emotion/is-prop-valid" "0.7.3"
