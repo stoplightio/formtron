@@ -34,8 +34,8 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
           <Button
             fontWeight={800}
             fontSize="11px"
-            my={3}
-            mx={2}
+            my={11}
+            mx={7}
             color="rgb(118, 130, 143)"
             disabled={disabled}
             display="inline-block"
@@ -43,12 +43,12 @@ export const ArrayInput: React.FunctionComponent<IFormtronControl> = ({
             backgroundColor="transparent"
             onClick={() => onChange(easyArray.append())}
           >
-            <Icon mr={2} icon={faPlus} /> Add Item
+            <Icon mr={7} icon={faPlus} /> Add Item
           </Button>
         ) : (
           easyArray.items.map((val: any, index: number) => {
             return (
-              <Flex my={3} mx={2} key={`${index}-${value.length}`}>
+              <Flex my={11} mx={7} key={`${index}-${value.length}`}>
                 <Box flex={1} mr="10px">
                   <Widget
                     id={(id && `${id}-${index}`) || undefined}

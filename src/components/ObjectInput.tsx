@@ -47,13 +47,13 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
             backgroundColor="transparent"
             onClick={() => onChange(easyObject.append())}
           >
-            <Icon mr={2} icon={faPlus} /> Add Item
+            <Icon mr={7} icon={faPlus} /> Add Item
           </Button>
         ) : (
           easyObject.items.map((entry, index) => {
             const [key, val] = entry;
             return (
-              <Flex my={3} mx={2} key={`${index}-${easyObject.items.length}`}>
+              <Flex my={11} mx={7} key={`${index}-${easyObject.items.length}`}>
                 <DraftValue
                   value={key}
                   onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}
