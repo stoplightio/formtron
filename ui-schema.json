@@ -45,6 +45,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "layouts": {
           "type": "object",
           "additionalProperties": {
@@ -78,6 +81,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "area": {
           "type": "string"
         },
@@ -104,6 +110,9 @@
         },
         "show": {
           "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
         },
         "area": {
           "type": "string"
@@ -135,6 +144,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "area": {
           "type": "string"
         },
@@ -158,6 +170,9 @@
         },
         "show": {
           "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
         },
         "area": {
           "type": "string"
@@ -191,6 +206,9 @@
         },
         "show": {
           "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
         },
         "area": {
           "type": "string"
@@ -231,6 +249,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "area": {
           "type": "string"
         },
@@ -270,6 +291,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "area": {
           "type": "string"
         },
@@ -295,6 +319,9 @@
         "items": { "$ref": "#/definitions/field" },
         "show": {
           "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
         },
         "area": {
           "type": "string"
@@ -323,6 +350,9 @@
         "show": {
           "type": "string"
         },
+        "disabled": {
+          "type": "boolean"
+        },
         "area": {
           "type": "string"
         },
@@ -343,6 +373,9 @@
         },
         "show": {
           "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
         },
         "area": {
           "type": "string"

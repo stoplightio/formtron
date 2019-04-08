@@ -92,7 +92,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 onChange(v);
               }}
               fieldComponents={fieldComponents}
-              disabled={disabled}
+              disabled={disabled || propSchema.disabled}
               layout={layout}
             />
           </Box>
