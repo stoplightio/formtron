@@ -4,6 +4,7 @@
 - [Mapping form fields to Object keys](#mapping-form-fields-to-object-keys)
 - [Escaping literal '\*' and '?' in paths](#escaping-literal--and--in-paths)
 - [Conditional / Dynamic behavior](#conditional--dynamic-behavior)
+  - [Conditional enable/disable of fields ](#conditional-enabledisable-of-fields)
 - [Primitive Field Types](#primitive-field-types)
 - [Complex Field Types](#complex-field-types)
 - [Layouts](#layouts)
@@ -211,9 +212,14 @@ Just add a `show` property to a form field with a JavaScript expression in a str
 ```
 
 The variables used in expressions are the field keys, trimmed after the last period.
+(Setting an `area` overrides this and will use that as the variable name.)
 You can only reference a field that precedes the current field.
 (E.g. you cannot have a field's visibility depend on its own value, or the value of a field below it.)
 This ensures a nice top-to-bottom data dependency that keeps the form from becoming a nightmare to debug.
+
+### Conditional enable/disable of fields <!-- omit in tsc -->
+
+Exactly the same as for `show` except the field is called `enable`.
 
 ### Dynamic `options` for selects <!-- omit in toc -->
 
