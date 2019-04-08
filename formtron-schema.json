@@ -16,10 +16,10 @@
         "show": {
           "type": "string"
         },
-        "area": {
+        "enabled": {
           "type": "string"
         },
-        "enabled": {
+        "area": {
           "type": "string"
         },
         "custom": {}
