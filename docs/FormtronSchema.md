@@ -218,7 +218,7 @@ This ensures a nice top-to-bottom data dependency that keeps the form from becom
 
 ### Conditional enable/disable of fields <!-- omit in toc -->
 
-Exactly the same as for `show` except the field is called `enable`.
+Exactly the same as for `show` except the field is called `enabled`.
 
 ### Dynamic `options` for selects <!-- omit in toc -->
 
