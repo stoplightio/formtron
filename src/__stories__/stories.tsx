@@ -38,6 +38,9 @@ const objectSchema = require('./examples/object/schema.json');
 const showData = require('./examples/show/data.json');
 const showSchema = require('./examples/show/schema.json');
 
+const enableData = require('./examples/enable/data.json');
+const enableSchema = require('./examples/enable/schema.json');
+
 const evalOptionsData = require('./examples/evalOptions/data.json');
 const evalOptionsSchema = require('./examples/evalOptions/schema.json');
 
@@ -81,6 +84,9 @@ storiesOf('formtron', module)
   })
   .add('show', () => {
     return <FormtronDebugger input={showData} schema={showSchema} selection={showData._selection} />;
+  })
+  .add('enable', () => {
+    return <FormtronDebugger input={enableData} schema={enableSchema} selection={enableData._selection} />;
   })
   .add('evalOptions', () => {
     return (

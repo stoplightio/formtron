@@ -45,8 +45,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "layouts": {
           "type": "object",
@@ -81,8 +81,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -111,8 +111,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -144,8 +144,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -171,8 +171,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -207,8 +207,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -249,8 +249,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -291,8 +291,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -320,8 +320,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -350,8 +350,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"
@@ -374,8 +374,8 @@
         "show": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "area": {
           "type": "string"

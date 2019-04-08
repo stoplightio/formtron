@@ -72,11 +72,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         propSchema.options = evaluate(evalOptions, shortValue, gridArea, []);
       }
 
-      // 'disabled' here is a form-level prop bool
-      // 'enabled' is a propSchema level string
-      if (!disabled && enabled) {
-        disabled = !evaluate(enabled, shortValue, gridArea, true);
-      }
+      const enableField = enabled ? evaluate(enabled, shortValue, gridArea, true) : true;
 
       const Widget = fieldComponents[type];
       if (Widget === undefined) {
@@ -100,7 +96,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 onChange(v);
               }}
               fieldComponents={fieldComponents}
-              disabled={disabled}
+              disabled={disabled || !enableField}
               layout={layout}
             />
           </Box>

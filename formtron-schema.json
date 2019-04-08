@@ -19,8 +19,8 @@
         "area": {
           "type": "string"
         },
-        "disabled": {
-          "type": "boolean"
+        "enabled": {
+          "type": "string"
         },
         "custom": {}
       },
