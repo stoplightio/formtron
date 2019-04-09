@@ -72,7 +72,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
         propSchema.options = evaluate(evalOptions, shortValue, gridArea, []);
       }
 
-      const enableField = enabled ? evaluate(enabled, shortValue, gridArea, true) : true;
+      const enableField = !enabled || evaluate(enabled, shortValue, gridArea, true);
 
       const Widget = fieldComponents[type];
       if (Widget === undefined) {
