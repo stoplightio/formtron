@@ -16,6 +16,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },

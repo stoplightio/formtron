@@ -211,9 +211,14 @@ Just add a `show` property to a form field with a JavaScript expression in a str
 ```
 
 The variables used in expressions are the field keys, trimmed after the last period.
+(Setting an `area` overrides this and will use that as the variable name.)
 You can only reference a field that precedes the current field.
 (E.g. you cannot have a field's visibility depend on its own value, or the value of a field below it.)
 This ensures a nice top-to-bottom data dependency that keeps the form from becoming a nightmare to debug.
+
+### Conditional enable/disable of fields <!-- omit in toc -->
+
+Exactly the same as for `show` except the field is called `enabled`.
 
 ### Dynamic `options` for selects <!-- omit in toc -->
 

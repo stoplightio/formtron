@@ -26,6 +26,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   const { title, description, fields, layouts } = schema;
 
   const gridAreaToName = {};
+  const shortValue = {};
   const fallbackRows = [];
   let contentElems: React.ReactElement | React.ReactElement[] = [];
 
@@ -33,6 +34,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
     const { area } = fields[fieldName];
     const gridArea = area || shortName(fieldName);
     gridAreaToName[gridArea] = fieldName;
+    shortValue[gridArea] = value[fieldName];
     fallbackRows.push([gridArea]);
   }
 
@@ -59,16 +61,18 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
       const formId = `${name}-${index}`;
 
       const propSchema = schema.fields[name];
-      const { show, evalOptions, type } = propSchema;
+      const { show, evalOptions, enabled, type } = propSchema;
 
       // if evalutating show is false skip area
-      if (show && !evaluate(show, value, name, true)) {
+      if (show && !evaluate(show, shortValue, gridArea, true)) {
         return;
       }
 
       if (evalOptions) {
-        propSchema.options = evaluate(evalOptions, value, name, []);
+        propSchema.options = evaluate(evalOptions, shortValue, gridArea, []);
       }
+
+      const enableField = !enabled || evaluate(enabled, shortValue, gridArea, true);
 
       const Widget = fieldComponents[type];
       if (Widget === undefined) {
@@ -92,7 +96,7 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
                 onChange(v);
               }}
               fieldComponents={fieldComponents}
-              disabled={disabled}
+              disabled={disabled || !enableField}
               layout={layout}
             />
           </Box>

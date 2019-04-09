@@ -45,6 +45,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "layouts": {
           "type": "object",
           "additionalProperties": {
@@ -78,6 +81,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },
@@ -103,6 +109,9 @@
           "type": "boolean"
         },
         "show": {
+          "type": "string"
+        },
+        "enabled": {
           "type": "string"
         },
         "area": {
@@ -135,6 +144,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },
@@ -157,6 +169,9 @@
           "type": "string"
         },
         "show": {
+          "type": "string"
+        },
+        "enabled": {
           "type": "string"
         },
         "area": {
@@ -190,6 +205,9 @@
           "type": "number"
         },
         "show": {
+          "type": "string"
+        },
+        "enabled": {
           "type": "string"
         },
         "area": {
@@ -231,6 +249,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },
@@ -270,6 +291,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },
@@ -294,6 +318,9 @@
         "default": {},
         "items": { "$ref": "#/definitions/field" },
         "show": {
+          "type": "string"
+        },
+        "enabled": {
           "type": "string"
         },
         "area": {
@@ -323,6 +350,9 @@
         "show": {
           "type": "string"
         },
+        "enabled": {
+          "type": "string"
+        },
         "area": {
           "type": "string"
         },
@@ -342,6 +372,9 @@
           "type": "string"
         },
         "show": {
+          "type": "string"
+        },
+        "enabled": {
           "type": "string"
         },
         "area": {
