@@ -4,12 +4,12 @@ import * as React from 'react';
 
 import { IFormtronControl } from '..';
 
+import { useDraftValue } from '../hooks/useDraftValue';
 import { AutocompletionContext } from './AutocompletionContext';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
-import { DraftValue } from './utils/DraftValue';
 
 export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -21,6 +21,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
   disabled = false,
 }) => {
   const { variant } = useDiagnostics(path);
+  const [draft, _onChange] = useDraftValue(value, onChange);
 
   return (
     <AutocompletionContext.Consumer>
@@ -30,8 +31,8 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
           schema.custom && schema.custom.source
             ? autocompletionSources[schema.custom.source]
             : schema.options
-            ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-            : async (search: string) => [{ value: search, label: search }];
+              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+              : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
             <Box>
@@ -42,45 +43,41 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
               </Messages>
             </Box>
             <Box>
-              <DraftValue value={value} onChange={onChange}>
-                {({ value, onChange }) => (
-                  <Flex width="100%">
-                    <Box flex="1">
-                      <Select
-                        key={JSON.stringify(schema.options)}
-                        value={{ value, label: value }}
-                        defaultValue={{ value, label: value }}
-                        defaultOptions
-                        loadOptions={loadOptions}
-                        onChange={(value: any) => {
-                          if (value === null) {
-                            onChange(value);
-                          } else {
-                            onChange(value.value);
-                          }
-                        }}
-                        menuPlacement="auto"
-                        clearable={!schema.required}
-                        allowCreate={!schema.strict}
-                        invalid={variant === Variant.invalid}
-                        disabled={disabled}
-                        searchable={false}
-                        {...schema.custom && schema.custom.props}
-                      />
-                    </Box>
-                    {CustomWidget && (
-                      <CustomWidget
-                        value={value}
-                        schema={schema}
-                        path={path}
-                        onChange={onChange}
-                        fieldComponents={fieldComponents}
-                        disabled={disabled}
-                      />
-                    )}
-                  </Flex>
+              <Flex width="100%">
+                <Box flex="1">
+                  <Select
+                    key={JSON.stringify(schema.options)}
+                    value={{ value: draft, label: draft }}
+                    defaultValue={{ value: draft, label: draft }}
+                    defaultOptions
+                    loadOptions={loadOptions}
+                    onChange={(value: any) => {
+                      if (value === null) {
+                        _onChange(value);
+                      } else {
+                        _onChange(value.value);
+                      }
+                    }}
+                    menuPlacement="auto"
+                    clearable={!schema.required}
+                    allowCreate={!schema.strict}
+                    invalid={variant === Variant.invalid}
+                    disabled={disabled}
+                    searchable={false}
+                    {...schema.custom && schema.custom.props}
+                  />
+                </Box>
+                {CustomWidget && (
+                  <CustomWidget
+                    value={draft}
+                    schema={schema}
+                    path={path}
+                    onChange={_onChange}
+                    fieldComponents={fieldComponents}
+                    disabled={disabled}
+                  />
                 )}
-              </DraftValue>
+              </Flex>
             </Box>
           </Box>
         );
@@ -111,8 +108,8 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
           schema.custom && schema.custom.source
             ? autocompletionSources[schema.custom.source]
             : schema.options
-            ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
-            : async (search: string) => [{ value: search, label: search }];
+              ? async () => schema.options.map((o: string) => ({ value: o, label: o }))
+              : async (search: string) => [{ value: search, label: search }];
         return (
           <Box>
             <Messages path={path}>

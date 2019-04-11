@@ -6,13 +6,13 @@ import { Box, Button, Flex, Icon } from '@stoplight/ui-kit';
 
 import { IFormtronControl } from '..';
 
+import { useDraftValue } from '../hooks/useDraftValue';
 import { FieldSet } from './FieldSet';
 import { useDiagnostics } from './hooks';
 import { IconButton } from './IconButton';
 import { Label } from './Label';
 import { Messages } from './Messages';
 import { Variant } from './types';
-import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
 
 export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
@@ -28,7 +28,6 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const { variant } = useDiagnostics(path);
   // Make this thing an array
   const easyObject = new EasyObject(value, schema.default);
-  const KeyWidget = fieldComponents[schema.keys.type];
   const ValWidget = fieldComponents[schema.values.type];
 
   const noConflict = (key: any) => !(key in value);
@@ -54,29 +53,18 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
             const [key, val] = entry;
             return (
               <Flex my={11} mx={7} key={`${index}-${easyObject.items.length}`}>
-                <DraftValue
-                  value={key}
-                  onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}
-                >
-                  {({ value, onChange }) => {
-                    return (
-                      <React.Fragment>
-                        <Box flex={1} mr="10px">
-                          <KeyWidget
-                            id={(id && `${id}-${index}`) || undefined}
-                            value={value}
-                            schema={schema.keys}
-                            path={[...path, key]}
-                            fieldComponents={fieldComponents}
-                            onChange={_key => onChange(_key)}
-                            disabled={disabled}
-                            layout={layout}
-                          />
-                        </Box>
-                      </React.Fragment>
-                    );
-                  }}
-                </DraftValue>
+                <Box flex={1} mr="10px">
+                  <KeyWidgetWrapper
+                    value={key}
+                    onChange={_key => noConflict(_key) && onChange(easyObject.updateKey(index, _key))}
+                    id={(id && `${id}-${index}`) || undefined}
+                    schema={schema.keys}
+                    path={[...path, key]}
+                    fieldComponents={fieldComponents}
+                    disabled={disabled}
+                    layout={layout}
+                  />
+                </Box>
                 <Box flex={1} mx="10px">
                   <ValWidget
                     id={(id && `${id}-${index}`) || undefined}
@@ -115,5 +103,31 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
         )}
       </FieldSet>
     </Messages>
+  );
+};
+
+const KeyWidgetWrapper: React.FC<IFormtronControl> = ({
+  id,
+  value,
+  onChange,
+  schema,
+  path,
+  fieldComponents,
+  disabled,
+  layout,
+}: IFormtronControl) => {
+  const [draft, _onChange] = useDraftValue(value, onChange);
+  const KeyWidget = fieldComponents[schema.type];
+  return (
+    <KeyWidget
+      id={id}
+      value={draft}
+      schema={schema}
+      path={path}
+      fieldComponents={fieldComponents}
+      onChange={_key => _onChange(_key)}
+      disabled={disabled}
+      layout={layout}
+    />
   );
 };
