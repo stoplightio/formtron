@@ -59,6 +59,10 @@
       "area": "license",
       "type": "string",
       "title": "License"
+    },
+    "foo": {
+      "type": "checkbox",
+      "title": "Checkbox"
     }
   }
 }
