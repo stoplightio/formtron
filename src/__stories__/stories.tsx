@@ -44,6 +44,9 @@ const enableSchema = require('./examples/enable/schema.json');
 const evalOptionsData = require('./examples/evalOptions/data.json');
 const evalOptionsSchema = require('./examples/evalOptions/schema.json');
 
+const resolverData = require('./examples/resolver/data.json');
+const resolverSchema = require('./examples/resolver/schema.json');
+
 // We need to load some Icons into the IconLibrary!
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { IconLibrary } from '@stoplight/ui-kit';
@@ -95,4 +98,7 @@ storiesOf('formtron', module)
   })
   .add('root data node', () => {
     return <FormtronDebugger input={rootData} schema={rootSchema} selection="title" />;
+  })
+  .add('custom resolver', () => {
+    return <FormtronDebugger input={resolverData} schema={resolverSchema} selection="title" />;
   });

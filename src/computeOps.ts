@@ -1,6 +1,6 @@
 import { Dictionary } from 'ts-essentials';
 import { deriveFormData } from './deriveFormData';
-import { IOperation } from './types';
+import { IOperation, Resolver } from './types';
 
 const substitute = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
   const _selection = selection.split('.');
@@ -22,9 +22,9 @@ const substitute = (key: string, path: string, selection: string, vars: Dictiona
     .join('.');
 };
 
-export const computeOps = (schema: any, data: any, selection: string, newFormData: any) => {
+export const computeOps = (schema: any, data: any, selection: string, newFormData: any, resolver?: Resolver) => {
   const ops: IOperation[] = [];
-  const oldFormData = deriveFormData(schema, data, selection);
+  const oldFormData = deriveFormData(schema, data, selection, resolver);
 
   const newVars: Dictionary<string> = {};
   const oldVars: Dictionary<string> = {};

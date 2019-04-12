@@ -1,7 +1,9 @@
-import { IDiagnostic, IRange, Omit } from '@stoplight/types';
+import { IDiagnostic, IRange, JsonPath, Omit } from '@stoplight/types';
 import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
+
+export type Resolver = (path: JsonPath) => unknown;
 
 export interface IFormtronCommon {
   id?: string;
@@ -12,6 +14,7 @@ export interface IFormtronCommon {
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
   disabled?: boolean;
   layout?: string;
+  resolver?: Resolver;
 }
 
 export interface IFormtronControl extends IFormtronCommon {

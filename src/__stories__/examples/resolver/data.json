@@ -1,0 +1,12 @@
+{
+  "_selection": ".",
+  "name": "Alice",
+  "age": 1,
+  "magic": {
+    "portal": {
+      "to": {
+        "somewhere": "A real value"
+      }
+    }
+  }
+}

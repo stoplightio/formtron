@@ -73,6 +73,7 @@ import { fieldComponents } from "formtron/components"; // or bring your own comp
     this.setState(state => ({ ...state, ops, previewOutput }));
   }}
   layout={this.props.layout}
+  resolver={resolver}
 />;
 ```
 
@@ -89,6 +90,9 @@ Learn more about the react components in the next section. Learn more about sche
 You can use the exported `applyOps` function to apply the changes when the user hits a Save button or something.
 
 `layout` is an (optional) string selecting which layout to use. Layouts can be defined in the `schema`.
+
+`resolver` is an (optional) resolver that will be called if the value of a field at the given path is undefined.
+This allows you to do fancy-pants things like read-only views of dereferenced JSON pointers.
 
 ### Using UI-Kit Field Components
 
