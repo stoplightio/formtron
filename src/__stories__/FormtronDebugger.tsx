@@ -8,6 +8,7 @@ import { boolean } from '@storybook/addon-knobs/react';
 
 import { applyOps, computeWarnings, deriveFormData, Formtron, IOperation } from '../';
 import { AutocompletionContext, fieldComponents } from '../components';
+import { Resolver } from '../types';
 import { autocompletionSources } from './autocompletionSources';
 import { customWidgets } from './customWidgets';
 
@@ -25,7 +26,7 @@ export interface IFormtronDebuggerState {
   previewOutput: any;
 }
 
-const resolver = (path: string[]) => (path.join('.').startsWith('magic.portal') ? 'MAGIC' : undefined);
+const resolver: Resolver = path => (path.join('.').startsWith('magic.portal') ? 'MAGIC' : undefined);
 
 export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtronDebuggerState> {
   public constructor(props: IFormtronDebugger) {
