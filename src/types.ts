@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
-export type Resolver = (path: string[]) => any;
+export type Resolver = (path: string[]) => unknown;
 
 export interface IFormtronCommon {
   id?: string;
