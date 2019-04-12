@@ -17,11 +17,16 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
   disabled = false,
   layout,
 }) => {
-  const [_draft, _onChange] = useDraftValue(deriveFormData(schema, value, selection), v => {
-    const ops = computeOps(schema, value, selection, v);
-    onChange(ops);
-    if (onInternalChange) onInternalChange(v);
-  });
+  const rootOnChange = React.useCallback(
+    v => {
+      const ops = computeOps(schema, value, selection, v);
+      onChange(ops);
+      if (onInternalChange) onInternalChange(v);
+    },
+    [schema, value, selection, onChange, onInternalChange]
+  );
+  const formData = React.useMemo(() => deriveFormData(schema, value, selection), [schema, value, selection]);
+  const [_draft, _onChange] = useDraftValue(formData, rootOnChange);
   const Widget = fieldComponents[schema.type];
   return (
     <ThemeZone name={themeName}>

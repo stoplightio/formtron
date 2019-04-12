@@ -86,15 +86,13 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
             mr={index === cellNames.length - 1 ? 0 : '10px'}
             my="12px"
           >
-            <Widget
+            <WidgetWrapper
               id={formId}
-              value={value[name]}
+              name={name}
+              value={value}
               schema={propSchema}
               path={replaceWildcards(name, path)}
-              onChange={(val: any) => {
-                const v = { ...value, [name]: val };
-                onChange(v);
-              }}
+              onChange={onChange}
               fieldComponents={fieldComponents}
               disabled={disabled || !enableField}
               layout={layout}
@@ -121,4 +119,37 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   }
 
   return <Messages path={path}>{contentElems}</Messages>;
+};
+
+const WidgetWrapper: React.FC<IFormtronControl & { name: string }> = ({
+  id,
+  value,
+  onChange,
+  schema,
+  path,
+  fieldComponents,
+  disabled,
+  layout,
+  name,
+}) => {
+  const Widget = fieldComponents[schema.type];
+  const _onChange = React.useCallback(
+    (val: any) => {
+      const v = { ...value, [name]: val };
+      onChange(v);
+    },
+    [value, onChange]
+  );
+  return (
+    <Widget
+      id={id}
+      value={value[name]}
+      schema={schema}
+      path={path}
+      onChange={_onChange}
+      fieldComponents={fieldComponents}
+      disabled={disabled}
+      layout={layout}
+    />
+  );
 };
