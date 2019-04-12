@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
+export type Resolver = (path: string[]) => any;
+
 export interface IFormtronCommon {
   id?: string;
   value: any;
@@ -12,6 +14,7 @@ export interface IFormtronCommon {
   fieldComponents: Dictionary<React.FunctionComponent<IFormtronControl>>;
   disabled?: boolean;
   layout?: string;
+  resolver?: Resolver;
 }
 
 export interface IFormtronControl extends IFormtronCommon {

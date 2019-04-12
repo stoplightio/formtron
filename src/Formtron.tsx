@@ -16,12 +16,13 @@ export const Formtron: React.FunctionComponent<IFormtron> = ({
   onInternalChange,
   disabled = false,
   layout,
+  resolver,
 }) => (
   <ThemeZone name={themeName}>
     <DraftValue
-      value={deriveFormData(schema, value, selection)}
+      value={deriveFormData(schema, value, selection, resolver)}
       onChange={v => {
-        const ops = computeOps(schema, value, selection, v);
+        const ops = computeOps(schema, value, selection, v, resolver);
         onChange(ops);
         if (onInternalChange) onInternalChange(v);
       }}

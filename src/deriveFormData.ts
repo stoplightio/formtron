@@ -3,6 +3,7 @@ import { Dictionary } from 'ts-essentials';
 
 // @ts-ignore
 import memoize from '@stoplight/memoize-one';
+import { Resolver } from './types';
 
 const substituteVariables = (key: string, path: string, selection: string, vars: Dictionary<string>) => {
   const _selection = selection.split('.').filter(x => x !== '');
@@ -29,7 +30,7 @@ const substituteVariables = (key: string, path: string, selection: string, vars:
     .join('.');
 };
 
-export const deriveFormData = memoize((schema: any, data: any, selection: string) => {
+export const deriveFormData = memoize((schema: any, data: any, selection: string, resolver?: Resolver) => {
   const output = {};
   const vars = {};
   const keys = Object.keys(schema.fields);
@@ -52,6 +53,9 @@ export const deriveFormData = memoize((schema: any, data: any, selection: string
         } else {
           // There's one edge case where path = ""
           output[key] = path === '' ? data : get(data, path);
+          if (output[key] === undefined && resolver) {
+            output[key] = resolver(path.split('.'));
+          }
         }
         unresolved.delete(key);
         break;
