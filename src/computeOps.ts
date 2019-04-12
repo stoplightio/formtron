@@ -51,11 +51,18 @@ export const computeOps = (schema: any, data: any, selection: string, newFormDat
   // Update all values first using oldVars
   for (const key of values) {
     const rejoined = substitute(key, key, selection, oldVars);
-    ops.push({
-      op: 'add',
-      path: rejoined,
-      value: newFormData[key],
-    });
+    if (newFormData[key] === undefined) {
+      ops.push({
+        op: 'remove',
+        path: rejoined,
+      });
+    } else {
+      ops.push({
+        op: 'add',
+        path: rejoined,
+        value: newFormData[key],
+      });
+    }
   }
   // Then rename nodes as needed
   const vars = Object.assign({}, oldVars);

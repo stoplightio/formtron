@@ -44,10 +44,15 @@ export interface IMoveOperation {
   path: string;
 }
 
+export interface IRemoveOperation {
+  op: 'remove';
+  path: string;
+}
+
 export interface ISelectOperation {
   op: 'select';
   from: string;
   path: string;
 }
 
-export type IOperation = IAddOperation | IMoveOperation | ISelectOperation;
+export type IOperation = IAddOperation | IMoveOperation | IRemoveOperation | ISelectOperation;

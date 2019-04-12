@@ -13,6 +13,10 @@ export const applyOps = (_data: any, ops: IOperation[]) =>
     // Apply operations
     for (const op of ops) {
       switch (op.op) {
+        case 'remove': {
+          unset(data, op.path);
+          break;
+        }
         case 'add': {
           // There's one edge case where path = ""
           if (op.path === '') {
