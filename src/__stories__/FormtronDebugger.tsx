@@ -25,6 +25,8 @@ export interface IFormtronDebuggerState {
   previewOutput: any;
 }
 
+const resolver = (path: string[]) => (path.join('.').startsWith('magic.portal') ? 'MAGIC' : undefined);
+
 export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtronDebuggerState> {
   public constructor(props: IFormtronDebugger) {
     super(props);
@@ -110,6 +112,7 @@ export class FormtronDebugger extends React.Component<IFormtronDebugger, IFormtr
                 }}
                 disabled={boolean('disabled', false)}
                 layout="default"
+                resolver={resolver}
               />
               <Button
                 type="button"

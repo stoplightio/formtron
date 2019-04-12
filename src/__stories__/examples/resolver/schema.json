@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../../ui-schema.json",
+  "type": "form",
+  "title": "Simplest Ever Form",
+  "description": "A string, an integer, and a checkbox walk into a form",
+  "fields": {
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age",
+      "required": true
+    },
+    "checked": {
+      "type": "checkbox",
+      "title": "Checked"
+    },
+    "magic.portal.to.somewhere": {
+      "type": "string",
+      "title": "A path that exists",
+      "enabled": "false"
+    },
+    "magic.portal.to.nowhere": {
+      "type": "string",
+      "title": "Non-existant path",
+      "enabled": "false"
+    }
+  }
+}
