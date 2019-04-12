@@ -31,11 +31,13 @@ export const Form: React.FunctionComponent<IFormtronControl> = ({
   let contentElems: React.ReactElement | React.ReactElement[] = [];
 
   for (const fieldName in fields) {
-    const { area } = fields[fieldName];
-    const gridArea = area || shortName(fieldName);
-    gridAreaToName[gridArea] = fieldName;
-    shortValue[gridArea] = value[fieldName];
-    fallbackRows.push([gridArea]);
+    if (fields.hasOwnProperty(fieldName)) {
+      const { area } = fields[fieldName];
+      const gridArea = area || shortName(fieldName);
+      gridAreaToName[gridArea] = fieldName;
+      shortValue[gridArea] = value[fieldName];
+      fallbackRows.push([gridArea]);
+    }
   }
 
   const grid = layout && layouts && layouts[layout];
