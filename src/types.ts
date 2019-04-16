@@ -1,6 +1,5 @@
-import { IDiagnostic, IRange, JsonPath, Omit } from '@stoplight/types';
+import { Dictionary, IDiagnostic, IRange, JsonPath, Omit } from '@stoplight/types';
 import * as React from 'react';
-import { Dictionary } from 'ts-essentials';
 import { themeTypes } from './theme';
 
 export type Resolver = (path: JsonPath) => unknown;

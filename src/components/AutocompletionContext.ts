@@ -1,6 +1,5 @@
+import { Dictionary } from '@stoplight/types';
 import * as React from 'react';
-
-import { Dictionary } from 'ts-essentials';
 
 export interface IAutocompletionOption {
   value: any;

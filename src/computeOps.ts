@@ -1,4 +1,4 @@
-import { Dictionary } from 'ts-essentials';
+import { Dictionary } from '@stoplight/types';
 import { deriveFormData } from './deriveFormData';
 import { IOperation, Resolver } from './types';
 
