@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Box, IBox } from '@stoplight/ui-kit';
+import { Box, IBox, Variant } from '@stoplight/ui-kit';
 
 import { useBorder } from './hooks';
-import { Variant } from './types';
 
 interface IFieldSet extends IBox<HTMLFieldSetElement> {
   legend: HTMLElement | string;

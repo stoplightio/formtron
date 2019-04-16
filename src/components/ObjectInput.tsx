@@ -11,7 +11,6 @@ import { useDiagnostics } from './hooks';
 import { IconButton } from './IconButton';
 import { Label } from './Label';
 import { Messages } from './Messages';
-import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
 import { EasyObject } from './utils/EasyObject';
 
@@ -31,11 +30,11 @@ export const ObjectInput: React.FunctionComponent<IFormtronControl> = ({
   const KeyWidget = fieldComponents[schema.keys.type];
   const ValWidget = fieldComponents[schema.values.type];
 
-  const noConflict = (key: any) => !(key in value);
+  const noConflict = (key: PropertyKey) => !(key in value);
 
   return (
     <Messages path={path}>
-      <FieldSet position="relative" invalid={variant === Variant.invalid} legend={schema.title}>
+      <FieldSet position="relative" variant={variant} legend={schema.title}>
         {easyObject.items.length === 0 ? (
           <Button
             fontWeight={800}

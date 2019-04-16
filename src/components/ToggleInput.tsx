@@ -6,7 +6,6 @@ import { IFormtronControl } from '..';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
-import { Variant } from './types';
 
 export const ToggleInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -32,7 +31,7 @@ export const ToggleInput: React.FunctionComponent<IFormtronControl> = ({
           id={id}
           checked={value}
           onChange={onChange}
-          invalid={variant === Variant.invalid}
+          variant={variant}
           disabled={disabled}
         />
       </Flex>

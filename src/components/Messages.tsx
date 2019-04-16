@@ -5,7 +5,6 @@ import { Box, Popup } from '@stoplight/ui-kit';
 import { Tooltip } from '@stoplight/ui-kit/Tooltip';
 
 import { useDiagnostics } from './hooks';
-import { Variant } from './types';
 
 interface IMessages {
   path: JsonPath;
@@ -19,14 +18,13 @@ export const Messages: React.FunctionComponent<IMessages> = ({ path, children })
     <Popup
       posX="left"
       posY="top"
+      show={showTooltip}
       padding={3}
-      renderContent={() =>
-        showTooltip && (
-          <Tooltip posX="left" invalid={variant === Variant.invalid}>
-            {message}
-          </Tooltip>
-        )
-      }
+      renderContent={() => (
+        <Tooltip posX="left" variant={variant}>
+          {message}
+        </Tooltip>
+      )}
       renderTrigger={() => <Box>{children}</Box>}
     />
   );

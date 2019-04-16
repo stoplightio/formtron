@@ -1,9 +1,7 @@
 import toUpper = require('lodash/toUpper');
 import * as React from 'react';
 
-import { IText, Text } from '@stoplight/ui-kit';
-
-import { Variant } from './types';
+import { IText, Text, Variant } from '@stoplight/ui-kit';
 
 interface ILabel extends IText<HTMLLabelElement> {
   variant?: Variant;
