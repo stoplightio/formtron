@@ -1,5 +1,5 @@
-import { Box, Flex } from '@stoplight/ui-kit';
-import { Select } from '@stoplight/ui-kit/Select';
+import { Box, Flex, useTheme } from '@stoplight/ui-kit';
+import { Select, selectStyles } from '@stoplight/ui-kit/Select';
 import * as React from 'react';
 
 import { IFormtronControl } from '..';
@@ -97,10 +97,12 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
   path,
   disabled = false,
 }) => {
+  const theme = useTheme();
   if (!Array.isArray(value)) {
     throw new Error(`MultiSelect expects it's value prop to be an array but it was of type ${typeof value}`);
   }
   const { variant } = useDiagnostics(path);
+  const selectCss = selectStyles(theme.select, variant);
 
   return (
     <AutocompletionContext.Consumer>
@@ -124,7 +126,9 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                 <Select
                   key={JSON.stringify(value) + JSON.stringify(schema.options)}
                   styles={{
+                    ...selectCss,
                     container: (base: any) => ({
+                      ...(selectCss.container && selectCss.container(base)),
                       ...base,
                       display: 'inline-block',
                       minWidth: 200,
