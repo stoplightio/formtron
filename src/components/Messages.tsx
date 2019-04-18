@@ -18,13 +18,14 @@ export const Messages: React.FunctionComponent<IMessages> = ({ path, children })
     <Popup
       posX="left"
       posY="top"
-      show={showTooltip}
       padding={3}
-      renderContent={() => (
-        <Tooltip posX="left" variant={variant}>
-          {message}
-        </Tooltip>
-      )}
+      renderContent={() =>
+        showTooltip && (
+          <Tooltip posX="left" variant={variant}>
+            {message}
+          </Tooltip>
+        )
+      }
       renderTrigger={() => <Box>{children}</Box>}
     />
   );

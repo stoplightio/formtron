@@ -1,7 +1,7 @@
 import { DiagnosticSeverity, Dictionary, JsonPath } from '@stoplight/types';
+import { Variant } from '@stoplight/ui-kit/types';
 import { useContext } from 'react';
 
-import { Variant } from '@stoplight/ui-kit';
 import { IFormtronDiagnostic } from '../../types';
 import { DiagnosticMessagesContext, IDiagnosticMessagesProvider } from '../DiagnosticMessagesContext';
 
