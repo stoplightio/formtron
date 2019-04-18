@@ -26,14 +26,7 @@ export const ToggleInput: React.FunctionComponent<IFormtronControl> = ({
         </Messages>
       </Box>
       <Flex alignItems="center" flex="1">
-        <Toggle
-          mr="auto"
-          id={id}
-          checked={value}
-          onChange={onChange}
-          variant={variant}
-          disabled={disabled}
-        />
+        <Toggle mr="auto" id={id} checked={value} onChange={onChange} variant={variant} disabled={disabled} />
       </Flex>
     </Flex>
   );
