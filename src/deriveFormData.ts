@@ -1,5 +1,5 @@
+import { Dictionary } from '@stoplight/types';
 import get = require('lodash/get');
-import { Dictionary } from 'ts-essentials';
 
 // @ts-ignore
 import memoize from '@stoplight/memoize-one';

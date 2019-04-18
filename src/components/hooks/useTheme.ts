@@ -1,7 +1,7 @@
 const capitalize = require('lodash/capitalize');
+import { Variant } from '@stoplight/ui-kit';
 
 import { useTheme } from '../../theme';
-import { Variant } from '../types';
 
 const useProp = (prop: string) => (variant?: Variant) => {
   const theme = useTheme();

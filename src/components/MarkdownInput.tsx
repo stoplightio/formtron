@@ -7,7 +7,6 @@ import { IFormtronControl } from '..';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
-import { Variant } from './types';
 import { ThrottleValue } from './utils/ThrottleValue';
 
 export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({
@@ -37,7 +36,7 @@ export const MarkdownInput: React.FunctionComponent<IFormtronControl> = ({
               autosize={true}
               value={value}
               onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => onChange(e.currentTarget.value)}
-              invalid={variant === Variant.invalid}
+              variant={variant}
               disabled={disabled}
             />
           </Box>

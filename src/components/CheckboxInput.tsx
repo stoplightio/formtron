@@ -6,7 +6,6 @@ import { IFormtronControl } from '..';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
-import { Variant } from './types';
 
 export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
   id,
@@ -27,14 +26,7 @@ export const CheckboxInput: React.FunctionComponent<IFormtronControl> = ({
         </Messages>
       </Box>
       <Flex alignItems="center" flex="1">
-        <Checkbox
-          mr="auto"
-          id={id}
-          checked={value}
-          onChange={onChange}
-          invalid={variant === Variant.invalid}
-          disabled={disabled}
-        />
+        <Checkbox mr="auto" id={id} checked={value} onChange={onChange} variant={variant} disabled={disabled} />
       </Flex>
     </Flex>
   );

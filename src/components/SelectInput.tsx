@@ -8,7 +8,6 @@ import { AutocompletionContext } from './AutocompletionContext';
 import { useDiagnostics } from './hooks';
 import { Label } from './Label';
 import { Messages } from './Messages';
-import { Variant } from './types';
 import { DraftValue } from './utils/DraftValue';
 
 export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
@@ -62,7 +61,7 @@ export const SelectInput: React.FunctionComponent<IFormtronControl> = ({
                         menuPlacement="auto"
                         clearable={!schema.required}
                         allowCreate={!schema.strict}
-                        invalid={variant === Variant.invalid}
+                        variant={variant}
                         disabled={disabled}
                         searchable={false}
                         {...schema.custom && schema.custom.props}
@@ -124,13 +123,6 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
               <Box flex="1">
                 <Select
                   key={JSON.stringify(value) + JSON.stringify(schema.options)}
-                  styles={{
-                    container: (base: any) => ({
-                      ...base,
-                      display: 'inline-block',
-                      minWidth: 200,
-                    }),
-                  }}
                   defaultValue={value.map(_value => ({ value: _value, label: _value }))}
                   isMulti
                   loadOptions={loadOptions}
@@ -142,7 +134,7 @@ export const MultiselectInput: React.FunctionComponent<IFormtronControl> = ({
                   }
                   menuPlacement="auto"
                   allowCreate={!schema.strict}
-                  invalid={variant === Variant.invalid}
+                  variant={variant}
                   disabled={disabled}
                   clearable={false}
                   searchable={false}
