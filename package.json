@@ -36,7 +36,7 @@
     "test.watch": "yarn test --watch"
   },
   "peerDependencies": {
-    "@stoplight/ui-kit": "^1.46.0",
+    "@stoplight/ui-kit": "^1.50.0",
     "react": "16.x.x"
   },
   "dependencies": {
